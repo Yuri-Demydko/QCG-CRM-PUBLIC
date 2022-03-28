@@ -1,0 +1,43 @@
+﻿@using AspNetCore.ReCaptcha
+@model CRM.IdentityServer.ViewModels.Account.RegisterViewModel
+@{
+    ViewBag.Title = "Регистрация";
+}
+
+@section Scripts {
+}
+
+<head>
+    <title>Регистрация</title>
+</head>
+<form method="post" asp-action="Register" asp-controller="Account">
+    <div>
+        <label>Username</label>
+        <input type="text" asp-for="Username"/>
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email" asp-for="Email"/>
+    </div>
+    <div>
+        <label>Email confirm</label>
+        <input type="email" asp-for="EmailConfirm"/>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" asp-for="Password"/>
+    </div>
+    <div>
+        <label>Password confirm</label>
+        <input type="password" asp-for="PasswordConfirm"/>
+    </div>
+    <input type="submit" value="Продолжить регистрацию"/>
+    
+    @Html.ReCaptcha()
+    @if (ViewContext.ModelState.IsValid == false)
+    {
+        <div asp-validation-summary="All" class="formErrors">
+
+        </div>
+    }
+</form>

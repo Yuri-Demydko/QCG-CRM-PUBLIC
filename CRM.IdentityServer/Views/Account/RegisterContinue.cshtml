@@ -1,0 +1,35 @@
+﻿@model CRM.IdentityServer.ViewModels.Account.RegisterContinueViewModel
+@{
+    ViewBag.Title = "Продолжение регистрации";
+}
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/RegisterContinuePage.js"></script>
+}
+
+<head>
+    <title>Продолжение регистрации</title>
+</head>
+    <button id="SendCodeButton">Отправить код на почту</button>
+    <form id="confirmCode" asp-controller="Account" asp-action="RegisterContinue" method="post" hidden="hidden">
+        <input asp-for="Code" type="text" placeholder="Введите код"/>
+        <input asp-for="Email" id="SendCodeEmail" type="hidden" value="@Model.Email" />
+        <input type="submit" value="Завершить регистрацию"/>
+        @if(!ViewContext.ModelState.IsValid)
+        {
+            <input type="hidden" id="hideForm" value="true"/>
+        }
+    </form>
+    @if (ViewContext.ModelState.IsValid == false)
+        {
+            <div asp-validation-summary="All" class="formErrors">
+    
+            </div>
+        }
+
+
+@* *@
+@* <form method="post" asp-controller="Account" asp-action="SendVerifyEmailForRegistration"> *@
+@*     <input type="hidden" value="@Model.Email" name="email"/> *@
+@*     <input type="submit" value="Отправить код подтверждения на почту"/> *@
+@* </form> *@

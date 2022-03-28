@@ -1,0 +1,32 @@
+@model CRM.IdentityServer.ViewModels.Account.LoginViewModel
+@* <head> *@
+@*     <link type="text/css" rel="stylesheet" href="~/css/Login/Login.styles.css"/> *@
+@* </head> *@
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+</head>
+
+<form asp-route="Login">
+            <input type="hidden" asp-for="ReturnUrl"/>
+            <h1>Войдите в личный кабинет</h1>
+            <div>
+                <input type="text" id="login" placeholder=" " asp-for="Username">
+                <label for="login">Логин</label>
+            </div>
+            <div>
+                <input type="password" name="password" id="password" placeholder=" " asp-for="Password">
+                <label for="password">Пароль</label>
+            </div>
+           
+            <button name="button" value="login" id="loginButton">Войти</button>
+            @if (ViewContext.ModelState.IsValid == false)
+            {
+                <div class="formErrors">
+                   Неправильный логин или пароль
+                </div>
+            }
+        </form>
+<a asp-controller="Account" asp-action="Register">Регистрация</a>
+<a asp-controller="Account" asp-action="ForgotPassword">Забыли пароль?</a>
+<a asp-controller="Account" asp-action="SendTestEmail">Test mail</a>

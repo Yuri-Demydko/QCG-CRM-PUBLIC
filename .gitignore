@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+CRM.IdentityServer/Properties/.DS_Store
+User.WebApp/Models/.DS_Store
+User.WebApp/Models/Basic/.DS_Store
+User.WebApp/.DS_Store
