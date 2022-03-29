@@ -31,9 +31,9 @@ namespace CRM.DAL.Models.Users
         {
             item.HasBaseType((Type) null);
             
-            item.HasMany(i => i.UserRoles).WithOne(i => i.User);
+            item.HasMany(i => i.UserRoles).WithOne(i => i.User).HasForeignKey(i=>i.UserId);
             
-            item.HasMany(i => i.UserClaims).WithOne(i => i.User);
+            item.HasMany(i => i.UserClaims).WithOne(i => i.User).HasForeignKey(i=>i.UserId);
 
             item.HasMany(i => i.PayCards).WithOne(i => i.User).HasForeignKey(i => i.UserId);
             item.HasMany(i => i.ProductUsers).WithOne(i => i.User).HasForeignKey(i => i.UserId);

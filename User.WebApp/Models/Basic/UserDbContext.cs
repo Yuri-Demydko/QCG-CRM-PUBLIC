@@ -13,6 +13,11 @@ namespace CRM.User.WebApp.Models.Basic
         IdentityRoleClaim<string>, IdentityUserToken<string>>, IDataProtectionKeyContext
     {
         public string UserId { get; set; }
+        
+        public DbSet<DAL.Models.Users.User> Users { get; set; }
+        public DbSet<DAL.Models.Users.Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<UserClaim> UserClaims { get; set; }
 
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
@@ -29,6 +34,10 @@ namespace CRM.User.WebApp.Models.Basic
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new UserClaimConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
 
         }
     }

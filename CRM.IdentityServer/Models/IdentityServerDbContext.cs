@@ -28,6 +28,8 @@ namespace CRM.IdentityServer.Models
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new UserClaimConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             //modelBuilder.Entity<File>().HasQueryFilter(i => !i.IsDeleted);
 
         }

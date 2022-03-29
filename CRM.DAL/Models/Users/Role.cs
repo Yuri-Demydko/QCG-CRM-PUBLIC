@@ -15,16 +15,8 @@ namespace CRM.DAL.Models.Users
     {
         public void Configure(EntityTypeBuilder<Role> item)
         {
-            item.HasMany(i => i.UserRoles).WithOne(i => i.Role);
-
-            // @TODO придумать нормальный data seed
-            // foreach (var roleName in UserRoles.RoleNames.Keys)
-            // {
-            //     item.HasData(new List<Role>()
-            //     {
-            //         new Role() {Name = roleName, NormalizedName = roleName.ToUpper(), Id = Guid.NewGuid().ToString()}
-            //     });
-            // }
+            item.HasMany(i => i.UserRoles).WithOne(i => i.Role).HasForeignKey(r=>r.RoleId);
+            
         }
     }
 }

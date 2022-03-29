@@ -45,18 +45,9 @@ namespace CRM.User.WebApp.Controllers
             var userId = userManager.GetUserId(User);
             var user = await UserDbContext.Users
                 .IncludeOptimized(i => i.UserRoles.Select(ur => ur.Role))
-                .Select(i => new UserProfileDto
-                {
-                    Id = i.Id,
-                    Email = i.Email,
-                    PhoneNumber = i.PhoneNumber,
-                    UserName = i.UserName,
-                    IsActive = i.IsActive,
-                    Roles = i.UserRoles.Select(ur => ur.Role.Name).ToList(),
-                })
                 .FirstOrDefaultAsync(i => i.Id == userId);
             
-            return StatusCode(StatusCodes.Status200OK, user);
+            return StatusCode(StatusCodes.Status200OK, mapper.Map<UserProfileDto>(user));
         }
 
         /// <summary>
