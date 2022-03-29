@@ -8,8 +8,10 @@
         
         public const string Policies = "policies";
         
+        public const string Kontragents = "kontragents";
         
-	    public const string OpenId = "openid";
-	    public const string Profile = "profile";
+        public const string Drivers = "drivers";
+	public const string OpenId = "openid";
+	public const string Profile = "profile";
     }
 }

@@ -4,8 +4,8 @@ namespace CRM.DAL.Models.Users
 {
     public class UserRole : IdentityUserRole<string>
     {
-        protected internal User User { get; set; }
+        public User User { get; set; }
 
-        protected internal Role Role { get; set; }
+        public Role Role { get; set; }
     }
 }

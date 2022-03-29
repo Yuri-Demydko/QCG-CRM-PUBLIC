@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using ClosedXML.Excel;
+using CRM.DAL.Models.Users;
 using CRM.IdentityServer.Extensions.Constants;
 using CRM.ServiceCommon.Configurations;
 using CRM.ServiceCommon.Middlewares;
@@ -60,9 +61,9 @@ namespace CRM.User.WebApp
             services.Configure<IdentityOptions>(options =>
                 options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
 
-            services.AddIdentityForWebApi<Models.Basic.User.User, Models.Basic.Role.Role>()
+            services.AddIdentityForWebApi<DAL.Models.Users.User, Role>()
                 .AddEntityFrameworkStores<UserDbContext>()
-                .AddRoles<Models.Basic.Role.Role>()
+                .AddRoles<Role>()
                 .AddDefaultTokenProviders();
 
             services.Configure<SecurityStampValidatorOptions>(options =>

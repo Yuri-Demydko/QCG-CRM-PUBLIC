@@ -79,7 +79,6 @@ namespace CRM.DAL
             modelBuilder.ApplyConfiguration(new KontragentConfiguration());
             modelBuilder.ApplyConfiguration(new KontragentInfoConfiguration());
             modelBuilder.ApplyConfiguration(new FileConfiguration());
-            
         }
     }
 }

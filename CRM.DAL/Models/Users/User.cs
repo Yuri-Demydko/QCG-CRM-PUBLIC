@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 using CRM.DAL.Models.KontragentUsers;
 using CRM.DAL.Models.PayCards;
 using CRM.DAL.Models.ProductsUsers;
@@ -12,9 +12,9 @@ namespace CRM.DAL.Models.Users
     public class User : IdentityUser
     {
 
-        protected internal ICollection<UserRole> UserRoles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
         
-        protected internal ICollection<UserClaim> UserClaims { get; set; }
+        public ICollection<UserClaim> UserClaims { get; set; }
 
         public bool IsActive { get; set; }
         
@@ -29,6 +29,7 @@ namespace CRM.DAL.Models.Users
     {
         public void Configure(EntityTypeBuilder<User> item)
         {
+            item.HasBaseType((Type) null);
             
             item.HasMany(i => i.UserRoles).WithOne(i => i.User);
             

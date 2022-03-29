@@ -7,7 +7,7 @@ namespace CRM.DAL.Models.Users
 {
     public class Role : IdentityRole<string>
     {
-        protected internal ICollection<UserRole> UserRoles { get; set; }
+        public ICollection<DAL.Models.Users.UserRole> UserRoles { get; set; }
     }
 
 

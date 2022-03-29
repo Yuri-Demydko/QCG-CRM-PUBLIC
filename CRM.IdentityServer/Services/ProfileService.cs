@@ -2,12 +2,11 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using CRM.DAL.Models.Users;
 using CRM.IdentityServer.Models;
-using CRM.IdentityServer.Models.User;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
-using ClaimTypes = CRM.IdentityServer.Extensions.Constants.ClaimTypes;
 
 namespace CRM.IdentityServer.Services
 {

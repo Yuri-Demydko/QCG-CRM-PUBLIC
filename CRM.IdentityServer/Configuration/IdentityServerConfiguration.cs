@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using CRM.DAL.Models.Users;
 using CRM.IdentityServer.Extensions.Constants;
 using CRM.IdentityServer.Models;
-using CRM.IdentityServer.Models.User;
 using CRM.IdentityServer.Services;
-using CRM.ServiceCommon.Configurations;
 using CRM.ServiceCommon.Helpers;
 using IdentityServer4;
 using IdentityServer4.Models;
@@ -24,9 +23,9 @@ namespace CRM.IdentityServer.Configuration
         public static IServiceCollection ConfigureIdentityServer(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<IdentityServerDbContext>()
-                .AddRoles<IdentityRole>()
+                .AddRoles<Role>()
                 .AddErrorDescriber<RussianLanguageIdentityErrorDescriber>()
                 .AddDefaultTokenProviders();
 

@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using CRM.DAL.Models.Files;
 using CRM.DAL.Models.Genres;
 using CRM.DAL.Models.ProductsUsers;
 using CRM.DAL.Models.Tags;

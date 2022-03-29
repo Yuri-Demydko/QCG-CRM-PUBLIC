@@ -22,7 +22,7 @@ namespace CRM.User.WebApp.Controllers
 
         private readonly IMapper mapper;
         public UserController(ILogger<UserController> logger, UserDbContext userDbContext,
-            UserManager<Models.Basic.User.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
+            UserManager<DAL.Models.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
             logger, userDbContext,
             userManager, httpContextAccessor)
         {
@@ -35,7 +35,7 @@ namespace CRM.User.WebApp.Controllers
         /// <returns>The current User.</returns>
         /// <response code="200">The User was successfully retrieved.</response>
         [Produces("application/json")]
-        [ProducesResponseType(typeof(Models.Basic.User.User), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(DAL.Models.Users.User), StatusCodes.Status200OK)]
         [ODataRoute("Profile")]
         [EnableQuery]
         public async Task<IActionResult> GetProfile()

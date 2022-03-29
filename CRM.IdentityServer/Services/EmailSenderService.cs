@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AutoMapper;
 using CRM.DAL.Models.Users.VerifyCodes.Enums;
 using CRM.IdentityServer.Models;
 using CRM.ServiceCommon.Constants;
 using CRM.ServiceCommon.Services;
-using CRM.ServiceCommon.Services.CodeService.Models;
 using Hangfire;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using MimeKit;
 using RazorLight;
-using Z.EntityFramework.Plus;
 
 namespace CRM.IdentityServer.Services
 {

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using CRM.DAL.Models.Products;
-using CRM.DAL.Models.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -26,6 +24,7 @@ namespace CRM.DAL.Models.Files
         public FileType Type { get; set; }
         
         public ICollection<ProductFile.ProductFile> ProductFiles { get; set; }
+        
         
     }
     public class FileConfiguration : IEntityTypeConfiguration<File>

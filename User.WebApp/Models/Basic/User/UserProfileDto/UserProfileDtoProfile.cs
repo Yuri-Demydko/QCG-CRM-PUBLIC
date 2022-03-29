@@ -7,7 +7,7 @@ namespace CRM.User.WebApp.Models.Basic.User.UserProfileDto
     {
         public UserProfileDtoProfile()
         {
-            CreateMap<User, UserProfileDto>()
+            CreateMap<DAL.Models.Users.User, UserProfileDto>()
                 .ForMember(dest => dest.Roles,
                     opt => opt.MapFrom(src => src.UserRoles.Select(i => i.Role.Name)));
         }

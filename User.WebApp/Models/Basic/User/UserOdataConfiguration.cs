@@ -16,7 +16,7 @@ namespace CRM.User.WebApp.Models.Basic.User
         /// <param name="apiVersion">The <see cref="ApiVersion">API version</see> associated with the <paramref name="builder" />.</param>
         public void Apply(ODataModelBuilder builder, ApiVersion apiVersion)
         {
-            var item = builder.EntitySet<User>(nameof(User)).EntityType;
+            var item = builder.EntitySet<DAL.Models.Users.User>(nameof(User)).EntityType;
 
             item.Ignore(i => i.UserName);
             item.Ignore(i => i.NormalizedUserName);

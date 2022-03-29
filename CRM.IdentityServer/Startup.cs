@@ -3,7 +3,6 @@ using System.IO;
 using System.Reflection;
 using AspNetCore.ReCaptcha;
 using CRM.IdentityServer.Models;
-using CRM.IdentityServer.Services;
 using CRM.IdentityServer.Configuration;
 using CRM.ServiceCommon.Configurations;
 using Microsoft.AspNetCore.Builder;

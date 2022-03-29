@@ -1,15 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCore.ReCaptcha;
+using CRM.DAL.Models.Users;
 using CRM.DAL.Models.Users.VerifyCodes.Enums;
 using CRM.IdentityServer.Extensions.Constants;
 using CRM.IdentityServer.Models;
-using CRM.IdentityServer.Models.User;
 using CRM.IdentityServer.Services;
 using CRM.IdentityServer.ViewModels.Account;
-using CRM.ServiceCommon.Helpers;
 using CRM.ServiceCommon.Services;
 using Hangfire;
 using IdentityModel;
@@ -28,7 +26,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MimeKit.Text;
 
 namespace CRM.IdentityServer.Controllers
 {
@@ -89,23 +86,6 @@ namespace CRM.IdentityServer.Controllers
         public async Task<IActionResult> Login(LoginInputModel model, string button)
         {
             var context = await interaction.GetAuthorizationContextAsync(model.ReturnUrl);
-
-            // if (button != "login")
-            // {
-            //     if (context != null)
-            //     {
-            //         await interaction.DenyAuthorizationAsync(context, AuthorizationError.AccessDenied);
-            //
-            //         if (context.IsNativeClient())
-            //         {
-            //             return this.LoadingPage("Redirect", model.ReturnUrl);
-            //         }
-            //
-            //         return Redirect(model.ReturnUrl);
-            //     }
-            //
-            //     return Redirect("~/");
-            // }
 
             if (ModelState.IsValid)
             {
