@@ -465,7 +465,7 @@ namespace CRM.IdentityServer.Controllers
                 }
             }
 
-            var user = await userManager.FindByIdAsync(User.GetSubjectId());
+            var user = await userManager.FindByEmailAsync(model.Email);
             
             if (user == null)
             {
