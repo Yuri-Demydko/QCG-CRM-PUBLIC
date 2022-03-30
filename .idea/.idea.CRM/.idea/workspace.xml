@@ -11,6 +11,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -31,7 +39,7 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.User.WebApp: CRM.User.WebApp">
+  <component name="RunManager" selected=".NET Launch Settings Profile.CRM.IdentityServer">
     <configuration name="CRM.IdentityServer" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
@@ -71,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1648583037816</updated>
-      <workItem from="1648583040272" duration="1614000" />
+      <workItem from="1648583040272" duration="3504000" />
     </task>
     <servers />
   </component>
@@ -94,37 +102,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs</url>
-          <line>45</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" initialLine="45" containingFunctionPresentation="method 'GetProfile'">
-            <startOffsets>
-              <option value="1670" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1797" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs</url>
-          <line>58</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" initialLine="58" containingFunctionPresentation="method 'GetProfile'">
-            <startOffsets>
-              <option value="2304" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2306" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

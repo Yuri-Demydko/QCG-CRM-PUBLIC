@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CRM.DAL.Models.Users.VerifyCodes.Enums;
 using CRM.IdentityServer.Models;
 using CRM.ServiceCommon.Constants;
 using CRM.ServiceCommon.Services;
 using Hangfire;
+using Microsoft.Extensions.Logging;
 using MimeKit;
 using RazorLight;
+using ILogger = Amazon.Runtime.Internal.Util.ILogger;
 
 namespace CRM.IdentityServer.Services
 {
@@ -16,12 +19,14 @@ namespace CRM.IdentityServer.Services
         private readonly IEmailService emailService;
         private readonly RazorLightEngine engine;
         private readonly IdentityServerDbContext identityDbContext;
+        private readonly ILogger<EmailSenderService> logger;
 
-        public EmailSenderService(RazorLightEngine engine, IdentityServerDbContext identityDbContext, IEmailService emailService )
+        public EmailSenderService(RazorLightEngine engine, IdentityServerDbContext identityDbContext, IEmailService emailService, ILogger<EmailSenderService> logger)
         {
             this.engine = engine;
             this.identityDbContext = identityDbContext;
             this.emailService = emailService;
+            this.logger = logger;
         }
 
         public async Task SendTestEmail()
@@ -51,7 +56,15 @@ namespace CRM.IdentityServer.Services
                     text = $"Код для сброса пароля: {code}";
                     break;
             }
-            await emailService.SendEmailAsync(addressesTo, EmailSubjects.Registration,text, null, mimePart);
+            logger.LogInformation($"Trying to send code: {code}");
+            try
+            {
+                await emailService.SendEmailAsync(addressesTo, EmailSubjects.Registration, text, null, mimePart);
+            }
+            catch (Exception e)
+            {
+                logger.LogError($"Code wasn't send due too SMTP Error {e.Message}");
+            }
         }
         
     }
