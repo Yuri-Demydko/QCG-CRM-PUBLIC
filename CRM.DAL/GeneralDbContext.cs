@@ -21,7 +21,7 @@ namespace CRM.DAL
 {
     public class GeneralDbContext : IdentityDbContext<
         User, Role, string,
-        IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>,
+        UserClaim, UserRole, IdentityUserLogin<string>,
         IdentityRoleClaim<string>, IdentityUserToken<string>>, IDataProtectionKeyContext
     {
         public DbSet<DataProtectionKey> DataProtectionKeys { get; set; }

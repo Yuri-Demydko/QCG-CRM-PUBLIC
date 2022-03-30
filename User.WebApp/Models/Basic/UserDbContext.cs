@@ -9,15 +9,11 @@ namespace CRM.User.WebApp.Models.Basic
 {
     public class UserDbContext : IdentityDbContext<
         DAL.Models.Users.User, DAL.Models.Users.Role, string,
-        IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>,
+        UserClaim, UserRole, IdentityUserLogin<string>,
         IdentityRoleClaim<string>, IdentityUserToken<string>>, IDataProtectionKeyContext
     {
         public string UserId { get; set; }
         
-        public DbSet<DAL.Models.Users.User> Users { get; set; }
-        public DbSet<DAL.Models.Users.Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<UserClaim> UserClaims { get; set; }
 
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {

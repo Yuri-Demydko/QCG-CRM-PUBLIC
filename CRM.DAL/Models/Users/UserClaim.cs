@@ -8,7 +8,6 @@ namespace CRM.DAL.Models.Users
     public class UserClaim : IdentityUserClaim<string>
     {
         public User User { get; set; }
-        public string UserId { get; set; }
     }
     public class UserClaimConfiguration : IEntityTypeConfiguration<UserClaim>
     {
