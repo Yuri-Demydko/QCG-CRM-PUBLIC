@@ -36,7 +36,15 @@ namespace CRM.IdentityServer.Services
                 "yuridemydko@gmail.com",
             };
                  List<MimePart> mimePart = new List<MimePart>();
-                 await emailService.SendEmailAsync(addressesTo, "SMTP-test", "SMTP Service test", null, mimePart);
+                 logger.LogInformation("Trying to send test email");
+                 try
+                 {
+                     await emailService.SendEmailAsync(addressesTo, "SMTP-test", "SMTP Service test", null, mimePart);
+                 }
+                 catch (Exception e)
+                 {
+                     logger.LogError($"Send failed. Error:{e.Message}");
+                 }
         }
 
         public async Task SendVerifyCodeEmail(string email, string code, VerifyCodeType codeType)
@@ -47,24 +55,28 @@ namespace CRM.IdentityServer.Services
             };
             List<MimePart> mimePart = new List<MimePart>();
             var text = "";
+            var subj = "";
             switch (codeType)
             {
                 case VerifyCodeType.Registration:
                     text = $"Код для регистрации: {code}";
+                    subj = EmailSubjects.Registration;
                     break;
                 case VerifyCodeType.ForgotPassword:
                     text = $"Код для сброса пароля: {code}";
+                    subj = EmailSubjects.ResetPassword;
                     break;
             }
             logger.LogInformation($"Trying to send code: {code}");
             try
             {
-                await emailService.SendEmailAsync(addressesTo, EmailSubjects.Registration, text, null, mimePart);
+                await emailService.SendEmailAsync(addressesTo, subj, text, null, mimePart);
             }
             catch (Exception e)
             {
                 logger.LogError($"Code wasn't send due too SMTP Error {e.Message}");
             }
+            logger.LogInformation("Send code - OK");
         }
         
     }
