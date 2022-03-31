@@ -1,12 +1,12 @@
 ﻿using CRM.DAL.Models.Configs;
 using CRM.DAL.Models.Files;
-using CRM.DAL.Models.Genres;
 using CRM.DAL.Models.KontragentInfo;
 using CRM.DAL.Models.Kontragents;
 using CRM.DAL.Models.KontragentUsers;
 using CRM.DAL.Models.PayCards;
 using CRM.DAL.Models.ProductFile;
 using CRM.DAL.Models.Products;
+using CRM.DAL.Models.ProductsComments;
 using CRM.DAL.Models.ProductsKontragents;
 using CRM.DAL.Models.ProductsUsers;
 using CRM.DAL.Models.Tags;
@@ -32,7 +32,6 @@ namespace CRM.DAL
         public DbSet<EmailVerifyCode> EmailVerifyCodes { get; set; }
 
         public DbSet<File> Files { get; set; }
-        public DbSet<Genre> Genres { get; set; }
         public DbSet<KontragentInfo> KontragentInfos { get; set; }
         public DbSet<Kontragent> Kontragents { get; set; }
         public DbSet<KontragentUser> KontragentUsers { get; set; }
@@ -82,6 +81,7 @@ namespace CRM.DAL
             modelBuilder.ApplyConfiguration(new KontragentConfiguration());
             modelBuilder.ApplyConfiguration(new KontragentInfoConfiguration());
             modelBuilder.ApplyConfiguration(new FileConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductCommentConfiguration());
         }
     }
 }

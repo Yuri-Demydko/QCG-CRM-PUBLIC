@@ -23,6 +23,8 @@ namespace CRM.DAL.Models.Users
         public ICollection<ProductUser> ProductUsers { get; set; }
         
         public ICollection<KontragentUser> KontragentUsers { get; set; }
+        
+        public ICollection<ProductsComments.ProductComment> ProductComments { get; set; }
     }
 
     public class UserConfiguration : IEntityTypeConfiguration<User>
@@ -31,12 +33,25 @@ namespace CRM.DAL.Models.Users
         {
             item.HasBaseType((Type) null);
             
-            item.HasMany(i => i.UserRoles).WithOne(i => i.User).HasForeignKey(i=>i.UserId);
+            item.HasMany(i => i.UserRoles)
+                .WithOne(i => i.User)
+                .HasForeignKey(i=>i.UserId);
             
-            item.HasMany(i => i.UserClaims).WithOne(i => i.User).HasForeignKey(i=>i.UserId);
+            item.HasMany(i => i.UserClaims)
+                .WithOne(i => i.User)
+                .HasForeignKey(i=>i.UserId);
 
-            item.HasMany(i => i.PayCards).WithOne(i => i.User).HasForeignKey(i => i.UserId);
-            item.HasMany(i => i.ProductUsers).WithOne(i => i.User).HasForeignKey(i => i.UserId);
+            item.HasMany(i => i.PayCards)
+                .WithOne(i => i.User)
+                .HasForeignKey(i => i.UserId);
+            
+            item.HasMany(i => i.ProductUsers)
+                .WithOne(i => i.User)
+                .HasForeignKey(i => i.UserId);
+            
+            item.HasMany(i => i.ProductComments)
+                .WithOne(p => p.User)
+                .HasForeignKey(i => i.UserId);
         }
     }
 }

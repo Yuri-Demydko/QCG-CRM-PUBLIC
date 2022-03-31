@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using CRM.DAL.Models.Genres;
 using CRM.DAL.Models.ProductsUsers;
 using CRM.DAL.Models.Tags;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +17,10 @@ namespace CRM.DAL.Models.Products
         public string FullDescription { get; set; }
         
         public string ShortDescription { get; set; }
+        
+        public decimal Price { get; set; }
+        
+        public decimal DiscountPrice { get; set; }
         
         public ICollection<ProductRequirements> Requirements { get; set; }//
         
@@ -37,8 +40,7 @@ namespace CRM.DAL.Models.Products
         
         public ICollection<ProductsKontragents.ProductKontragent> ProductKontragents { get; set; }
         
-        public Genre Genre { get; set; }
-
+        public ICollection<ProductsComments.ProductComment> ProductComments { get; set; }
 
     }
     
@@ -58,14 +60,16 @@ namespace CRM.DAL.Models.Products
                 .WithOne(i => i.Product)
                 .HasForeignKey(i => i.ProductId);
 
-            item.HasOne(r => r.Genre);
-
             item.HasMany(i => i.Requirements)
                 .WithOne(i => i.Product)
                 .HasForeignKey(i => i.ProductId);
             
             item.HasMany(i => i.ProductKontragents)
                 .WithOne(i => i.Product)
+                .HasForeignKey(i => i.ProductId);
+
+            item.HasMany(i => i.ProductComments)
+                .WithOne(p => p.Product)
                 .HasForeignKey(i => i.ProductId);
         }
     }

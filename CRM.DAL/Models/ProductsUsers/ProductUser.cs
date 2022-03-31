@@ -17,6 +17,8 @@ namespace CRM.DAL.Models.ProductsUsers
         public Users.User User { get; set; }
         
         public Product Product { get; set; }
+        
+        public ProductUserRelationType RelationType { get; set; }
     }
     public class ProductUserConfiguration : IEntityTypeConfiguration<ProductUser>
     {

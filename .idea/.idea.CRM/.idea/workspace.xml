@@ -5,7 +5,21 @@
     <projectFile profileName="CRM.IdentityServer">CRM.IdentityServer/CRM.IdentityServer.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="" />
+    <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/ProductsComments/ProductComment.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductFileController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/ProductFile/ProductOdataConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Genres/Genre.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/Products/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductsUsers/ProductUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ProductsUsers/ProductUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Tags/TagType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/Tags/TagType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Users/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/Users/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,14 +35,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/688e8ef4bc7f17980858831229081c99cdde9406be5cfe34d43f2f955ca74b4/IdentityUserClaim.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/311b1b90e76b4896ac5e0cc17848f2905f4235c3ed44f9df45b65295345f2/IdentityUserRole.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="274cwCW01xJKUgQRjPzI3qXkG9w" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -81,6 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1648583037816</updated>
       <workItem from="1648583040272" duration="5001000" />
+      <workItem from="1648745831258" duration="6328000" />
     </task>
     <servers />
   </component>
@@ -88,7 +105,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
