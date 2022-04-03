@@ -4,12 +4,13 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using ClosedXML.Excel;
-using CRM.DAL.Models.Users;
+using CRM.DAL.Models.DatabaseModels.Users;
 using CRM.IdentityServer.Extensions.Constants;
 using CRM.ServiceCommon.Configurations;
 using CRM.ServiceCommon.Middlewares;
 using CRM.User.WebApp.Configurations;
 using CRM.User.WebApp.Models.Basic;
+using CRM.User.WebApp.Services;
 using FluentValidation.AspNetCore;
 using Hangfire;
 using Hangfire.Dashboard;
@@ -61,7 +62,7 @@ namespace CRM.User.WebApp
             services.Configure<IdentityOptions>(options =>
                 options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
 
-            services.AddIdentityForWebApi<DAL.Models.Users.User, Role>()
+            services.AddIdentityForWebApi<DAL.Models.DatabaseModels.Users.User, Role>()
                 .AddEntityFrameworkStores<UserDbContext>()
                 .AddRoles<Role>()
                 .AddDefaultTokenProviders();
@@ -163,9 +164,12 @@ namespace CRM.User.WebApp
             );
             
             services.ConfigureDbEventHostedService(Configuration);
+
+            if(Env.IsDevelopment())
+            {
+                services.AddScoped<IProductBuyService, ProductBuyServiceMock>();
+            }
             
-            services.AddScoped<XLWorkbook>();
-     
             services.ConfigureAutoMapper();
 
             services.AddAutoMapper(config =>

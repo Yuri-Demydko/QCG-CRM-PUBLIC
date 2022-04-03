@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using CRM.DAL.Models.Users;
+using CRM.DAL.Models.DatabaseModels.Users;
 using CRM.IdentityServer.Extensions.Constants;
 using CRM.IdentityServer.Models;
 using CRM.IdentityServer.Services;

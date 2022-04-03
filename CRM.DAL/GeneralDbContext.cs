@@ -1,17 +1,17 @@
-﻿using CRM.DAL.Models.Configs;
-using CRM.DAL.Models.Files;
-using CRM.DAL.Models.KontragentInfo;
-using CRM.DAL.Models.Kontragents;
-using CRM.DAL.Models.KontragentUsers;
-using CRM.DAL.Models.PayCards;
-using CRM.DAL.Models.ProductFile;
-using CRM.DAL.Models.Products;
-using CRM.DAL.Models.ProductsComments;
-using CRM.DAL.Models.ProductsKontragents;
-using CRM.DAL.Models.ProductsUsers;
-using CRM.DAL.Models.Tags;
-using CRM.DAL.Models.Users;
-using CRM.DAL.Models.Users.VerifyCodes;
+﻿using CRM.DAL.Models.DatabaseModels.Configs;
+using CRM.DAL.Models.DatabaseModels.Files;
+using CRM.DAL.Models.DatabaseModels.KontragentInfo;
+using CRM.DAL.Models.DatabaseModels.Kontragents;
+using CRM.DAL.Models.DatabaseModels.KontragentUsers;
+using CRM.DAL.Models.DatabaseModels.PayCards;
+using CRM.DAL.Models.DatabaseModels.ProductFile;
+using CRM.DAL.Models.DatabaseModels.Products;
+using CRM.DAL.Models.DatabaseModels.ProductsComments;
+using CRM.DAL.Models.DatabaseModels.ProductsKontragents;
+using CRM.DAL.Models.DatabaseModels.ProductsUsers;
+using CRM.DAL.Models.DatabaseModels.Tags;
+using CRM.DAL.Models.DatabaseModels.Users;
+using CRM.DAL.Models.DatabaseModels.Users.VerifyCodes;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -40,6 +40,7 @@ namespace CRM.DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductKontragent> ProductKontragents { get; set; }
         public DbSet<ProductUser> ProductUsers { get; set; }
+        public DbSet<ProductComment> ProductComments { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
 

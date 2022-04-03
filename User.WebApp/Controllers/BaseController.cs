@@ -16,10 +16,10 @@ namespace CRM.User.WebApp.Controllers
     {
         protected readonly ILogger<TModel> logger;
         protected readonly UserDbContext UserDbContext;
-        protected readonly UserManager<DAL.Models.Users.User> userManager;
+        protected readonly UserManager<DAL.Models.DatabaseModels.Users.User> userManager;
 
         protected BaseController(ILogger<TModel> logger,
-            UserDbContext userDbContext, UserManager<DAL.Models.Users.User> userManager, IHttpContextAccessor httpContextAccessor)
+            UserDbContext userDbContext, UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor)
         {
             this.logger = logger;
             this.UserDbContext = userDbContext;

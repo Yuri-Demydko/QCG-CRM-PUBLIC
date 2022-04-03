@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using CRM.DAL.Models.Products;
-using CRM.DAL.Models.ProductsUsers;
+using CRM.DAL.Models.DatabaseModels.Products;
+using CRM.DAL.Models.DatabaseModels.ProductsUsers;
+using CRM.DAL.Models.RequestModels.ProductBuy;
 using CRM.User.WebApp.Models.Basic;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Query;
@@ -26,7 +27,7 @@ namespace CRM.User.WebApp.Controllers
         private readonly UserDbContext userDbContext;
         
         public ProductController(ILogger<ProductController> logger, UserDbContext userDbContext,
-            UserManager<DAL.Models.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
+            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
             logger, userDbContext,
             userManager, httpContextAccessor)
         {
@@ -49,19 +50,74 @@ namespace CRM.User.WebApp.Controllers
             return userDbContext.Products
                 .IncludeOptimized(p => p.Requirements)
                 .IncludeOptimized(p => p.Tags)
-                .IncludeOptimized(p => p.ProductKontragents);
+                .IncludeOptimized(p => p.ProductKontragents)
+                .IncludeOptimized(p => p.ProductComments.Select(p=>p.User));
         }
-
+        
         /// <summary>
-        ///     Add product to favorites.
+        ///     Get Product.
+        /// </summary>
+        /// <returns>The requested Product.</returns>
+        /// <response code="200">The Product was successfully retrieved.</response>
+        /// /// <response code="404">The Product was not found</response>
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [EnableQuery(HandleNullPropagation = HandleNullPropagationOption.False)]
+        public async Task<IActionResult> Get(Guid key)
+        {
+            QueryIncludeOptimizedManager.AllowIncludeSubPath = true;
+
+            var item= await userDbContext.Products
+                .IncludeOptimized(p => p.Requirements)
+                .IncludeOptimized(p => p.Tags)
+                .IncludeOptimized(p => p.ProductKontragents)
+                .IncludeOptimized(p => p.ProductComments.Select(p=>p.User))
+                .FirstOrDefaultAsync(i=>i.Id==key);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return StatusCode(StatusCodes.Status200OK, item);
+        }
+        
+        
+        /// <summary>
+        ///     Add product to shopping cart.
         /// </summary>
         /// <response code="204">The Products was successfully updated.</response>
         /// <response code="404">Product with given key not found</response>
         /// /// <response code="400">Product with given key already in favorites or not owned</response>
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ODataRoute("AddToFavorites")]
-        public async Task<IActionResult> PostAddToFavorites(Guid key)
+        [ODataRoute("ClearCart")]
+        public async Task<IActionResult> PostClearCart()
+        {
+            var user = await userManager.GetUserAsync(User);
+
+            var items = userDbContext.ProductUsers
+                .Where(r => r.UserId == user.Id && r.RelationType == ProductUserRelationType.InShoppingCart)
+                .ToList();
+
+            userDbContext.ProductUsers.RemoveRange(items);
+
+            await userDbContext.SaveChangesAsync();
+            
+            return NoContent();
+        }
+        
+        
+        /// <summary>
+        ///     Add product to shopping cart.
+        /// </summary>
+        /// <response code="204">The Products was successfully updated.</response>
+        /// <response code="404">Product with given key not found</response>
+        /// /// <response code="400">Product with given key already in favorites or not owned</response>
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ODataRoute("({key})/AddToCart")]
+        public async Task<IActionResult> PostAddToCart(Guid key)
         {
             var user = await userManager.GetUserAsync(User);
             
@@ -69,26 +125,26 @@ namespace CRM.User.WebApp.Controllers
                 .IncludeOptimized(p => p.ProductUsers
                     .Where(pu=>pu.UserId==user.Id))
                 .FirstOrDefaultAsync(i => i.Id == key);
-
+        
             if (item == null)
             {
                 return NotFound();
             }
-
-            if (item.ProductUsers.All(i => i.RelationType != ProductUserRelationType.Owned) 
-                || item.ProductUsers.All(i => i.RelationType != ProductUserRelationType.Favorite))
+        
+            if (item.ProductUsers.Any(i => i.RelationType == ProductUserRelationType.Owned) 
+                || item.ProductUsers.Any(i => i.RelationType == ProductUserRelationType.InShoppingCart))
             {
                 return BadRequest();
             }
-
+        
             
             await userDbContext.ProductUsers.AddAsync(new ProductUser()
             {
                 ProductId = item.Id,
                 UserId = user.Id,
-                RelationType = ProductUserRelationType.Favorite
+                RelationType = ProductUserRelationType.InShoppingCart
             });
-
+        
             await userDbContext.SaveChangesAsync();
             
             return NoContent();
@@ -102,8 +158,8 @@ namespace CRM.User.WebApp.Controllers
         /// /// <response code="400">Product with given key already in favorites or not owned</response>
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ODataRoute("RemoveFromFavorites")]
-        public async Task<IActionResult> PostRemoveFromFavorites(Guid key)
+        [ODataRoute("({key})/RemoveFromCart")]
+        public async Task<IActionResult> PostRemoveFromCart(Guid key)
         {
             var user = await userManager.GetUserAsync(User);
             
@@ -111,85 +167,161 @@ namespace CRM.User.WebApp.Controllers
                 .IncludeOptimized(p => p.ProductUsers
                     .Where(pu=>pu.UserId==user.Id))
                 .FirstOrDefaultAsync(i => i.Id == key);
-
+        
             if (item == null)
             {
                 return NotFound();
             }
-
-            if (item.ProductUsers.All(i => i.RelationType != ProductUserRelationType.Owned) ||
-                item.ProductUsers.Any(i=>i.RelationType==ProductUserRelationType.Favorite))
+        
+            if (item.ProductUsers.Any(i => i.RelationType == ProductUserRelationType.Owned) 
+                || item.ProductUsers.All(i => i.RelationType != ProductUserRelationType.InShoppingCart))
             {
                 return BadRequest();
             }
-
-            
-            userDbContext.ProductUsers.Remove(item.ProductUsers.First());
-
+        
+            userDbContext.ProductUsers.Remove(item.ProductUsers.First(i=>i.RelationType==ProductUserRelationType.InShoppingCart));
+        
             await userDbContext.SaveChangesAsync();
             
             return NoContent();
         }
-        // /// <summary>
-        // ///     Get current User.
-        // /// </summary>
-        // /// <returns>The current User.</returns>
-        // /// <response code="200">The User was successfully retrieved.</response>
-        // [Produces("application/json")]
-        // [ProducesResponseType(typeof(DAL.Models.Users.User), StatusCodes.Status200OK)]
-        // [ODataRoute("Profile")]
-        // [EnableQuery]
-        // public async Task<IActionResult> GetProfile()
-        // {
-        //     QueryIncludeOptimizedManager.AllowIncludeSubPath = true;
-        //
-        //     var userId = userManager.GetUserId(User);
-        //     var user = await UserDbContext.Users
-        //         .IncludeOptimized(i => i.UserRoles.Select(ur => ur.Role))
-        //         .FirstOrDefaultAsync(i => i.Id == userId);
-        //     
-        //     return StatusCode(StatusCodes.Status200OK, mapper.Map<UserProfileDto>(user));
-        // }
+        
+        /// <summary>
+        ///     Add product to liked
+        /// </summary>
+        /// <response code="204">The Products was successfully updated.</response>
+        /// <response code="404">Product with given key not found</response>
+        /// /// <response code="400">Product with given key already in liked or not owned</response>
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ODataRoute("({key})/Like")]
+        public async Task<ActionResult> PostLike(Guid key)
+        {
+            var user = await userManager.GetUserAsync(User);
+            
+            var item = await userDbContext.Products
+                .IncludeOptimized(p => p.ProductUsers
+                    .Where(pu=>pu.UserId==user.Id))
+                .FirstOrDefaultAsync(i => i.Id == key);
+        
+            if (item == null)
+            {
+                return NotFound();
+            }
+        
+            if (item.ProductUsers.All(i => i.RelationType != ProductUserRelationType.Owned) 
+                || item.ProductUsers.Any(i => i.RelationType == ProductUserRelationType.Like))
+            {
+                return BadRequest();
+            }
 
-        // /// <summary>
-        // ///     Get current User Policies.
-        // /// </summary>
-        // /// <returns>The current User Policies.</returns>
-        // /// <response code="200">The Policies was successfully retrieved.</response>
-        // [Produces("application/json")]
-        // [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
-        // [ODataRoute("Policies")]
-        // public IEnumerable<string> GetPolicies()
-        // {
-        //     return User.FindAll(ClaimTypes.UserPolicy).Select(i => i.Value);
-        // }
 
-        // /// <summary>
-        // ///     Get current User Roles.
-        // /// </summary>
-        // /// <returns>The current User Policies.</returns>
-        // /// <response code="200">The Policies was successfully retrieved.</response>
-        // [Produces("application/json")]
-        // [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
-        // [ODataRoute("Roles")]
-        // public IEnumerable<string> GetRoles()
-        // {
-        //     return User.FindAll(System.Security.Claims.ClaimTypes.Role).Select(i => i.Value);
-        // }
+            var dislike = item.ProductUsers.FirstOrDefault(i => i.RelationType == ProductUserRelationType.Dislike);
+            if (dislike != null)
+            {
+                userDbContext.ProductUsers.Remove(dislike);
+            }
+            
+            
+            await userDbContext.ProductUsers.AddAsync(new ProductUser()
+            {
+                ProductId = item.Id,
+                UserId = user.Id,
+                RelationType = ProductUserRelationType.Like
+            });
+        
+            await userDbContext.SaveChangesAsync();
+            
+            return NoContent();
+        }
+        
+        /// <summary>
+        ///     Add product to disliked.
+        /// </summary>
+        /// <response code="204">The Products was successfully updated.</response>
+        /// <response code="404">Product with given key not found</response>
+        /// /// <response code="400">Product with given key already in disliked or not owned</response>
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ODataRoute("({key})/Dislike")]
+        public async Task<ActionResult> PostDislike(Guid key)
+        {
+            var user = await userManager.GetUserAsync(User);
+            
+            var item = await userDbContext.Products
+                .IncludeOptimized(p => p.ProductUsers
+                    .Where(pu=>pu.UserId==user.Id))
+                .FirstOrDefaultAsync(i => i.Id == key);
+        
+            if (item == null)
+            {
+                return NotFound();
+            }
+        
+            if (item.ProductUsers.All(i => i.RelationType != ProductUserRelationType.Owned) 
+                || item.ProductUsers.Any(i => i.RelationType == ProductUserRelationType.Dislike))
+            {
+                return BadRequest();
+            }
 
-        // /// <summary>
-        // ///     Update User Password.
-        // /// </summary>
-        // /// <response code="200">The User password was successfully changed.</response>
-        // [Produces("application/json")]
-        // [ProducesResponseType(typeof(IdentityResult), StatusCodes.Status200OK)]
-        // [ODataRoute("ChangePassword")]
-        // public async Task<IdentityResult> PostChangePassword(string oldPassword, string newPassword)
-        // {
-        //     var user = await userManager.GetUserAsync(User);
-        //
-        //     return await userManager.ChangePasswordAsync(user, oldPassword, newPassword);
-        // }
+            var like = item.ProductUsers.FirstOrDefault(i => i.RelationType == ProductUserRelationType.Like);
+            if (like != null)
+            {
+                userDbContext.ProductUsers.Remove(like);
+            }
+            
+            await userDbContext.ProductUsers.AddAsync(new ProductUser()
+            {
+                ProductId = item.Id,
+                UserId = user.Id,
+                RelationType = ProductUserRelationType.Dislike
+            });
+        
+            await userDbContext.SaveChangesAsync();
+            
+            return NoContent();
+        }
+        
+        /// <summary>
+        ///     Remove like or dislike
+        /// </summary>
+        /// <response code="204">The Products was successfully updated.</response>
+        /// <response code="404">Product with given key not found</response>
+        /// /// <response code="400">Product with given key already hasn't like or dislike or not owned</response>
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ODataRoute("({key})/RemoveReaction")]
+        public async Task<IActionResult> PostRemoveReaction(Guid key)
+        {
+            var user = await userManager.GetUserAsync(User);
+            
+            var item = await userDbContext.Products
+                .IncludeOptimized(p => p.ProductUsers
+                    .Where(pu=>pu.UserId==user.Id))
+                .FirstOrDefaultAsync(i => i.Id == key);
+        
+            if (item == null)
+            {
+                return NotFound();
+            }
+        
+            if (item.ProductUsers.All(i => i.RelationType != ProductUserRelationType.Owned) ||
+                !item.ProductUsers.Any(i=>i.RelationType==ProductUserRelationType.Like||i.RelationType!=ProductUserRelationType.Dislike))
+            {
+                return BadRequest();
+            }
+        
+            
+            userDbContext.ProductUsers.Remove(item.ProductUsers.First(i=>
+                i.RelationType==ProductUserRelationType.Like
+                ||i.RelationType==ProductUserRelationType.Dislike
+                ));
+        
+            await userDbContext.SaveChangesAsync();
+            
+            return NoContent();
+        }
+        
         
     }
 }

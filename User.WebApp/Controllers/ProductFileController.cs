@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using CRM.DAL.Models.ProductFile;
-using CRM.DAL.Models.Products;
+using CRM.DAL.Models.DatabaseModels.ProductFile;
 using CRM.User.WebApp.Models.Basic;
 using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +14,7 @@ namespace CRM.User.WebApp.Controllers
 
         private readonly IMapper mapper;
         public ProductFileController(ILogger<ProductFileController> logger, UserDbContext userDbContext,
-            UserManager<DAL.Models.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
+            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
             logger, userDbContext,
             userManager, httpContextAccessor)
         {

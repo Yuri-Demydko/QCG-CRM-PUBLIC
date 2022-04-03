@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using CRM.DAL.Models.Users.VerifyCodes.Enums;
+using CRM.DAL.Models.DatabaseModels.Users.VerifyCodes.Enums;
 using CRM.ServiceCommon.Services.CodeService.Models;
 
 namespace CRM.ServiceCommon.Services.CodeService

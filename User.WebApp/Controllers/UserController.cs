@@ -22,7 +22,7 @@ namespace CRM.User.WebApp.Controllers
 
         private readonly IMapper mapper;
         public UserController(ILogger<UserController> logger, UserDbContext userDbContext,
-            UserManager<DAL.Models.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
+            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
             logger, userDbContext,
             userManager, httpContextAccessor)
         {
@@ -35,7 +35,7 @@ namespace CRM.User.WebApp.Controllers
         /// <returns>The current User.</returns>
         /// <response code="200">The User was successfully retrieved.</response>
         [Produces("application/json")]
-        [ProducesResponseType(typeof(DAL.Models.Users.User), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(DAL.Models.DatabaseModels.Users.User), StatusCodes.Status200OK)]
         [ODataRoute("Profile")]
         [EnableQuery]
         public async Task<IActionResult> GetProfile()
@@ -45,6 +45,10 @@ namespace CRM.User.WebApp.Controllers
             var userId = userManager.GetUserId(User);
             var user = await UserDbContext.Users
                 .IncludeOptimized(i => i.UserRoles.Select(ur => ur.Role))
+                .IncludeOptimized(i=>i.KontragentUsers.Select(r=>r.Kontragent))
+                .IncludeOptimized(i=>i.ProductUsers.Select(r=>r.Product))
+                .IncludeOptimized(r=>r.ProductComments)
+                .IncludeOptimized(r=>r.UserClaims)
                 .FirstOrDefaultAsync(i => i.Id == userId);
             
             return StatusCode(StatusCodes.Status200OK, mapper.Map<UserProfileDto>(user));

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using CRM.DAL.Models.Users;
+using CRM.DAL.Models.DatabaseModels.Users;
 using CRM.IdentityServer.Models;
 using IdentityServer4.Models;
 using IdentityServer4.Services;

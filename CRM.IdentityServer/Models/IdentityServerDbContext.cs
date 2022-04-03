@@ -1,4 +1,4 @@
-﻿using CRM.DAL.Models.Users;
+﻿using CRM.DAL.Models.DatabaseModels.Users;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

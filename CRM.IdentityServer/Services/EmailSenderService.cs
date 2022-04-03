@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CRM.DAL.Models.Users.VerifyCodes.Enums;
+using CRM.DAL.Models.DatabaseModels.Users.VerifyCodes.Enums;
 using CRM.IdentityServer.Models;
 using CRM.ServiceCommon.Constants;
 using CRM.ServiceCommon.Services;

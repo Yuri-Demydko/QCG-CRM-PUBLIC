@@ -15,7 +15,7 @@ namespace CRM.User.WebApp.Models.Basic.Role
         /// <param name="apiVersion">The <see cref="ApiVersion">API version</see> associated with the <paramref name="builder" />.</param>
         public void Apply(ODataModelBuilder builder, ApiVersion apiVersion)
         {
-            var item = builder.EntitySet<DAL.Models.Users.Role>(nameof(Role)).EntityType;
+            var item = builder.EntitySet<DAL.Models.DatabaseModels.Users.Role>(nameof(Role)).EntityType;
 
             item.DerivesFromNothing();
 
