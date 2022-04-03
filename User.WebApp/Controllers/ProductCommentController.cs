@@ -58,12 +58,26 @@ namespace CRM.User.WebApp.Controllers
             var user = await userManager.GetUserAsync(User);
             item.UserId ??= user.Id;
 
-            var product = userDbContext.Products.FirstOrDefault(i => i.Id == item.ProductId);
+            var product = userDbContext.Products
+                .IncludeOptimized(r=>r.ProductUsers)
+                .FirstOrDefault(i => i.Id == item.ProductId);
 
             if (product == null)
             {
                 return NotFound();
             }
+
+            if (product.ProductUsers.All(p => p.RelationType != ProductUserRelationType.Owned))
+            {
+                return BadRequest();
+            }
+
+            await userDbContext.ProductComments.AddAsync(new ProductComment()
+            {
+                ProductId = product.Id,
+                UserId = user.Id,
+                Comment = item.Comment
+            });
             
             await userDbContext.SaveChangesAsync();
             
