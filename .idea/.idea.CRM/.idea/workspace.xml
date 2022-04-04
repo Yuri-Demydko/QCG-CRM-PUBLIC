@@ -6,66 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ProductBuy/ProductBuyErrorCode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ProductBuy/ProductBuyRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ProductBuy/ProductBuyRequestResult.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductCommentController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductUserController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/ProductComment/ProductCommentOdataConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/ProductUser/ProductUserOdataConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/Request/ProductFileOdataConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/IProductBuyService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/ProductBuyServiceMock.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/CRM.DAL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/CRM.DAL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Configs/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Configs/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Files/File.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Files/File.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Files/FileType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Files/FileType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/KontragentInfo/KontragentInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/KontragentInfo/KontragentInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/KontragentUsers/KontragentUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/KontragentUsers/KontragentUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/KontragentUsers/KontragentUserRelationType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/KontragentUsers/KontragentUserRelationType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Kontragents/Kontragent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Kontragents/Kontragent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/PayCards/PayCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/PayCards/PayCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductFile/ProductFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/ProductFile/ProductFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductFile/ProductFileType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/ProductFile/ProductFileType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductRequirements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/ProductRequirements/ProductRequirements.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Products/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductsComments/ProductComment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/ProductsComments/ProductComment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductsKontragents/ProductKontragent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/ProductsKontragents/ProductKontragent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductsKontragents/RelationType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/ProductsKontragents/RelationType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductsUsers/ProductUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/ProductsUsers/ProductUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ProductsUsers/ProductUserRelationType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/ProductsUsers/ProductUserRelationType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Tags/Tag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Tags/Tag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Tags/TagType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Tags/TagType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Users/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/Role.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Users/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Users/UserClaim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/UserClaim.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Users/UserRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/UserRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Users/VerifyCodes/EmailVerifyCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/VerifyCodes/EmailVerifyCode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Users/VerifyCodes/Enums/VerifyCodeType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/VerifyCodes/Enums/VerifyCodeType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/Users/VerifyCodes/VerifyCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/VerifyCodes/VerifyCode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Models/IdentityServerDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Models/IdentityServerDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Services/EmailSenderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Services/EmailSenderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Services/ProfileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Services/ProfileService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceCommon/Services/CodeService/CodeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceCommon/Services/CodeService/CodeService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceCommon/Services/CodeService/ICodeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceCommon/Services/CodeService/ICodeService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/BaseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/BaseController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductFileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductFileController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/ProductFile/ProductOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/ProductFile/ProductFileOdataConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/Role/RoleOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/Role/RoleOdataConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserProfileDto/UserProfileDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserProfileDto/UserProfileDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserProfileDto/UserProfileDtoProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserProfileDto/UserProfileDtoProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/User.WebApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/User.WebApp.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,9 +23,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33918e307316ea048242c24290cba34e538ec8e4f0d3d621c85ee92c6162f8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/688e8ef4bc7f17980858831229081c99cdde9406be5cfe34d43f2f955ca74b4/IdentityUserClaim.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33918e307316ea048242c24290cba34e538ec8e4f0d3d621c85ee92c6162f8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/311b1b90e76b4896ac5e0cc17848f2905f4235c3ed44f9df45b65295345f2/IdentityUserRole.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -147,7 +89,8 @@
       <workItem from="1648583040272" duration="5001000" />
       <workItem from="1648745831258" duration="6866000" />
       <workItem from="1648815932765" duration="3205000" />
-      <workItem from="1648973063427" duration="15214000" />
+      <workItem from="1648973063427" duration="16294000" />
+      <workItem from="1649089260493" duration="2075000" />
     </task>
     <servers />
   </component>

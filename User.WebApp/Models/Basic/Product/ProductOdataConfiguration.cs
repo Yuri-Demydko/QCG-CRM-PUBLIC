@@ -26,6 +26,9 @@ namespace CRM.User.WebApp.Models.Basic.Product
             item.Action("AddToCart");
             item.Action("RemoveFromCart");
             item.Collection.Action("ClearCart");
+            item.Property(i => i.Price).OrderBy();
+            item.Property(i => i.DiscountPrice).OrderBy();
+            item.OrderBy();
             item.HasKey(p => p.Id);
         }
     }
