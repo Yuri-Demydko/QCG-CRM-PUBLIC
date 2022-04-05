@@ -22,15 +22,14 @@ namespace CRM.DAL.Models.DatabaseModels.Products
         
         public decimal? DiscountPrice { get; set; }
         
-        public ICollection<ProductRequirements.ProductRequirements> Requirements { get; set; }//
+        public DateTime AddedAt { get; set; }
         
-        // public File Icon { get; set; }
-        //
-        // public Guid IconId { get; set; }
-        //
-        // public File Cover { get; set; }
-        // public Guid CoverId { get; set; }
+        public DateTime CreatedAt { get; set; }
         
+        public int Priority { get; set; }
+        
+        public ICollection<ProductRequirements.ProductRequirements> Requirements { get; set; }
+
         public ICollection<Tag> Tags { get; set; }
         
         
@@ -71,6 +70,15 @@ namespace CRM.DAL.Models.DatabaseModels.Products
             item.HasMany(i => i.ProductComments)
                 .WithOne(p => p.Product)
                 .HasForeignKey(i => i.ProductId);
+
+            item.Property(i => i.Priority)
+                .HasDefaultValue(0);
+
+            item.Property(i => i.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            
+            item.Property(i => i.AddedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
         }
     }
 }

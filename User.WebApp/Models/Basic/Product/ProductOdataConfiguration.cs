@@ -28,6 +28,9 @@ namespace CRM.User.WebApp.Models.Basic.Product
             item.Collection.Action("ClearCart");
             item.Property(i => i.Price).OrderBy();
             item.Property(i => i.DiscountPrice).OrderBy();
+            item.Property(i => i.CreatedAt).OrderBy();
+            item.Property(i => i.AddedAt).OrderBy();
+            item.Property(i => i.Priority).OrderBy();
             item.OrderBy();
             item.HasKey(p => p.Id);
         }
