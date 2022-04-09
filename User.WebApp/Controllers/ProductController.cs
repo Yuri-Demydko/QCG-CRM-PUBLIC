@@ -72,6 +72,8 @@ namespace CRM.User.WebApp.Controllers
                 .IncludeOptimized(p => p.Requirements)
                 .IncludeOptimized(p => p.Tags)
                 .IncludeOptimized(p => p.ProductKontragents)
+                .IncludeOptimized(p=>p.ProductFiles)
+                .IncludeOptimized(p=>p.ProductUsers)
                 .IncludeOptimized(p => p.ProductComments.Select(p=>p.User))
                 .FirstOrDefaultAsync(i=>i.Id==key);
             if (item == null)
