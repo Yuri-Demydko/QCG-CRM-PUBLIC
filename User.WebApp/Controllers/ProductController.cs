@@ -84,7 +84,7 @@ namespace CRM.User.WebApp.Controllers
         
         
         /// <summary>
-        ///     Add product to shopping cart.
+        ///     Clear shopping cart
         /// </summary>
         /// <response code="204">The Products was successfully updated.</response>
         /// <response code="404">Product with given key not found</response>
