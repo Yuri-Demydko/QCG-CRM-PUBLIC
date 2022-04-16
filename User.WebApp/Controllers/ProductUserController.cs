@@ -19,7 +19,7 @@ using Z.EntityFramework.Plus;
 
 namespace CRM.User.WebApp.Controllers
 {
-    [ODataRoutePrefix(nameof(ProductBuyRequest))]
+    [ODataRoutePrefix(nameof(ProductUser))]
     public class ProductUserController : BaseController<ProductUserController>
     {
 

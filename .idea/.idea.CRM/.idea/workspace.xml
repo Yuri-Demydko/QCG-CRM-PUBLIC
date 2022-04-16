@@ -6,8 +6,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/PayCard/PayCardOdataConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/UnnecessaryModels/ShoppingCartPriceAggregationResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/PayCardValidationService/IPayCardValidationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/PayCardValidationService/PayCardValidationResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/PayCardValidationService/PayCardValidationServiceMock.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/PayCards/PayCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/PayCards/PayCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductUserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductUserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Services/IProductBuyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Services/ProductBuy/IProductBuyService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Services/ProductBuyServiceMock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Services/ProductBuy/ProductBuyServiceMock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +38,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33918e307316ea048242c24290cba34e538ec8e4f0d3d621c85ee92c6162f8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/688e8ef4bc7f17980858831229081c99cdde9406be5cfe34d43f2f955ca74b4/IdentityUserClaim.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ccadb7c06b243bfdfc4e568a7b40a7dab8ac094c261fb7cb87912c5e636fde/RoleValidator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/311b1b90e76b4896ac5e0cc17848f2905f4235c3ed44f9df45b65295345f2/IdentityUserRole.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ca1514a9eb474fa7e6b5b5e5622832b8f130d4a27330b23ba5309a555482ad91/UserValidator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -91,6 +108,9 @@
       <workItem from="1648815932765" duration="3205000" />
       <workItem from="1648973063427" duration="16294000" />
       <workItem from="1649089260493" duration="2075000" />
+      <workItem from="1649137786789" duration="1703000" />
+      <workItem from="1649491809472" duration="2438000" />
+      <workItem from="1650090648041" duration="6081000" />
     </task>
     <servers />
   </component>
@@ -118,17 +138,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs</url>
-          <line>199</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" initialLine="199" containingFunctionPresentation="method 'PostLike'">
+          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs</url>
+          <line>70</line>
+          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" initialLine="70" containingFunctionPresentation="method 'Post'">
             <startOffsets>
-              <option value="8035" />
+              <option value="2857" />
             </startOffsets>
             <endOffsets>
-              <option value="8083" />
+              <option value="2900" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

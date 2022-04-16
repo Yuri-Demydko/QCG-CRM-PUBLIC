@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using CRM.DAL.Models.DatabaseModels.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -17,14 +18,16 @@ namespace CRM.DAL.Models.DatabaseModels.PayCards
         public User User { get; set; }
         
         [MaxLength(16)]//??
+        [MinLength(16)]
         public string Number { get; set; }
         
         [MaxLength(3)]
+        [MinLength(3)]
         public string CVV { get; set; }
         
-        [MaxLength(6)]
-        public string ValidTill { get; set; }//@TODO Maybe use datetime here
+        public DateTime ValidTill { get; set; }//@TODO Maybe use datetime here
         
+        [NotNull]
         public string OwnerName { get; set; }
     }
     

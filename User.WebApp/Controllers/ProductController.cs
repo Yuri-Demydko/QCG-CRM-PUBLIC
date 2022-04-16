@@ -7,6 +7,7 @@ using CRM.DAL.Models.DatabaseModels.Products;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
 using CRM.DAL.Models.RequestModels.ProductBuy;
 using CRM.User.WebApp.Models.Basic;
+using CRM.User.WebApp.Models.UnnecessaryModels;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNet.OData.Routing;
@@ -84,6 +85,29 @@ namespace CRM.User.WebApp.Controllers
             return StatusCode(StatusCodes.Status200OK, item);
         }
         
+        /// <summary>
+        ///     Reserve api to calculate shopping cart total price.
+        /// </summary>
+        /// <returns>Total products price.</returns>
+        /// <response code="200">Price was retrieved.</response>
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(decimal), StatusCodes.Status200OK)]
+        [ODataRoute("CartTotalPrices")]
+        public ShoppingCartPriceAggregationResult GetCartTotalPrices()
+        {
+            var userId = userManager.GetUserId(User);
+            var items = userDbContext.Products
+                .IncludeOptimized(p => p.ProductUsers)
+                .Where(r => r.ProductUsers.Any(pu =>
+                    pu.UserId == userId && pu.RelationType == ProductUserRelationType.InShoppingCart));
+
+            return new ShoppingCartPriceAggregationResult()
+            {
+                TotalPrice = items.Sum(i => i.DiscountPrice ?? i.Price),
+                TotalDiscount = items.Sum(i => i.Price-i.DiscountPrice.GetValueOrDefault()),
+                TotalRawPrice = items.Sum(i => i.Price)
+            };
+        }
         
         /// <summary>
         ///     Clear shopping cart

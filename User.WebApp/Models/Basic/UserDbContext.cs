@@ -41,7 +41,7 @@ namespace CRM.User.WebApp.Models.Basic
         
         public DbSet<KontragentUser> KontragentUsers { get; set; }
         
-        public DbSet<PayCard> PayCards { get; set; }
+        public DbSet<DAL.Models.DatabaseModels.PayCards.PayCard> PayCards { get; set; }
         
         public DbSet<DAL.Models.DatabaseModels.ProductFile.ProductFile> ProductFiles { get; set; }
         

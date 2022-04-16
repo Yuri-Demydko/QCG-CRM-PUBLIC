@@ -11,6 +11,8 @@ using CRM.ServiceCommon.Middlewares;
 using CRM.User.WebApp.Configurations;
 using CRM.User.WebApp.Models.Basic;
 using CRM.User.WebApp.Services;
+using CRM.User.WebApp.Services.PayCardValidationService;
+using CRM.User.WebApp.Services.ProductBuy;
 using FluentValidation.AspNetCore;
 using Hangfire;
 using Hangfire.Dashboard;
@@ -168,6 +170,7 @@ namespace CRM.User.WebApp
             if(Env.IsDevelopment())
             {
                 services.AddScoped<IProductBuyService, ProductBuyServiceMock>();
+                services.AddScoped<IPayCardValidationService, PayCardValidationServiceMock>();
             }
             
             services.ConfigureAutoMapper();

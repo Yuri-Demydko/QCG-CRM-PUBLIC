@@ -8,6 +8,7 @@ using CRM.DAL.Models.DatabaseModels.ProductsUsers;
 using CRM.DAL.Models.RequestModels.ProductBuy;
 using CRM.User.WebApp.Models.Basic;
 using CRM.User.WebApp.Services;
+using CRM.User.WebApp.Services.ProductBuy;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNet.OData.Routing;

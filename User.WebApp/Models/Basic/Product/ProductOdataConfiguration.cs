@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CRM.DAL.Models.RequestModels.ProductBuy;
+using CRM.User.WebApp.Models.UnnecessaryModels;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +28,8 @@ namespace CRM.User.WebApp.Models.Basic.Product
             item.Action("AddToCart");
             item.Action("RemoveFromCart");
             item.Collection.Action("ClearCart");
+            item.Collection.Function("CartTotalPrices")
+                .ReturnsFromEntitySet<ShoppingCartPriceAggregationResult>(nameof(ShoppingCartPriceAggregationResult));
             item.Property(i => i.Price).OrderBy();
             item.Property(i => i.DiscountPrice).OrderBy();
             item.Property(i => i.CreatedAt).OrderBy();
