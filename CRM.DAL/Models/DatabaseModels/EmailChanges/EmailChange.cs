@@ -1,11 +1,13 @@
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using CRM.DAL.Models.DatabaseModels.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CRM.DAL.Models.DatabaseModels.EmailChanges
 {
+    [Table("EmailChange")]
     public class EmailChange
     {
         public Guid Id { get; set; }
@@ -16,6 +18,7 @@ namespace CRM.DAL.Models.DatabaseModels.EmailChanges
         public string NewEmail { get; set; }
         
         public bool Confirmed { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
     
     public class EmailChangeConfiguration : IEntityTypeConfiguration<EmailChange>

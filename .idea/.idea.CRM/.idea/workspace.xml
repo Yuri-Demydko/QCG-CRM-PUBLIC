@@ -6,20 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/EmailChanges/EmailChange.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ChangeEmail/ChangeEmailRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ChangePassword/ChangePasswordRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/EmailSenderService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/CRM.DAL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/CRM.DAL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/VerifyCodes/Enums/VerifyCodeType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/VerifyCodes/Enums/VerifyCodeType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/EmailChanges/EmailChange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/EmailChanges/EmailChange.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +99,7 @@
       <workItem from="1649089260493" duration="2075000" />
       <workItem from="1649137786789" duration="1703000" />
       <workItem from="1649491809472" duration="2438000" />
-      <workItem from="1650090648041" duration="10791000" />
+      <workItem from="1650090648041" duration="11919000" />
     </task>
     <servers />
   </component>
@@ -162,6 +151,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/User.WebApp/Services/EmailSenderService.cs</url>
+          <line>33</line>
+          <properties documentPath="$PROJECT_DIR$/User.WebApp/Services/EmailSenderService.cs" initialLine="33" containingFunctionPresentation="method 'SendVerifyCodeEmail'">
+            <startOffsets>
+              <option value="1115" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1202" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -157,7 +158,9 @@ namespace CRM.User.WebApp.Controllers
             await UserDbContext.EmailChanges.AddAsync(new EmailChange()
             {
                 UserId = user.Id,
-                NewEmail = request.NewEmail
+                NewEmail = request.NewEmail,
+                Confirmed = false,
+                CreatedAt = DateTime.Now
             });
             await UserDbContext.SaveChangesAsync();
             
