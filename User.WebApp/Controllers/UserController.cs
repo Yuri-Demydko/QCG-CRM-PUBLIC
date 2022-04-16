@@ -140,7 +140,7 @@ namespace CRM.User.WebApp.Controllers
                 });
             }
 
-            var codeResult = await codeService.GenerateCodeAsync(request.NewEmail, VerifyCodeType.ChangeEmail);
+            var codeResult = await codeService.GenerateCodeAsync(user.Email, VerifyCodeType.ChangeEmail);
 
             if (!codeResult.IsSucceed())
             {
@@ -155,12 +155,13 @@ namespace CRM.User.WebApp.Controllers
             BackgroundJob.Enqueue<EmailSenderService>(j =>
                 j.SendVerifyCodeEmail(request.NewEmail, codeResult.Code, VerifyCodeType.ChangeEmail));
 
-            await UserDbContext.EmailChanges.AddAsync(new EmailChange()
+            await UserDbContext.EmailChanges.AddAsync(new EmailChange
             {
                 UserId = user.Id,
                 NewEmail = request.NewEmail,
                 Confirmed = false,
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.Now,
+                UserToken = await userManager.GenerateChangeEmailTokenAsync(user,request.NewEmail)
             });
             await UserDbContext.SaveChangesAsync();
             
@@ -169,6 +170,45 @@ namespace CRM.User.WebApp.Controllers
                 Code = 200,
                 Message = "Письмо с кодом подтверждения отправлено"
             });
+        }
+
+        /// <summary>
+        ///     Update User Email.
+        /// </summary>
+        /// <response code="200">The User password was successfully changed.</response>
+        /// <response code="400">The User email same with previous.</response>
+        /// <response code="400">Code generating error.</response>
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(JsonResult), StatusCodes.Status204NoContent)]
+        [ODataRoute("ConfirmEmailChange")]
+        public async Task<ActionResult> PostConfirmEmailChange([FromBody] ChangeEmailConfirmationRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var user = await userManager.GetUserAsync(User);
+            
+            var validateCodeResult = await codeService.ValidateCodeAsync(user.Email, VerifyCodeType.ChangeEmail, request.Code);
+            
+            
+                if (!validateCodeResult.IsSucceed())
+                {
+                    return BadRequest(validateCodeResult.GetErrorsString());
+                }
+
+                var emailChange = await UserDbContext
+                    .EmailChanges
+                    .OrderByDescending(i => i.CreatedAt)
+                    .FirstOrDefaultAsync(i => i.UserId == user.Id
+                                              && !i.Confirmed);
+               await userManager.ChangeEmailAsync(user, emailChange.NewEmail, emailChange.UserToken);
+
+               await UserDbContext.SaveChangesAsync();
+
+               return NoContent();
+
         }
         
     }

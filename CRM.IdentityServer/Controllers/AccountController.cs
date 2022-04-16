@@ -551,11 +551,9 @@ namespace CRM.IdentityServer.Controllers
             
             if (!validateCodeResult.IsSucceed())
             {
-                if (!validateCodeResult.IsSucceed())
-                {
-                    ModelState.AddModelError(nameof(model.Code),validateCodeResult.GetErrorsString());
+                ModelState.AddModelError(nameof(model.Code),validateCodeResult.GetErrorsString());
                     return View(model);
-                }
+                
             }
 
             var user = await userManager.FindByEmailAsync(model.Email);

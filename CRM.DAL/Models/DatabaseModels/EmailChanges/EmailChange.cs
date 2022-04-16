@@ -19,6 +19,8 @@ namespace CRM.DAL.Models.DatabaseModels.EmailChanges
         
         public bool Confirmed { get; set; }
         public DateTime CreatedAt { get; set; }
+        
+        public string UserToken { get; set; }
     }
     
     public class EmailChangeConfiguration : IEntityTypeConfiguration<EmailChange>

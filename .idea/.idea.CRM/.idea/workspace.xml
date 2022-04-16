@@ -6,9 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ChangeEmail/ChangeEmailConfirmationRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/EmailChanges/EmailChange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/EmailChanges/EmailChange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +102,7 @@
       <workItem from="1649089260493" duration="2075000" />
       <workItem from="1649137786789" duration="1703000" />
       <workItem from="1649491809472" duration="2438000" />
-      <workItem from="1650090648041" duration="11919000" />
+      <workItem from="1650090648041" duration="14868000" />
     </task>
     <servers />
   </component>
@@ -141,13 +144,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs</url>
-          <line>121</line>
+          <line>122</line>
           <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" initialLine="120" containingFunctionPresentation="method 'PostRequestEmailChange'">
             <startOffsets>
-              <option value="5098" />
+              <option value="5112" />
             </startOffsets>
             <endOffsets>
-              <option value="5146" />
+              <option value="5160" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="9" />
