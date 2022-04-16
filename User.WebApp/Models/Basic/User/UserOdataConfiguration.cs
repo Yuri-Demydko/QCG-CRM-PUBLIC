@@ -47,6 +47,7 @@ namespace CRM.User.WebApp.Models.Basic.User
 
 
             item.Collection.Action("ChangePassword");
+            item.Collection.Action("RequestEmailChange");
             
             item.HasKey(p => p.Id);
         }

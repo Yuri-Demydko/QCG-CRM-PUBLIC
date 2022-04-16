@@ -1,3 +1,4 @@
+using CRM.DAL.Models.DatabaseModels.EmailChanges;
 using CRM.DAL.Models.DatabaseModels.Files;
 using CRM.DAL.Models.DatabaseModels.KontragentInfo;
 using CRM.DAL.Models.DatabaseModels.Kontragents;
@@ -32,6 +33,7 @@ namespace CRM.User.WebApp.Models.Basic
 
         public DbSet<DataProtectionKey> DataProtectionKeys { get; set; }
 
+        public DbSet<EmailChange> EmailChanges { get; set; }
 
         public DbSet<File> Files { get; set; }
         

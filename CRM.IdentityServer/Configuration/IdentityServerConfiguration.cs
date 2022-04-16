@@ -23,7 +23,14 @@ namespace CRM.IdentityServer.Configuration
         public static IServiceCollection ConfigureIdentityServer(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddIdentity<User, Role>()
+            services.AddIdentity<User, Role>(options =>
+                {
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireUppercase = false;
+                })
                 .AddEntityFrameworkStores<IdentityServerDbContext>()
                 .AddRoles<Role>()
                 .AddErrorDescriber<RussianLanguageIdentityErrorDescriber>()

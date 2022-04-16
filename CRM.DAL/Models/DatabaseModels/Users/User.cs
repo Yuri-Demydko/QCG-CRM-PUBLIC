@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CRM.DAL.Models.DatabaseModels.EmailChanges;
 using CRM.DAL.Models.DatabaseModels.KontragentUsers;
 using CRM.DAL.Models.DatabaseModels.PayCards;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
@@ -25,6 +26,8 @@ namespace CRM.DAL.Models.DatabaseModels.Users
         public ICollection<KontragentUser> KontragentUsers { get; set; }
         
         public ICollection<ProductsComments.ProductComment> ProductComments { get; set; }
+        
+        public ICollection<EmailChange> EmailChanges { get; set; }
     }
 
     public class UserConfiguration : IEntityTypeConfiguration<User>
@@ -51,6 +54,10 @@ namespace CRM.DAL.Models.DatabaseModels.Users
             
             item.HasMany(i => i.ProductComments)
                 .WithOne(p => p.User)
+                .HasForeignKey(i => i.UserId);
+
+            item.HasMany(i => i.EmailChanges)
+                .WithOne(i => i.User)
                 .HasForeignKey(i => i.UserId);
         }
     }

@@ -47,7 +47,6 @@ namespace CRM.User.WebApp.Controllers
         /// <response code="200">The ProductUsers was successfully retrieved.</response>
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<PayCard>), StatusCodes.Status200OK)]
-        [EnableQuery(HandleNullPropagation = HandleNullPropagationOption.False)]
         public IEnumerable<PayCard> Get()
         {
             return userDbContext.PayCards
@@ -62,7 +61,6 @@ namespace CRM.User.WebApp.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [EnableQuery(HandleNullPropagation = HandleNullPropagationOption.False)]
         public async Task<ActionResult> Post([FromBody]PayCard item)
         {
             if (!ModelState.IsValid)

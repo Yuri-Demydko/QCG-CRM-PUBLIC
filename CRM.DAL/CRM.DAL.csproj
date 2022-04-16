@@ -22,8 +22,4 @@
     <ItemGroup>
         <ProjectReference Include="..\IdentityServer.Extensions\IdentityServer.Extensions.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Models\DatabaseModels" />
-    </ItemGroup>
 </Project>

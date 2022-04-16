@@ -4,5 +4,6 @@
     {
         Registration,
         ForgotPassword,
+        ChangeEmail
     }
 }

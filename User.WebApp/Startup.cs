@@ -64,7 +64,14 @@ namespace CRM.User.WebApp
             services.Configure<IdentityOptions>(options =>
                 options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
 
-            services.AddIdentityForWebApi<DAL.Models.DatabaseModels.Users.User, Role>()
+            services.AddIdentityForWebApi<DAL.Models.DatabaseModels.Users.User, Role>(options =>
+                {
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireUppercase = false;
+                })
                 .AddEntityFrameworkStores<UserDbContext>()
                 .AddRoles<Role>()
                 .AddDefaultTokenProviders();
@@ -133,6 +140,8 @@ namespace CRM.User.WebApp
                 .PersistKeysToDbContext<UserDbContext>();
 
             services.ConfigureEmail(Configuration);
+            
+             services.ConfigureEmailCodes(Configuration);
 
             services.ConfigureRazorTemplateEngine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 

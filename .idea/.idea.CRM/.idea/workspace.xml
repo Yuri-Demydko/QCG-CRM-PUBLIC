@@ -6,21 +6,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/PayCard/PayCardOdataConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Models/UnnecessaryModels/ShoppingCartPriceAggregationResult.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/PayCardValidationService/IPayCardValidationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/PayCardValidationService/PayCardValidationResult.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/PayCardValidationService/PayCardValidationServiceMock.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/EmailChanges/EmailChange.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ChangeEmail/ChangeEmailRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ChangePassword/ChangePasswordRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/EmailSenderService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/PayCards/PayCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/PayCards/PayCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductUserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductUserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/CRM.DAL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/CRM.DAL.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/VerifyCodes/Enums/VerifyCodeType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/VerifyCodes/Enums/VerifyCodeType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Services/IProductBuyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Services/ProductBuy/IProductBuyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Services/ProductBuyServiceMock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Services/ProductBuy/ProductBuyServiceMock.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +40,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ccadb7c06b243bfdfc4e568a7b40a7dab8ac094c261fb7cb87912c5e636fde/RoleValidator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/311b1b90e76b4896ac5e0cc17848f2905f4235c3ed44f9df45b65295345f2/IdentityUserRole.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ca1514a9eb474fa7e6b5b5e5622832b8f130d4a27330b23ba5309a555482ad91/UserValidator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -110,7 +110,7 @@
       <workItem from="1649089260493" duration="2075000" />
       <workItem from="1649137786789" duration="1703000" />
       <workItem from="1649491809472" duration="2438000" />
-      <workItem from="1650090648041" duration="6081000" />
+      <workItem from="1650090648041" duration="10791000" />
     </task>
     <servers />
   </component>
@@ -139,16 +139,29 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs</url>
-          <line>70</line>
+          <line>68</line>
           <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" initialLine="70" containingFunctionPresentation="method 'Post'">
             <startOffsets>
-              <option value="2857" />
+              <option value="2695" />
             </startOffsets>
             <endOffsets>
-              <option value="2900" />
+              <option value="2738" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs</url>
+          <line>121</line>
+          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" initialLine="120" containingFunctionPresentation="method 'PostRequestEmailChange'">
+            <startOffsets>
+              <option value="5098" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5146" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
