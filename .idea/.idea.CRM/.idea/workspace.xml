@@ -6,12 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ChangeEmail/ChangeEmailConfirmationRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/EmailChanges/EmailChange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/EmailChanges/EmailChange.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/User/UserOdataConfiguration.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +98,7 @@
       <workItem from="1649089260493" duration="2075000" />
       <workItem from="1649137786789" duration="1703000" />
       <workItem from="1649491809472" duration="2438000" />
-      <workItem from="1650090648041" duration="14868000" />
+      <workItem from="1650090648041" duration="16819000" />
     </task>
     <servers />
   </component>
@@ -125,50 +121,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs</url>
-          <line>68</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/PayCardController.cs" initialLine="70" containingFunctionPresentation="method 'Post'">
-            <startOffsets>
-              <option value="2695" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2738" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs</url>
-          <line>122</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/UserController.cs" initialLine="120" containingFunctionPresentation="method 'PostRequestEmailChange'">
-            <startOffsets>
-              <option value="5112" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5160" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Services/EmailSenderService.cs</url>
-          <line>33</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Services/EmailSenderService.cs" initialLine="33" containingFunctionPresentation="method 'SendVerifyCodeEmail'">
-            <startOffsets>
-              <option value="1115" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1202" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

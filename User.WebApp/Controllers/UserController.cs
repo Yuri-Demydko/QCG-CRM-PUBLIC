@@ -189,26 +189,34 @@ namespace CRM.User.WebApp.Controllers
             }
 
             var user = await userManager.GetUserAsync(User);
-            
-            var validateCodeResult = await codeService.ValidateCodeAsync(user.Email, VerifyCodeType.ChangeEmail, request.Code);
-            
-            
-                if (!validateCodeResult.IsSucceed())
-                {
-                    return BadRequest(validateCodeResult.GetErrorsString());
-                }
 
-                var emailChange = await UserDbContext
-                    .EmailChanges
-                    .OrderByDescending(i => i.CreatedAt)
-                    .FirstOrDefaultAsync(i => i.UserId == user.Id
-                                              && !i.Confirmed);
-               await userManager.ChangeEmailAsync(user, emailChange.NewEmail, emailChange.UserToken);
+            var validateCodeResult =
+                await codeService.ValidateCodeAsync(user.Email, VerifyCodeType.ChangeEmail, request.Code);
 
-               await UserDbContext.SaveChangesAsync();
 
-               return NoContent();
+            if (!validateCodeResult.IsSucceed())
+            {
+                return BadRequest(validateCodeResult.GetErrorsString());
+            }
 
+            var emailChange = await UserDbContext
+                .EmailChanges
+                .OrderByDescending(i => i.CreatedAt)
+                .FirstOrDefaultAsync(i => i.UserId == user.Id
+                                          && !i.Confirmed);
+
+            var result = await userManager.ChangeEmailAsync(user, emailChange.NewEmail, emailChange.UserToken);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            emailChange.Confirmed = true;
+
+            await UserDbContext.SaveChangesAsync();
+
+            return NoContent();
         }
         
     }
