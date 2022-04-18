@@ -308,7 +308,7 @@ namespace CRM.IdentityServer.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        [ValidateReCaptcha]
+        // [ValidateReCaptcha]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             ViewBag.NeedsContinue = true;

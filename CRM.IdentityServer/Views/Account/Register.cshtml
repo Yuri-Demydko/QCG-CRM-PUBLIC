@@ -33,7 +33,7 @@
     </div>
     <input type="submit" value="Продолжить регистрацию"/>
     
-    @Html.ReCaptcha()
+    @* @Html.ReCaptcha() *@
     @if (ViewContext.ModelState.IsValid == false)
     {
         <div asp-validation-summary="All" class="formErrors">
