@@ -3,10 +3,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using CRM.DAL.Models.DatabaseModels.Users;
 using CRM.IdentityServer.Models;
+using Hangfire;
 using Microsoft.AspNetCore.Identity;
+using Z.EntityFramework.Plus;
 
 namespace CRM.IdentityServer.Services
 {
+    [Queue("identity")]
     public class AccountsService
     {
         private readonly IdentityServerDbContext identityServerDbContext;
@@ -18,15 +21,14 @@ namespace CRM.IdentityServer.Services
 
         public async Task CleanUnconfirmedAccounts()
         {
-            int DaysBeforeDel = 7;
-            var items = identityServerDbContext.Users
+            //@TODO: Move Days before delete value to CommonConfigs
+            await identityServerDbContext.Users
                 .Where(i => 
                     !i.EmailConfirmed
                     &&
-                    i.RegistrationDate.Date-DateTime.Now.Date>TimeSpan.FromDays(DaysBeforeDel)
-                );
-
-            await identityServerDbContext.BulkDeleteAsync(items);
+                    DateTime.Now.Date-i.RegistrationDate.Date>TimeSpan.FromDays(7)
+                ).DeleteAsync();
+            
             await identityServerDbContext.SaveChangesAsync();
         }
     }

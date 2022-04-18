@@ -4,6 +4,7 @@ using System.Reflection;
 using AspNetCore.ReCaptcha;
 using CRM.IdentityServer.Models;
 using CRM.IdentityServer.Configuration;
+using CRM.IdentityServer.Services;
 using CRM.ServiceCommon.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -69,6 +70,7 @@ namespace CRM.IdentityServer
             services.AddReCaptcha(Configuration.GetSection("ReCaptcha"));
 
             services.AddHangfire(config => config.UseInMemoryStorage());
+            
         }
 
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
@@ -112,6 +114,8 @@ namespace CRM.IdentityServer
                 endpoints.MapRazorPages();
                 endpoints.MapHangfireDashboard();
             });
+            
+            RecurringJob.AddOrUpdate<AccountsService>(j => j.CleanUnconfirmedAccounts(), Cron.Daily());
         }
     }
 }
