@@ -28,6 +28,8 @@ namespace CRM.DAL.Models.DatabaseModels.Users
         public ICollection<ProductsComments.ProductComment> ProductComments { get; set; }
         
         public ICollection<EmailChange> EmailChanges { get; set; }
+        
+        public DateTime RegistrationDate { get; set; }
     }
 
     public class UserConfiguration : IEntityTypeConfiguration<User>
@@ -59,6 +61,9 @@ namespace CRM.DAL.Models.DatabaseModels.Users
             item.HasMany(i => i.EmailChanges)
                 .WithOne(i => i.User)
                 .HasForeignKey(i => i.UserId);
+            
+            item.Property(i => i.RegistrationDate)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
         }
     }
 }
