@@ -62,7 +62,10 @@ namespace CRM.User.WebApp
             services.ConfigureIdentityServerClient(Configuration);
 
             services.Configure<IdentityOptions>(options =>
-                options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
+                {
+                    options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier;
+                }
+                );
 
             services.AddIdentityForWebApi<DAL.Models.DatabaseModels.Users.User, Role>(options =>
                 {
@@ -71,6 +74,8 @@ namespace CRM.User.WebApp
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequiredLength = 6;
                     options.Password.RequireUppercase = false;
+                    options.SignIn.RequireConfirmedEmail = true;
+                   
                 })
                 .AddEntityFrameworkStores<UserDbContext>()
                 .AddRoles<Role>()
@@ -285,6 +290,7 @@ namespace CRM.User.WebApp
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
                 }
             });
+            
         }
     }
 }

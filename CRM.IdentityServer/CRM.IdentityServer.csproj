@@ -26,6 +26,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
     </ItemGroup>
 
     <ItemGroup>
@@ -35,7 +36,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Controllers\Api" />
         <Folder Include="Grants" />
         <Folder Include="wwwroot\assets" />
         <Folder Include="wwwroot\css" />

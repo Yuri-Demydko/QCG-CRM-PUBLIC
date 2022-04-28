@@ -1,9 +1,11 @@
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using CRM.IdentityServer.Extensions.Constants;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,18 +55,29 @@ namespace CRM.User.WebApp.Configurations
 
 
                     options.ResponseType = OpenIdConnectResponseType.Code;
-                   
-                    options.Events.OnRedirectToIdentityProvider = context =>
+                    
+
+                    options.Events.OnRedirectToIdentityProvider = ctx =>
                     {
-                        context.Properties.RedirectUri = "/";
+                        if (ctx.Request.Path.StartsWithSegments("/api"))
+                        {
+                            if (ctx.Response.StatusCode == (int) HttpStatusCode.OK)
+                            {
+                                ctx.Response.StatusCode = 401;
+                            }
+
+                            ctx.HandleResponse();
+                        }
+
                         return Task.CompletedTask;
                     };
+                    
                     
                     options.Scope.Add(Scopes.Roles);
                     options.Scope.Add(Scopes.Policies);
                     options.Scope.Add(Scopes.SecurityStamp);
                 });
-
+            
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(UserPolicies.RequestsAccess,

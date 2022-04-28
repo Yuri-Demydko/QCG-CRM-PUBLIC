@@ -70,6 +70,11 @@ namespace CRM.IdentityServer.Controllers
             this.codeService = codeService;
         }
 
+        public ActionResult Home()
+        {
+            return Ok();
+        }
+
         [HttpGet]
         public async Task<IActionResult> Login(string returnUrl)
         {
@@ -83,7 +88,7 @@ namespace CRM.IdentityServer.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginInputModel model, string button)
+        public async Task<IActionResult> Login(LoginInputModel model)
         {
             var context = await interaction.GetAuthorizationContextAsync(model.ReturnUrl);
 
@@ -218,7 +223,7 @@ namespace CRM.IdentityServer.Controllers
 
             if (string.IsNullOrWhiteSpace(vm.PostLogoutRedirectUri))
             {
-                return Redirect(Url.Action("Login", "Account"));
+                return Ok();
             }
 
             return Redirect(vm.PostLogoutRedirectUri);
@@ -594,203 +599,6 @@ namespace CRM.IdentityServer.Controllers
             return View();
         }
 
-        // [HttpPost]
-        // [AllowAnonymous]
-        // public async Task<ActionResult> SendVerifySmsForForgotPassword(string phone)
-        // {
-        //     var phoneNumberInGeneral = PhoneHelper.GetPhoneInGeneral(phone);
-        //
-        //     var user = identityServerDbContext.Users.FirstOrDefault(u => u.PhoneNumber == phoneNumberInGeneral);
-        //     if (user == null)
-        //     {
-        //         return new JsonResult(new
-        //         {
-        //             Code = 400,
-        //             Message = $"Не удалось найти пользователя с таким телефоном!"
-        //         });
-        //     }
-        //
-        //     var smsCode = await codeService.GenerateCodeAsync(phone, VerifyCodeType.ForgotPassword);
-        //     if (!smsCode.IsSucceed())
-        //     {
-        //         return new JsonResult(new
-        //         {
-        //             Code = 400,
-        //             Message = $"{smsCode.GetErrorsString()}"
-        //         });
-        //     }
-        //
-        //
-        //     var sendSms = await smsService.SendVerifySmsAsync(phone, smsCode.Code);
-        //     if (sendSms)
-        //     {
-        //         return new JsonResult(new
-        //         {
-        //             Code = 200,
-        //             Message = "Успешно отправлено смс"
-        //         });
-        //     }
-        //
-        //     return new JsonResult(new
-        //     {
-        //         Code = 500,
-        //         Message = "Не удалось отправить смс. Обратитесь в тех. поддержку"
-        //     });
-        // }
-        //
-        // [HttpPost]
-        // [AllowAnonymous]
-        // public async Task<ActionResult> VerifyCodeForForgotPassword(string phone, string code)
-        // {
-        //     var phoneNumberInGeneral = PhoneHelper.GetPhoneInGeneral(phone);
-        //
-        //     var user = identityServerDbContext.Users.FirstOrDefault(u => u.PhoneNumber == phoneNumberInGeneral);
-        //     if (user == null)
-        //     {
-        //         return new JsonResult(new
-        //         {
-        //             Code = 400,
-        //             Message = $"Не удалось найти пользователя с таким телефоном!"
-        //         });
-        //     }
-        //
-        //     var smsCode = await codeService.ValidateCodeAsync(phone, VerifyCodeType.ForgotPassword, code);
-        //     if (!smsCode.IsSucceed())
-        //     {
-        //         if (!smsCode.IsSucceed())
-        //         {
-        //             return new JsonResult(new
-        //             {
-        //                 Code = 400,
-        //                 Message = $"{smsCode.GetErrorsString()}"
-        //             });
-        //         }
-        //     }
-        //
-        //     var res = new JsonResult(new
-        //     {
-        //         Code = 200,
-        //         Message = "Телефон успешно подтвержден"
-        //     });
-        //
-        //     return res;
-        // }
-
-        // [AllowAnonymous]
-        // public async Task<ActionResult> ResetPassword(string phone)
-        // {
-        //     if (string.IsNullOrWhiteSpace(phone))
-        //     {
-        //         return View("Error");
-        //     }
-        //
-        //     var phoneNumberInGeneral = PhoneHelper.GetPhoneInGeneral(phone);
-        //
-        //     // var isCodeWasSent = await codeService.IsCodeWasSent(phoneNumberInGeneral, VerifyCodeType.ForgotPassword);
-        //     // if (!isCodeWasSent.IsSucceed())
-        //     // {
-        //     //     return new JsonResult(new
-        //     //     {
-        //     //         Code = 400,
-        //     //         Message = isCodeWasSent.GetErrorsString()
-        //     //     });
-        //     // }
-        //
-        //     return View(new ResetPasswordViewModel() { Phone = phoneNumberInGeneral });
-        // }
-        //
-        // [HttpPost]
-        // [AllowAnonymous]
-        // [ValidateAntiForgeryToken]
-        // public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return View(model);
-        //     }
-        //
-        //     var phoneNumberInGeneral = PhoneHelper.GetPhoneInGeneral(model.Phone);
-        //
-        //     var user = await identityServerDbContext.Users.FirstOrDefaultAsync(u =>
-        //         u.PhoneNumber == phoneNumberInGeneral);
-        //     if (user == null)
-        //     {
-        //         return new JsonResult(new
-        //         {
-        //             Code = 500,
-        //             Message = "Не удалось найти пользователя с таким телефоном!"
-        //         });
-        //     }
-        //
-        //     var passwordValidator = new PasswordValidator<User>();
-        //     var isPasswordValid = await passwordValidator.ValidateAsync(userManager, user, model.Password);
-        //     if (!isPasswordValid.Succeeded)
-        //     {
-        //         return new JsonResult(new
-        //         {
-        //             Code = 400,
-        //             Message = string.Join(",", isPasswordValid.Errors)
-        //         });
-        //     }
-        //
-        //     var resetToken = await userManager.GeneratePasswordResetTokenAsync(user);
-        //     var resetPasswordResult = await userManager.ResetPasswordAsync(user, resetToken, model.Password);
-        //     if (!resetPasswordResult.Succeeded)
-        //     {
-        //         return new JsonResult(new
-        //         {
-        //             Code = 500,
-        //             Message = string.Join(",", resetPasswordResult.Errors)
-        //         });
-        //     }
-        //
-        //     return RedirectToAction("ResetPasswordConfirmation", "Account");
-        // }
-        //
-        //
-        // [AllowAnonymous]
-        // public ActionResult ResetPasswordConfirmation()
-        // {
-        //     return View();
-        // }
-        //
-        //
-        // [HttpGet]
-        // [Authorize]
-        // public async Task<IActionResult> ChangePassword()
-        // {
-        //     return View();
-        // }
-        //
-        // [HttpPost]
-        // [Authorize]
-        // public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return View(model);
-        //     }
-        //
-        //     var user = await userManager.GetUserAsync(HttpContext.User);
-        //     if (user == null)
-        //     {
-        //         return View("Error");
-        //     }
-        //
-        //     var result = await userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
-        //     if (!result.Succeeded)
-        //     {
-        //         foreach (var error in result.Errors)
-        //         {
-        //             ModelState.AddModelError(string.Empty, error.Description);
-        //         }
-        //     }
-        //
-        //     await signInManager.SignInAsync(user, false);
-        //
-        //     return View("PersonalArea");
-        // }
-        
 
         private void AddErrors(IdentityResult result)
         {

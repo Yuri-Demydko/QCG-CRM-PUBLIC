@@ -6,9 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Services/AccountsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Services/AccountsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Configurations/IdentityServerClientConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Configurations/IdentityServerClientConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/AccountConroller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/AccountConroller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,14 +31,22 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33918e307316ea048242c24290cba34e538ec8e4f0d3d621c85ee92c6162f8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd8acfd6340199d4186f76c46704be72adc5846271f6a7a3989216e18d82e/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6193ded9ed2401295f6e677f0fed205181600/2a/77b0b5b0/JobStorage.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/688e8ef4bc7f17980858831229081c99cdde9406be5cfe34d43f2f955ca74b4/IdentityUserClaim.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ccadb7c06b243bfdfc4e568a7b40a7dab8ac094c261fb7cb87912c5e636fde/RoleValidator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/311b1b90e76b4896ac5e0cc17848f2905f4235c3ed44f9df45b65295345f2/IdentityUserRole.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ca1514a9eb474fa7e6b5b5e5622832b8f130d4a27330b23ba5309a555482ad91/UserValidator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ccadb7c06b243bfdfc4e568a7b40a7dab8ac094c261fb7cb87912c5e636fde/RoleValidator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3e6951c87abb38f23375ed1c56091c2a9fe3098bc09a2c864fce5ab78b27/Attribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33918e307316ea048242c24290cba34e538ec8e4f0d3d621c85ee92c6162f8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bf537ccfcce246e4aa37968d9553a24b2000/9e/48d5d7ea/IAuthorizeData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b6d9aef891d740fada4474a66a67cc9d76348d742c9818aa2f7592a2e55aa7/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd8acfd6340199d4186f76c46704be72adc5846271f6a7a3989216e18d82e/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6193ded9ed2401295f6e677f0fed205181600/2a/77b0b5b0/JobStorage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f987c1210c8b9931b2928ae592b2db8d2236c8037818eec65f5aadbfc650/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/688e8ef4bc7f17980858831229081c99cdde9406be5cfe34d43f2f955ca74b4/IdentityUserClaim.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90f719e38d4d8eeb2f8b62e8fdece5b492fbd624dc48823143f464ae8fb1ce7d/AuthorizeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6c5035e3834b680d75bb6b69be89a3fd78440aa3054dc9929be608deb1953e8/NoContentResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/931d457418b5486884963914f8d3d204b0400/9a/2aa0b44d/Controller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/311b1b90e76b4896ac5e0cc17848f2905f4235c3ed44f9df45b65295345f2/IdentityUserRole.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bf2fca7a0198cecc0906cf2ff04319c4d1a0c0b16bfc69d0b14c6ce25dfd/StatusCodeResult.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,7 +66,7 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.CRM.IdentityServer">
+  <component name="RunManager" selected=".NET Launch Settings Profile.User.WebApp: CRM.User.WebApp">
     <configuration name="CRM.IdentityServer" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
@@ -99,7 +114,11 @@
       <workItem from="1649137786789" duration="1703000" />
       <workItem from="1649491809472" duration="2438000" />
       <workItem from="1650090648041" duration="17211000" />
-      <workItem from="1650296600354" duration="2791000" />
+      <workItem from="1650296600354" duration="3047000" />
+      <workItem from="1650299776831" duration="630000" />
+      <workItem from="1650900483273" duration="8752000" />
+      <workItem from="1650993185900" duration="3813000" />
+      <workItem from="1651071454253" duration="8175000" />
     </task>
     <servers />
   </component>
@@ -122,5 +141,76 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs</url>
+          <line>348</line>
+          <properties documentPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs" initialLine="340" containingFunctionPresentation="method 'SendVerifyEmailForPasswordReset'">
+            <startOffsets>
+              <option value="12992" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13045" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs</url>
+          <line>177</line>
+          <properties documentPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" initialLine="177" containingFunctionPresentation="method 'Login'">
+            <startOffsets>
+              <option value="6701" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6722" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/HomeController.cs</url>
+          <line>12</line>
+          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/HomeController.cs" initialLine="12" containingFunctionPresentation="method 'Index'">
+            <startOffsets>
+              <option value="238" />
+            </startOffsets>
+            <endOffsets>
+              <option value="250" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs</url>
+          <line>156</line>
+          <properties documentPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" initialLine="156" containingFunctionPresentation="method 'Login'">
+            <startOffsets>
+              <option value="5729" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5765" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs</url>
+          <line>92</line>
+          <properties documentPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" initialLine="92" containingFunctionPresentation="method 'Login'">
+            <startOffsets>
+              <option value="3287" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3365" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

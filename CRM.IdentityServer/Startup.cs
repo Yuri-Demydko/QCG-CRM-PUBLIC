@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Hangfire;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Http;
+using Microsoft.OpenApi.Models;
 
 namespace CRM.IdentityServer
 {
@@ -36,6 +38,27 @@ namespace CRM.IdentityServer
             services.AddMvc().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "ToDo API",
+                    Description = "An ASP.NET Core Web API for managing ToDo items",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Example Contact",
+                        Url = new Uri("https://example.com/contact")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Example License",
+                        Url = new Uri("https://example.com/license")
+                    }
+                });
+            });
+            
             services.AddHealthChecks();
 
             services.ConfigureDatabase(Configuration);
@@ -100,7 +123,7 @@ namespace CRM.IdentityServer
                 Queues = new[] {"identity"},
                 ServerName = "Identity"
             });
-
+            
             app.UseAuthorization();
             app.UseStaticFiles();
 
@@ -109,11 +132,21 @@ namespace CRM.IdentityServer
                 endpoints.MapHealthChecks("/health");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Login}/{id?}");
+                     pattern: "{controller=Account}/{action=Login}/{id?}");
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
                 endpoints.MapHangfireDashboard();
             });
+            
+            if (Env.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    options.RoutePrefix = "swagger";
+                });
+            }
             
             RecurringJob.AddOrUpdate<AccountsService>(j => j.CleanUnconfirmedAccounts(), Cron.Daily());
         }

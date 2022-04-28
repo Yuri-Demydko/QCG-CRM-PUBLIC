@@ -43,6 +43,7 @@ namespace CRM.IdentityServer.Configuration
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
+                
             });
 
             services.AddIdentityServer()
@@ -59,6 +60,7 @@ namespace CRM.IdentityServer.Configuration
                     options.DefaultSchema = "public";
                     options.EnableTokenCleanup = true;
                     options.TokenCleanupInterval = 3600; // interval in seconds
+                    
                 })
                 .AddAspNetIdentity<User>()
                 .AddProfileService<ProfileService>();

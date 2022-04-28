@@ -10,7 +10,7 @@ namespace CRM.User.WebApp.Controllers
 		[Route("/")]
 		public IActionResult Index()
 		{
-			return Redirect("/main");
+			return Ok();
 		}
 	}
 }
