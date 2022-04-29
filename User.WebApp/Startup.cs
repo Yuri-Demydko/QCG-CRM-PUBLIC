@@ -69,13 +69,8 @@ namespace CRM.User.WebApp
 
             services.AddIdentityForWebApi<DAL.Models.DatabaseModels.Users.User, Role>(options =>
                 {
-                    options.Password.RequireDigit = true;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequiredLength = 6;
-                    options.Password.RequireUppercase = false;
-                    options.SignIn.RequireConfirmedEmail = true;
-                   
+                    options.ClaimsIdentity.UserIdClaimType = IdentityServer.Extensions.Constants.ClaimTypes.UserId;
+
                 })
                 .AddEntityFrameworkStores<UserDbContext>()
                 .AddRoles<Role>()
@@ -128,9 +123,10 @@ namespace CRM.User.WebApp
                     options.SubstituteApiVersionInUrl = true;
                 });
 
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            services.ConfigureSwagger(xmlPath);
+            // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            // var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            // services.ConfigureSwagger(xmlPath);
+            services.ConfigureSwaggerBearer(Configuration);
             
 
             services.AddHttpContextAccessor();

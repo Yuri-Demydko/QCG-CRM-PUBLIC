@@ -9,6 +9,8 @@
         public const string Policies = "policies";
         
         public const string Kontragents = "kontragents";
+
+        public const string UserId = "userid";
         
         public const string Drivers = "drivers";
 	public const string OpenId = "openid";

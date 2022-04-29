@@ -1,6 +1,7 @@
 using CRM.IdentityServer.Extensions.Constants;
 using CRM.User.WebApp.Models.Basic;
 using Microsoft.AspNet.OData;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,8 @@ using NLog;
 namespace CRM.User.WebApp.Controllers
 {
     [ApiVersion("1.0")]
-    [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
+            Roles = UserRoles.User + "," + UserRoles.Admin)]
     public abstract class BaseController<TModel> : ODataController
     {
         protected readonly ILogger<TModel> logger;

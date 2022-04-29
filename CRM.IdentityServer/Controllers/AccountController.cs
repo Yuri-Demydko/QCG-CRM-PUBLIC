@@ -33,6 +33,7 @@ namespace CRM.IdentityServer.Controllers
     [AllowAnonymous]
     [Controller]
     [DisableConcurrentExecution(10)]
+    [Obsolete]
     public class AccountController : Controller
     {
         private readonly IIdentityServerInteractionService interaction;

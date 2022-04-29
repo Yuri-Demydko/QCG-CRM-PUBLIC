@@ -93,6 +93,13 @@ namespace CRM.IdentityServer.Configuration
                 },
                 new IdentityResource()
                 {
+                    Name = Scopes.UserId,
+                    DisplayName = "Your user id",
+                    Required = true,
+                    UserClaims = new List<string>() { ClaimTypes.UserId }
+                },
+                new IdentityResource()
+                {
                     Name = Scopes.Policies,
                     DisplayName = "Your user policies",
                     Required = true,
@@ -134,7 +141,8 @@ namespace CRM.IdentityServer.Configuration
                             IdentityServerConstants.StandardScopes.Profile,
                             Scopes.SecurityStamp,
                             Scopes.Policies,
-                            Scopes.Roles
+                            Scopes.Roles,
+                            Scopes.UserId
                         },
                         AllowOfflineAccess = true,
                         AccessTokenLifetime = 300,
@@ -142,6 +150,7 @@ namespace CRM.IdentityServer.Configuration
                         AbsoluteRefreshTokenLifetime = 2592000,
                         SlidingRefreshTokenLifetime = 1296000,
                         RefreshTokenExpiration = TokenExpiration.Sliding,
+                        
                     });
 
                     continue;

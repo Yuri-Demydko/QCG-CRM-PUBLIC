@@ -7,6 +7,7 @@ using CRM.IdentityServer.Models;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
+using ClaimTypes = CRM.IdentityServer.Extensions.Constants.ClaimTypes;
 
 namespace CRM.IdentityServer.Services
 {
@@ -34,27 +35,30 @@ namespace CRM.IdentityServer.Services
 
             var claims = new List<Claim>();
 
-            if (context.RequestedClaimTypes.Contains(Extensions.Constants.ClaimTypes.SecurityStamp))
-            {
+            
+            // if (context.RequestedClaimTypes.Contains(Extensions.Constants.ClaimTypes.SecurityStamp))
+            // {
                 claims.Add(new Claim(Extensions.Constants.ClaimTypes.SecurityStamp, user.SecurityStamp));
-            }
+            // }
 
-            if (context.RequestedClaimTypes.Contains(System.Security.Claims.ClaimTypes.Role))
-            {
+            // if (context.RequestedClaimTypes.Contains(System.Security.Claims.ClaimTypes.Role))
+            // {
                 var roles = await userManager.GetRolesAsync(user);
 
                 claims.AddRange(roles.Select(i => new Claim(System.Security.Claims.ClaimTypes.Role, i)));
-            }
+            // }
 
-            if (context.RequestedClaimTypes.Contains(Extensions.Constants.ClaimTypes.UserPolicy))
-            {
+            // if (context.RequestedClaimTypes.Contains(Extensions.Constants.ClaimTypes.UserPolicy))
+            // {
                 var allClaims = await userManager.GetClaimsAsync(user);
 
                 claims.AddRange(allClaims.Where(i => i.Type == Extensions.Constants.ClaimTypes.UserPolicy)
                     .Select(i => new Claim(Extensions.Constants.ClaimTypes.UserPolicy, i.Value)));
-            }
+            // }
 
-
+           
+            claims.Add(new Claim(System.Security.Claims.ClaimTypes.NameIdentifier,user.UserName));
+            claims.Add(new Claim(ClaimTypes.UserId,user.Id));
             context.IssuedClaims = claims;
         }
 

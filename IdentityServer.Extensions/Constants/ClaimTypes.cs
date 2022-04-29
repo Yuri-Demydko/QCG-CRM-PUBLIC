@@ -3,8 +3,6 @@
     public static class ClaimTypes
     {
         public const string UserPolicy = "policy";
-        public const string Kontragent = "kontragent";
-        public const string Driver = "driver";
         public const string SecurityStamp = "security_stamp";
         public const string UserId = "userId";
         public const string UserLogin = "login";
