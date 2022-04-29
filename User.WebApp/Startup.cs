@@ -278,7 +278,7 @@ namespace CRM.User.WebApp
                     // global odata query options
                     routeBuilder.Count().MaxTop(1000).Select().Expand().Filter();
 
-                    routeBuilder.MapVersionedODataRoutes("odata", "api", modelBuilder.GetEdmModels());
+                    routeBuilder.MapVersionedODataRoutes("odata", "api/v{v:apiVersion}", modelBuilder.GetEdmModels());
                 });
 
             app.UseSpa(spa =>

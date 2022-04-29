@@ -34,7 +34,7 @@ namespace CRM.IdentityServer.Controllers.Api
     [DisableConcurrentExecution(10)]
     [ApiVersion("1.0")]
     [ApiController]
-    [Route("v{apiVersion:apiVersion}/[controller]")]
+    [Route("api/v{apiVersion:apiVersion}/[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly IIdentityServerInteractionService interaction;

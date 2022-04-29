@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Hangfire;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Models;
 
 namespace CRM.IdentityServer
@@ -65,8 +66,19 @@ namespace CRM.IdentityServer
             services.ConfigureIdentityServer(Configuration);
 
             services.AddApiVersioning(options => options.ReportApiVersions = true);
-            
-            
+
+            services.AddVersionedApiExplorer(
+                options =>
+                {
+                    // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
+                    // note: the specified format code will format the version as "'v'major[.minor][-status]"
+                    options.GroupNameFormat = "'v'VVV";
+
+                    // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
+                    // can also be used to control the format of the API version in route templates
+                    options.SubstituteApiVersionInUrl = true;
+                });
+
             services.ConfigureEmail(Configuration);
             services.ConfigureRazorTemplateEngine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             
@@ -97,7 +109,7 @@ namespace CRM.IdentityServer
         }
 
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,IApiVersionDescriptionProvider provider)
         {
             if (!Env.IsDevelopment())
             {
@@ -143,7 +155,9 @@ namespace CRM.IdentityServer
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    foreach (var description in provider.ApiVersionDescriptions)
+                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
+                            description.GroupName.ToUpperInvariant());
                     options.RoutePrefix = "swagger";
                 });
             }

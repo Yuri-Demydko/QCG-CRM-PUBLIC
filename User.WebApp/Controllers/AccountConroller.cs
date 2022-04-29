@@ -11,11 +11,11 @@ namespace CRM.User.WebApp.Controllers
     [ApiVersion("1.0")]
     [ApiController]
     [Controller]
-    [Route("api/[controller]")]
+    [Route("api/v{apiVersion:apiVersion}/[controller]")]
     public class AccountController : Controller
     {
         [HttpGet]
-        [Route("[controller]/Logout")]
+        [Route("[action]")]
         public async Task Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

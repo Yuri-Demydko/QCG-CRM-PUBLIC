@@ -6,15 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Configuration/IdentityServerConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Configurations/IdentityServerClientConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Configurations/IdentityServerClientConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/AccountConroller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/AccountConroller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.WebApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +61,7 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.User.WebApp: CRM.User.WebApp">
+  <component name="RunManager" selected=".NET Launch Settings Profile.CRM.IdentityServer">
     <configuration name="CRM.IdentityServer" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
@@ -119,6 +114,7 @@
       <workItem from="1650900483273" duration="8752000" />
       <workItem from="1650993185900" duration="3813000" />
       <workItem from="1651071454253" duration="8175000" />
+      <workItem from="1651212448081" duration="1897000" />
     </task>
     <servers />
   </component>
@@ -150,10 +146,10 @@
           <line>348</line>
           <properties documentPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs" initialLine="340" containingFunctionPresentation="method 'SendVerifyEmailForPasswordReset'">
             <startOffsets>
-              <option value="12992" />
+              <option value="12996" />
             </startOffsets>
             <endOffsets>
-              <option value="13045" />
+              <option value="13049" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
@@ -170,19 +166,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/HomeController.cs</url>
-          <line>12</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/HomeController.cs" initialLine="12" containingFunctionPresentation="method 'Index'">
-            <startOffsets>
-              <option value="238" />
-            </startOffsets>
-            <endOffsets>
-              <option value="250" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/CRM.IdentityServer/Controllers/AccountController.cs</url>
