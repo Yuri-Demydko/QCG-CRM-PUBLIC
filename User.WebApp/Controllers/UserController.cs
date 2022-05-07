@@ -8,6 +8,7 @@ using CRM.DAL.Models.DatabaseModels.Users.VerifyCodes.Enums;
 using CRM.DAL.Models.RequestModels.ChangeEmail;
 using CRM.DAL.Models.RequestModels.ChangePassword;
 using CRM.IdentityServer.Extensions.Constants;
+using CRM.ServiceCommon.Clients;
 using CRM.ServiceCommon.Services.CodeService;
 using CRM.User.WebApp.Models.Basic;
 using CRM.User.WebApp.Models.Basic.User.UserProfileDto;
@@ -34,14 +35,16 @@ namespace CRM.User.WebApp.Controllers
 
         private readonly IMapper mapper;
         private readonly ICodeService codeService;
+        private readonly SiaApiClient sia;
        
         public UserController(ILogger<UserController> logger, UserDbContext userDbContext,
-            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper, ICodeService codeService) : base(
+            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper, ICodeService codeService, SiaApiClient sia) : base(
             logger, userDbContext,
             userManager, httpContextAccessor)
         {
             this.mapper = mapper;
             this.codeService = codeService;
+            this.sia = sia;
         }
 
         /// <summary>
@@ -67,6 +70,24 @@ namespace CRM.User.WebApp.Controllers
                 .FirstOrDefaultAsync(i => i.Id == userId);
             
             return StatusCode(StatusCodes.Status200OK, mapper.Map<UserProfileDto>(user));
+        }
+        
+        /// <summary>
+        ///     Get current User.
+        /// </summary>
+        /// <returns>The current User.</returns>
+        /// <response code="200">The User was successfully retrieved.</response>
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(DAL.Models.DatabaseModels.Users.User), StatusCodes.Status200OK)]
+        [ODataRoute("SiaTest")]
+        [EnableQuery]
+        public async Task<IActionResult> GetSiaTest()
+        {
+            QueryIncludeOptimizedManager.AllowIncludeSubPath = true;
+
+            var res = await sia.GetWalletAsync();
+            
+            return StatusCode(StatusCodes.Status200OK, res);
         }
 
         /// <summary>

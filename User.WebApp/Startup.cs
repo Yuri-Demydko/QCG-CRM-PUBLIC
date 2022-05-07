@@ -146,6 +146,8 @@ namespace CRM.User.WebApp
 
             services.ConfigureRazorTemplateEngine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 
+            services.ConfigureSiaClient(Configuration);
+            
             services.AddHangfire(config =>
             {
                 config.UseNLogLogProvider();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CRM.DAL.Models.ResponseModels.Sia;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,6 +47,8 @@ namespace CRM.User.WebApp.Models.Basic.User
             item.Collection.Function("Roles").ReturnsCollection<IEnumerable<string>>();
 
 
+            item.Collection.Function("SiaTest").Returns<WalletResponse>();
+            
             item.Collection.Action("ChangePassword");
             item.Collection.Action("RequestEmailChange");
             item.Collection.Action("ConfirmEmailChange");
