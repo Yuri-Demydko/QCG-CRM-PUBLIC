@@ -3,15 +3,17 @@ using System;
 using CRM.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CRM.DAL.Migrations
 {
     [DbContext(typeof(GeneralDbContext))]
-    partial class GeneralDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220509154214_addSiaBalance")]
+    partial class addSiaBalance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
