@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCommon", "ServiceCom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Extensions", "IdentityServer.Extensions\IdentityServer.Extensions.csproj", "{9E2652C7-90BD-4249-9EA1-3B33A9C22532}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sia", "Sia\Sia.csproj", "{BB590040-9D5D-4FF4-95F1-B1643A02CE85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9E2652C7-90BD-4249-9EA1-3B33A9C22532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E2652C7-90BD-4249-9EA1-3B33A9C22532}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E2652C7-90BD-4249-9EA1-3B33A9C22532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB590040-9D5D-4FF4-95F1-B1643A02CE85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB590040-9D5D-4FF4-95F1-B1643A02CE85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB590040-9D5D-4FF4-95F1-B1643A02CE85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB590040-9D5D-4FF4-95F1-B1643A02CE85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

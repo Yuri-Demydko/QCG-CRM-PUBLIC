@@ -30,6 +30,8 @@ namespace CRM.DAL.Models.DatabaseModels.Users
         public ICollection<EmailChange> EmailChanges { get; set; }
         
         public DateTime RegistrationDate { get; set; }
+        
+        public decimal SiaCoinBalance { get; set; }
     }
 
     public class UserConfiguration : IEntityTypeConfiguration<User>

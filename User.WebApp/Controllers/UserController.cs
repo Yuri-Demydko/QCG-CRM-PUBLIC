@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 using AutoMapper;
 using CRM.DAL.Models.DatabaseModels.EmailChanges;
@@ -84,8 +85,9 @@ namespace CRM.User.WebApp.Controllers
         public async Task<IActionResult> GetSiaTest()
         {
             QueryIncludeOptimizedManager.AllowIncludeSubPath = true;
-
-            var res = await sia.GetWalletAsync();
+            
+            
+            var res = await sia.GetTransactionsAsync(0,-1);
             
             return StatusCode(StatusCodes.Status200OK, res);
         }

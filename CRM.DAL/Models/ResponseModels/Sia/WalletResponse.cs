@@ -7,7 +7,7 @@ using Newtonsoft.Json.Converters;
 
 namespace CRM.DAL.Models.ResponseModels.Sia
 {
-  public partial class WalletResponse
+  public class WalletResponse
   {
     [JsonProperty("encrypted")]
     public bool Encrypted { get; set; }
@@ -19,19 +19,19 @@ namespace CRM.DAL.Models.ResponseModels.Sia
     public bool Rescanning { get; set; }
 
     [JsonProperty("confirmedsiacoinbalance")]
-    public long Confirmedsiacoinbalance { get; set; }
+    public string Confirmedsiacoinbalance { get; set; }
 
     [JsonProperty("unconfirmedoutgoingsiacoins")]
-    public long Unconfirmedoutgoingsiacoins { get; set; }
+    public string Unconfirmedoutgoingsiacoins { get; set; }
 
     [JsonProperty("unconfirmedincomingsiacoins")]
-    public long Unconfirmedincomingsiacoins { get; set; }
+    public string Unconfirmedincomingsiacoins { get; set; }
 
     [JsonProperty("siafundbalance")]
-    public long Siafundbalance { get; set; }
+    public string Siafundbalance { get; set; }
 
     [JsonProperty("siacoinclaimbalance")]
-    public long Siacoinclaimbalance { get; set; }
+    public string Siacoinclaimbalance { get; set; }
 
     //@TODO: convert to numeric type 
     [JsonProperty("dustthreshold")]
