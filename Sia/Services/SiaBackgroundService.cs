@@ -1,5 +1,7 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
+using CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock;
 using CRM.ServiceCommon.Clients;
 using Hangfire;
 using Microsoft.Extensions.Logging;
@@ -10,13 +12,13 @@ namespace Sia.Services
     [Queue("sia")]
     public class SiaBackgroundService
     {
-         private readonly SiaDbContext userDbContext;
+         private readonly SiaDbContext siaDbContext;
          private readonly SiaApiClient siad;
          private readonly ILogger<SiaBackgroundService> logger;
 
-         public SiaBackgroundService(SiaDbContext userDbContext, ILogger<SiaBackgroundService> logger, SiaApiClient siad)
+         public SiaBackgroundService(SiaDbContext siaDbContext, ILogger<SiaBackgroundService> logger, SiaApiClient siad)
          {
-             this.userDbContext = userDbContext;
+             this.siaDbContext = siaDbContext;
              this.logger = logger;
              this.siad = siad;
          }
@@ -24,13 +26,36 @@ namespace Sia.Services
          public async Task MonitorConsensus()
          {
              var consensus = await siad.GetConsensusAsync();
-             
-             //consensus.
+
+             var lastMonitoredBlock = GetLastMonitoredBlock();
+
+             if (lastMonitoredBlock?.Hash == consensus.Currentblock||!consensus.Synced)
+             {
+                 return;
+             }
+
+             await siaDbContext.AddAsync(new SiaMonitoredBlock()
+             {
+                 Hash = consensus.Currentblock,
+                 Height = consensus.Height,
+                 MonitoringTime = DateTime.Now
+             });
+
+             await siaDbContext.SaveChangesAsync();
          }
+
+         private SiaMonitoredBlock? GetLastMonitoredBlock() =>
+             siaDbContext
+                 .SiaMonitoredBlocks
+                 .OrderByDescending(i => i.MonitoringTime)
+                 .FirstOrDefault();
 
          public async Task MonitorReceives()
          {
              //@TODO calc blocks, calc confirmations
+             var lastBlock = GetLastMonitoredBlock();
+             
+             
              var tSet = await siad.GetTransactionsAsync(0,-1);
 
              var processedTSet = tSet.ConfirmedTransactions

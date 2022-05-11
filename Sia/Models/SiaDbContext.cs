@@ -9,6 +9,8 @@ using CRM.DAL.Models.DatabaseModels.Products;
 using CRM.DAL.Models.DatabaseModels.ProductsComments;
 using CRM.DAL.Models.DatabaseModels.ProductsKontragents;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
+using CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock;
+using CRM.DAL.Models.DatabaseModels.SiaTransaction;
 using CRM.DAL.Models.DatabaseModels.Tags;
 using CRM.DAL.Models.DatabaseModels.Users;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
@@ -56,6 +58,10 @@ namespace Sia.Models
         public DbSet<Tag> Tags { get; set; }
         
         public DbSet<ProductComment> ProductComments { get; set; }
+        
+        public DbSet<SiaMonitoredBlock> SiaMonitoredBlocks { get; set; }
+        
+        public DbSet<SiaTransaction> SiaTransactions { get; set; }
 
 
 
@@ -78,6 +84,8 @@ namespace Sia.Models
             modelBuilder.ApplyConfiguration(new KontragentInfoConfiguration());
             modelBuilder.ApplyConfiguration(new FileConfiguration());
             modelBuilder.ApplyConfiguration(new ProductCommentConfiguration());
+
+            modelBuilder.ApplyConfiguration(new SiaTransactionConfiguration());
 
         }
     }

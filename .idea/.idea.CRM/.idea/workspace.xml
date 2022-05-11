@@ -11,7 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaMonitoredBlock/SiaMonitoredBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaMonitoredBlock/SiaMonitoredBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/ConsensusResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/ConsensusResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sia/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +59,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3f02ab6c06204077b75255dc7e3889a138e00/da/68f66360/Uri.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b0c362c2748b40349afff9c52b422d7aec00/3d/9cb4ee79/GlobalConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b6d9aef891d740fada4474a66a67cc9d76348d742c9818aa2f7592a2e55aa7/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8c54972f91e9f1369a47cbb0a8a950e5e423d1e344b06b2fe0849c2f6189f0/SingleQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f987c1210c8b9931b2928ae592b2db8d2236c8037818eec65f5aadbfc650/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99fc5aaf31d34179885695218b6e1b2920200/1d/43bab6f3/PostgreSqlBootstrapperConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/688e8ef4bc7f17980858831229081c99cdde9406be5cfe34d43f2f955ca74b4/IdentityUserClaim.cs" root0="SKIP_HIGHLIGHTING" />
@@ -168,7 +173,7 @@
       <workItem from="1651818079271" duration="109000" />
       <workItem from="1651818216631" duration="1537000" />
       <workItem from="1652082876272" duration="22550000" />
-      <workItem from="1652271354609" duration="3279000" />
+      <workItem from="1652271354609" duration="4657000" />
     </task>
     <servers />
   </component>
@@ -262,26 +267,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs</url>
-          <line>48</line>
+          <line>75</line>
           <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" initialLine="43" containingFunctionPresentation="method 'MonitorReceives'">
             <startOffsets>
-              <option value="1648" />
+              <option value="2566" />
             </startOffsets>
             <endOffsets>
-              <option value="1649" />
+              <option value="2567" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs</url>
-          <line>31</line>
+          <line>58</line>
           <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" initialLine="26" containingFunctionPresentation="method 'MonitorReceives'">
             <startOffsets>
-              <option value="870" />
+              <option value="1788" />
             </startOffsets>
             <endOffsets>
-              <option value="919" />
+              <option value="1837" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="28" />

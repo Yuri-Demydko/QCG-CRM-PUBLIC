@@ -8,7 +8,7 @@ namespace CRM.DAL.Models.ResponseModels.Sia
         public bool Synced { get; set; }
 
         [JsonProperty("height")]
-        public string Height { get; set; }
+        public long Height { get; set; }
 
         [JsonProperty("currentblock")]
         public string Currentblock { get; set; }
