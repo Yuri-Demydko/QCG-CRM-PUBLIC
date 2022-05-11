@@ -37,7 +37,7 @@ namespace Sia.Services
              await siaDbContext.AddAsync(new SiaMonitoredBlock()
              {
                  Hash = consensus.Currentblock,
-                 //Height = consensus.Height,
+                 Height = consensus.Height,
                  MonitoringTime = DateTime.Now
              });
 

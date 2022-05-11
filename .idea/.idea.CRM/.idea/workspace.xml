@@ -9,14 +9,7 @@
     <projectFile profileName="Sia">Sia/Sia.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaMonitoredBlock/SiaMonitoredBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaMonitoredBlock/SiaMonitoredBlock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/ConsensusResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/ConsensusResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Startup.cs" afterDir="false" />
-    </list>
+    <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -173,7 +166,7 @@
       <workItem from="1651818079271" duration="109000" />
       <workItem from="1651818216631" duration="1537000" />
       <workItem from="1652082876272" duration="22550000" />
-      <workItem from="1652271354609" duration="4657000" />
+      <workItem from="1652271354609" duration="5008000" />
     </task>
     <servers />
   </component>
@@ -270,10 +263,10 @@
           <line>75</line>
           <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" initialLine="43" containingFunctionPresentation="method 'MonitorReceives'">
             <startOffsets>
-              <option value="2566" />
+              <option value="2564" />
             </startOffsets>
             <endOffsets>
-              <option value="2567" />
+              <option value="2565" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
@@ -283,10 +276,10 @@
           <line>58</line>
           <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" initialLine="26" containingFunctionPresentation="method 'MonitorReceives'">
             <startOffsets>
-              <option value="1788" />
+              <option value="1786" />
             </startOffsets>
             <endOffsets>
-              <option value="1837" />
+              <option value="1835" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="28" />
