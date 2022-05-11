@@ -8,7 +8,7 @@ namespace CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         
-        public long Height { get; set; }
+        //public long Height { get; set; }
         
         public string Hash { get; set; }
         
