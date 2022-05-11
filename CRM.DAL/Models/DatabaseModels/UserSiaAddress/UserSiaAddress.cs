@@ -16,6 +16,8 @@ namespace CRM.DAL.Models.DatabaseModels.UserSiaAddress
         public User User { get; set; }
         
         public string Address { get; set; }
+        
+        public DateTime CreationDate { get; set; }
     }
     
     public class UserSiaAddressConfiguration : IEntityTypeConfiguration<UserSiaAddress>
