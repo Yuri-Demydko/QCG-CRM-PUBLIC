@@ -24,6 +24,8 @@ namespace CRM.DAL.Models.DatabaseModels.SiaTransaction
         public long Confirmations { get; set; }
         
         public DateTime RegistrationTime { get; set; }
+        
+        public string DestinationAddress { get; set; }
 
     }
     

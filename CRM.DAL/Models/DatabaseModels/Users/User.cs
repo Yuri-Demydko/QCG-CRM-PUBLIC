@@ -36,11 +36,11 @@ namespace CRM.DAL.Models.DatabaseModels.Users
         
         public decimal SiaCoinBalance { get; set; }
 
-        // [NotMapped]
-        // [Computed]
-        // public string? LastSiaAddress => SiaAddresses?
-        //     .OrderByDescending(r => r.CreationDate)
-        //     .FirstOrDefault()?.Address;
+        [NotMapped]
+        [Computed]
+        public string? LastSiaAddress => SiaAddresses?
+            .OrderByDescending(r => r.CreationDate)
+            .FirstOrDefault()?.Address;
         
         public ICollection<SiaTransaction.SiaTransaction> SiaTransactions { get; set; }
         
