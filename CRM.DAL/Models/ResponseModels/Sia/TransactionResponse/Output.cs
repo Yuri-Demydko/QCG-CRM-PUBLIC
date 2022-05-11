@@ -11,7 +11,7 @@ namespace CRM.DAL.Models.ResponseModels.Sia.TransactionResponse
         public string Fundtype { get; set; }
 
         [JsonProperty("maturityheight")]
-        public long Maturityheight { get; set; }
+        public string Maturityheight { get; set; }
 
         [JsonProperty("walletaddress")]
         public bool Walletaddress { get; set; }

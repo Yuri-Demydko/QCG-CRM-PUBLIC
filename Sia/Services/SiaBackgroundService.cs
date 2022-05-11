@@ -30,15 +30,15 @@ namespace Sia.Services
                  .Select
                  (t => t.Outputs
                      .Where(r => r.Walletaddress)
-                     .Select(r => new {r.Relatedaddress, r.Value, Id = r.Id, Out = true})
+                     .Select(r => new {r.Relatedaddress, r.Value, Id = r.Id, Output = true})
                      .Union(t.Inputs.Where(f => f.Walletaddress)
-                         .Select(r => new {r.Relatedaddress, r.Value, Id = r.Parentid, Out = false})))
+                         .Select(r => new {r.Relatedaddress, r.Value, Id = r.Parentid, Output = false})))
                  .Where(r => r.Any())
                  .Select(r => r.First())
                  .ToList();
 
              processedTSet = processedTSet
-                 .Where(r => !processedTSet.Any(f => f.Out == !r.Out && f.Id == r.Id))
+                 .Where(r => !processedTSet.Any(f => f.Output == !r.Output && f.Id == r.Id))
                  .ToList();
              
          }

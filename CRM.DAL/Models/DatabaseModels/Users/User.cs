@@ -32,6 +32,10 @@ namespace CRM.DAL.Models.DatabaseModels.Users
         public DateTime RegistrationDate { get; set; }
         
         public decimal SiaCoinBalance { get; set; }
+        
+        public string? LastSiaAddress { get; set; }
+        
+        public ICollection<SiaTransaction.SiaTransaction> SiaTransactions { get; set; }
     }
 
     public class UserConfiguration : IEntityTypeConfiguration<User>

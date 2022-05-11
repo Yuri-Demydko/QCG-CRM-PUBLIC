@@ -8,10 +8,10 @@ namespace CRM.DAL.Models.ResponseModels.Sia.TransactionResponse
         public string Parentid { get; set; }
 
         [JsonProperty("publickeyindex")]
-        public long Publickeyindex { get; set; }
+        public string Publickeyindex { get; set; }
 
         [JsonProperty("timelock")]
-        public long Timelock { get; set; }
+        public string Timelock { get; set; }
 
         [JsonProperty("coveredfields")]
         public Transaction Coveredfields { get; set; }
