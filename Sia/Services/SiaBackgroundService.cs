@@ -54,24 +54,55 @@ namespace Sia.Services
          {
              //@TODO calc blocks, calc confirmations
              var lastBlock = GetLastMonitoredBlock();
-             
-             
-             var tSet = await siad.GetTransactionsAsync(0,-1);
 
-             var processedTSet = tSet.ConfirmedTransactions
+             var startHeight = lastBlock != null ? lastBlock.Height - 1 : 0;
+             
+             var transactionsResponse = await siad.GetTransactionsAsync(startHeight,-1);
+
+             var processedTransactionSet = transactionsResponse.ConfirmedTransactions?
                  .Select
-                 (t => t.Outputs
+                 (t =>
+                     new{
+                         innerObject= t?.Outputs
                      .Where(r => r.Walletaddress)
-                     .Select(r => new {r.Relatedaddress, r.Value, Id = r.Id, Output = true})
-                     .Union(t.Inputs.Where(f => f.Walletaddress)
-                         .Select(r => new {r.Relatedaddress, r.Value, Id = r.Parentid, Output = false})))
-                 .Where(r => r.Any())
-                 .Select(r => r.First())
+                     .Select(r => 
+                         new
+                         {
+                             r.Relatedaddress, 
+                             r.Value,
+                             r.Id, 
+                             Output = true
+                         }).ToList()
+                     .Union(t.Inputs
+                         .Where(f => f.Walletaddress)
+                         .Select(r => 
+                             new
+                             {
+                                 r.Relatedaddress, 
+                                 r.Value, 
+                                 Id = r.Parentid, 
+                                 Output = false
+                             })),
+                         ConfirmationHeight = t?.Confirmationheight
+                     }
+                     )
+                 .Where(r => r.innerObject.Any())
+                 .Select(r => 
+                     new
+                     {
+                         Address=r.innerObject.First().Relatedaddress,
+                         r.innerObject.First().Value,
+                         r.innerObject.First().Output,
+                         r.innerObject.First().Id,
+                         ConfirmHeight = r.ConfirmationHeight
+                     })
                  .ToList();
 
-             processedTSet = processedTSet
-                 .Where(r => !processedTSet.Any(f => f.Output == !r.Output && f.Id == r.Id))
+             processedTransactionSet = processedTransactionSet?
+                 .Where(r => 
+                     !processedTransactionSet.Any(f => f.Output == !r.Output && f.Id == r.Id))
                  .ToList();
+             
              
          }
          
