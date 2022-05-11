@@ -13,10 +13,13 @@ namespace Sia.Services
             this.db = db;
         }
 
-        public async Task Match(Guid id)
+        public async Task Match(string id)
         {
-            // db.Query("AspNetUsers")
-            //     .
+           await db.StatementAsync("update [SiaTransactions]" +
+                              "set [UserId]=(select [AspNetUsers].[Id] from [AspNetUsers]" +
+                              "join [UserSiaAddresses] on [AspNetUsers].[Id] = [UserSiaAddresses].[UserId]" +
+                              "where [UserSiaAddresses].[Address]=[SiaTransactions].[DestinationAddress])" +
+                              $"where [SiaTransactions].[Id]=\'{id}\'");
         }
         
     }

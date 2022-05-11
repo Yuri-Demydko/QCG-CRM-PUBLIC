@@ -26,6 +26,8 @@ namespace CRM.DAL.Models.DatabaseModels.SiaTransaction
         public DateTime RegistrationTime { get; set; }
         
         public string DestinationAddress { get; set; }
+        
+        public bool OnBalance { get; set; }
 
     }
     

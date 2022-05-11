@@ -1,12 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock;
 using CRM.DAL.Models.DatabaseModels.SiaTransaction;
+using CRM.DAL.Models.ResponseModels.Sia;
 using CRM.ServiceCommon.Clients;
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Sia.Helpers;
 using Sia.Models;
 
 namespace Sia.Services
@@ -24,16 +27,19 @@ namespace Sia.Services
              this.logger = logger;
              this.siad = siad;
          }
+         
 
-         public async Task MonitorConsensus()
+         private async Task<ConsensusResponse> RegisterBlockAsync()
          {
              var consensus = await siad.GetConsensusAsync();
-
+             
+             logger.LogInformation($"Consensus monitoring (lastblock - {consensus.Currentblock})");
+             
              var lastMonitoredBlock = GetLastMonitoredBlock();
 
-             if (lastMonitoredBlock?.Hash == consensus.Currentblock||!consensus.Synced)
+             if (lastMonitoredBlock?.Hash == consensus.Currentblock || !consensus.Synced)
              {
-                 return;
+                 return consensus;
              }
 
              await siaDbContext.AddAsync(new SiaMonitoredBlock()
@@ -44,6 +50,10 @@ namespace Sia.Services
              });
 
              await siaDbContext.SaveChangesAsync();
+             
+             logger.LogInformation($"Registered block - {consensus.Currentblock}");
+             
+             return consensus;
          }
 
          private SiaMonitoredBlock? GetLastMonitoredBlock() =>
@@ -105,33 +115,35 @@ namespace Sia.Services
                      !processedTransactionSet.Any(f => f.Output == !r.Output && f.Id == r.Id))
                  .ToList();
 
+             var processedTransactionIds = processedTransactionSet.Select(r=>r.Id).ToList();
              var registeredTransactions = await siaDbContext.SiaTransactions
-                 .Where(r => processedTransactionSet.Any(t => t.Id == r.SiaId))
+                 .Where(r => processedTransactionIds.Contains(r.SiaId))
                  .ToListAsync();
 
-             var currentHeight = (await siad.GetConsensusAsync()).Height;
+             var consensus = await RegisterBlockAsync();
+             
+             var currentHeight = consensus.Height;
              
              registeredTransactions.ForEach(r=>r.Confirmations=currentHeight-r.InitialHeight);
 
              processedTransactionSet = processedTransactionSet?
                  .Where(r => registeredTransactions.All(rt => rt.SiaId != r.Id)).ToList();
 
-             // var addresses = processedTransactionSet.Select(r => r.Address).ToList();
-             //
-             // var relatedUsers = siaDbContext.Users
-             //     .Where(u => addresses.Contains(u.LastSiaAddress));
-
              var newTransactions = processedTransactionSet.Select(r =>
                  new SiaTransaction
                  {
                      SiaId = r.Id,
-                     CoinsValue = 0,
+                     CoinsValue = HastingsHelper.HastingsToCoins(r.Value),
                      InitialHeight = r.ConfirmHeight ?? 0,
-                     UserId = null,
-                     User = null,
-                     Confirmations = 0,
-                     RegistrationTime = DateTime.Now
-                 });
+                     Confirmations = currentHeight-r.ConfirmHeight??0,
+                     RegistrationTime = DateTime.Now,
+                     DestinationAddress = r.Address
+                 }).ToList()
+                 ;
+
+             await siaDbContext.SiaTransactions.AddRangeAsync(newTransactions);
+             await siaDbContext.SaveChangesAsync();
+             logger.LogInformation($"Transactions monitoring. New - {newTransactions.Count}. Old - {registeredTransactions.Count}");
          }
          
     }

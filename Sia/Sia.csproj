@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="ExtendedNumerics.BigRational" Version="1.1.0.50000" />
         <PackageReference Include="Hangfire.AspNetCore" Version="1.7.25" />
         <PackageReference Include="Hangfire.InMemory" Version="0.3.4" />
         <PackageReference Include="Hangfire.PostgreSql" Version="1.8.6" />

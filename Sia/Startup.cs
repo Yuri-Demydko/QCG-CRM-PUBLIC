@@ -58,6 +58,9 @@ namespace Sia
                     config.UseInMemoryStorage();
                 }
             });
+            
+            services.ConfigureDbEventHostedService(Configuration);
+
 
         }
 
@@ -86,7 +89,6 @@ namespace Sia
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             BackgroundJob.Enqueue<SiaBackgroundService>(j => j.MonitorReceives());
-            RecurringJob.AddOrUpdate<SiaBackgroundService>(j=>j.MonitorConsensus(),Cron.Minutely);
             // RecurringJob.AddOrUpdate<SiaBackgroundService>(j => j.MonitorReceives(), Cron.Minutely);
         }
     }
