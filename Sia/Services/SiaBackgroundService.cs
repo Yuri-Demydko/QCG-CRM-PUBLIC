@@ -21,6 +21,13 @@ namespace Sia.Services
              this.siad = siad;
          }
 
+         public async Task MonitorConsensus()
+         {
+             var consensus = await siad.GetConsensusAsync();
+             
+             //consensus.
+         }
+
          public async Task MonitorReceives()
          {
              //@TODO calc blocks, calc confirmations

@@ -10,6 +10,8 @@ namespace CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock
         
         public string Height { get; set; }
         
+        public string Hash { get; set; }
+        
         public DateTime MonitoringTime { get; set; }
     }
 }

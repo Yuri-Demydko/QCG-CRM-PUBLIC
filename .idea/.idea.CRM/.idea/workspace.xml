@@ -10,14 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaMonitoredBlock/SiaMonitoredBlock.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaTransaction/SiaTransaction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Output.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transactionsignature.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transactionsignature.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Unlockconditions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Unlockconditions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +168,7 @@
       <workItem from="1651818079271" duration="109000" />
       <workItem from="1651818216631" duration="1537000" />
       <workItem from="1652082876272" duration="22550000" />
-      <workItem from="1652271354609" duration="2081000" />
+      <workItem from="1652271354609" duration="3279000" />
     </task>
     <servers />
   </component>
@@ -269,26 +262,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs</url>
-          <line>43</line>
+          <line>48</line>
           <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" initialLine="43" containingFunctionPresentation="method 'MonitorReceives'">
             <startOffsets>
-              <option value="1565" />
+              <option value="1648" />
             </startOffsets>
             <endOffsets>
-              <option value="1566" />
+              <option value="1649" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs</url>
-          <line>26</line>
+          <line>31</line>
           <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" initialLine="26" containingFunctionPresentation="method 'MonitorReceives'">
             <startOffsets>
-              <option value="787" />
+              <option value="870" />
             </startOffsets>
             <endOffsets>
-              <option value="836" />
+              <option value="919" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="28" />
