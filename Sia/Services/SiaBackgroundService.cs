@@ -2,8 +2,10 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock;
+using CRM.DAL.Models.DatabaseModels.SiaTransaction;
 using CRM.ServiceCommon.Clients;
 using Hangfire;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Sia.Models;
 
@@ -102,8 +104,34 @@ namespace Sia.Services
                  .Where(r => 
                      !processedTransactionSet.Any(f => f.Output == !r.Output && f.Id == r.Id))
                  .ToList();
+
+             var registeredTransactions = await siaDbContext.SiaTransactions
+                 .Where(r => processedTransactionSet.Any(t => t.Id == r.SiaId))
+                 .ToListAsync();
+
+             var currentHeight = (await siad.GetConsensusAsync()).Height;
              
-             
+             registeredTransactions.ForEach(r=>r.Confirmations=currentHeight-r.InitialHeight);
+
+             processedTransactionSet = processedTransactionSet?
+                 .Where(r => registeredTransactions.All(rt => rt.SiaId != r.Id)).ToList();
+
+             // var addresses = processedTransactionSet.Select(r => r.Address).ToList();
+             //
+             // var relatedUsers = siaDbContext.Users
+             //     .Where(u => addresses.Contains(u.LastSiaAddress));
+
+             var newTransactions = processedTransactionSet.Select(r =>
+                 new SiaTransaction
+                 {
+                     SiaId = r.Id,
+                     CoinsValue = 0,
+                     InitialHeight = r.ConfirmHeight ?? 0,
+                     UserId = null,
+                     User = null,
+                     Confirmations = 0,
+                     RegistrationTime = DateTime.Now
+                 });
          }
          
     }

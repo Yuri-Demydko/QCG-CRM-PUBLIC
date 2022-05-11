@@ -13,6 +13,7 @@ using CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock;
 using CRM.DAL.Models.DatabaseModels.SiaTransaction;
 using CRM.DAL.Models.DatabaseModels.Tags;
 using CRM.DAL.Models.DatabaseModels.Users;
+using CRM.DAL.Models.DatabaseModels.UserSiaAddress;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -62,6 +63,8 @@ namespace Sia.Models
         public DbSet<SiaMonitoredBlock> SiaMonitoredBlocks { get; set; }
         
         public DbSet<SiaTransaction> SiaTransactions { get; set; }
+        
+        public DbSet<UserSiaAddress> UserSiaAddresses { get; set; }
 
 
 
@@ -86,6 +89,7 @@ namespace Sia.Models
             modelBuilder.ApplyConfiguration(new ProductCommentConfiguration());
 
             modelBuilder.ApplyConfiguration(new SiaTransactionConfiguration());
+            modelBuilder.ApplyConfiguration(new UserSiaAddressConfiguration());
 
         }
     }

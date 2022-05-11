@@ -36,6 +36,8 @@ namespace CRM.DAL.Models.DatabaseModels.Users
         public string? LastSiaAddress { get; set; }
         
         public ICollection<SiaTransaction.SiaTransaction> SiaTransactions { get; set; }
+        
+        public ICollection<UserSiaAddress.UserSiaAddress> SiaAddresses { get; set; }
     }
 
     public class UserConfiguration : IEntityTypeConfiguration<User>

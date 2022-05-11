@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CRM.ServiceCommon.Services.DbEventHandlerService;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +18,16 @@ namespace CRM.User.WebApp.Configurations
 
                 return new DbEventHostedService(new List<DbEventHandler>()
                 {
-                    
+                    new DbEventHandler()
+                    {
+                        Pattern = p =>
+                            p.TableName == "SiaTransactions" && new List<DbOperation>()
+                                { DbOperation.Insert }.Contains(p.Operation),
+                        Handler = e =>
+                        {
+                            var a = 1;
+                        }
+                    },
                 }, connectionString, logger);
             });
         }

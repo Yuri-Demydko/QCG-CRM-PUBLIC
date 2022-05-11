@@ -9,8 +9,10 @@ using CRM.DAL.Models.DatabaseModels.Products;
 using CRM.DAL.Models.DatabaseModels.ProductsComments;
 using CRM.DAL.Models.DatabaseModels.ProductsKontragents;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
+using CRM.DAL.Models.DatabaseModels.SiaTransaction;
 using CRM.DAL.Models.DatabaseModels.Tags;
 using CRM.DAL.Models.DatabaseModels.Users;
+using CRM.DAL.Models.DatabaseModels.UserSiaAddress;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -78,6 +80,9 @@ namespace CRM.User.WebApp.Models.Basic
             modelBuilder.ApplyConfiguration(new KontragentInfoConfiguration());
             modelBuilder.ApplyConfiguration(new FileConfiguration());
             modelBuilder.ApplyConfiguration(new ProductCommentConfiguration());
+            
+            modelBuilder.ApplyConfiguration(new UserSiaAddressConfiguration());
+            modelBuilder.ApplyConfiguration(new SiaTransactionConfiguration());
 
         }
     }

@@ -14,10 +14,12 @@ using CRM.DAL.Models.DatabaseModels.SiaTransaction;
 using CRM.DAL.Models.DatabaseModels.Tags;
 using CRM.DAL.Models.DatabaseModels.Users;
 using CRM.DAL.Models.DatabaseModels.Users.VerifyCodes;
+using CRM.DAL.Models.DatabaseModels.UserSiaAddress;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SiaTransactionConfiguration = CRM.DAL.Models.DatabaseModels.SiaTransaction.SiaTransactionConfiguration;
 
 namespace CRM.DAL
 {
@@ -46,6 +48,7 @@ namespace CRM.DAL
         public DbSet<Tag> Tags { get; set; }
         public DbSet<SiaTransaction> SiaTransactions { get; set; }
         public DbSet<SiaMonitoredBlock> SiaMonitoredBlocks { get; set; }
+        public DbSet<UserSiaAddress> UserSiaAddresses { get; set; }
 
 
         // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -86,8 +89,10 @@ namespace CRM.DAL
             modelBuilder.ApplyConfiguration(new KontragentInfoConfiguration());
             modelBuilder.ApplyConfiguration(new FileConfiguration());
             modelBuilder.ApplyConfiguration(new ProductCommentConfiguration());
-            modelBuilder.ApplyConfiguration(new SiaTransactionConfiguration());
             
+            modelBuilder.ApplyConfiguration(new SiaTransactionConfiguration());
+            modelBuilder.ApplyConfiguration(new UserSiaAddressConfiguration());
+
         }
     }
 }
