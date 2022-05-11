@@ -9,16 +9,7 @@
     <projectFile profileName="Sia">Sia/Sia.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/UserSiaAddress/UserSiaAddress.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Users/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Configurations/DbEventHostedServiceConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Configurations/DbEventHostedServiceConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/UserDbContext.cs" afterDir="false" />
-    </list>
+    <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,7 +170,7 @@
       <workItem from="1651818079271" duration="109000" />
       <workItem from="1651818216631" duration="1537000" />
       <workItem from="1652082876272" duration="22550000" />
-      <workItem from="1652271354609" duration="9966000" />
+      <workItem from="1652271354609" duration="10348000" />
     </task>
     <servers />
   </component>

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using CRM.DAL.Models.DatabaseModels.EmailChanges;
 using CRM.DAL.Models.DatabaseModels.KontragentUsers;
 using CRM.DAL.Models.DatabaseModels.PayCards;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
+using DelegateDecompiler;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -32,8 +35,12 @@ namespace CRM.DAL.Models.DatabaseModels.Users
         public DateTime RegistrationDate { get; set; }
         
         public decimal SiaCoinBalance { get; set; }
-        
-        public string? LastSiaAddress { get; set; }
+
+        // [NotMapped]
+        // [Computed]
+        // public string? LastSiaAddress => SiaAddresses?
+        //     .OrderByDescending(r => r.CreationDate)
+        //     .FirstOrDefault()?.Address;
         
         public ICollection<SiaTransaction.SiaTransaction> SiaTransactions { get; set; }
         
