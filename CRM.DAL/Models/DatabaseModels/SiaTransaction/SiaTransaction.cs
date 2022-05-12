@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CRM.DAL.Models.DatabaseModels.SiaTransaction
 {
+    [Table("SiaTransactions")]
     public class SiaTransaction
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

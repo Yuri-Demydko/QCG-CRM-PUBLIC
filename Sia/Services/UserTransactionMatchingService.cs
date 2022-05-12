@@ -15,11 +15,11 @@ namespace Sia.Services
 
         public async Task Match(string id)
         {
-           await db.StatementAsync("update [SiaTransactions]" +
-                              "set [UserId]=(select [AspNetUsers].[Id] from [AspNetUsers]" +
-                              "join [UserSiaAddresses] on [AspNetUsers].[Id] = [UserSiaAddresses].[UserId]" +
-                              "where [UserSiaAddresses].[Address]=[SiaTransactions].[DestinationAddress])" +
-                              $"where [SiaTransactions].[Id]=\'{id}\'");
+           await db.StatementAsync("update \"SiaTransactions\"" +
+                              "set \"UserId\"=(select \"AspNetUsers\".\"Id\" from \"AspNetUsers\"" +
+                              "join \"UserSiaAddresses\" on \"AspNetUsers\".\"Id\" = \"UserSiaAddresses\".\"UserId\"" +
+                              "where \"UserSiaAddresses\".\"Address\"=\"SiaTransactions\".\"DestinationAddress\")" +
+                              $"where \"SiaTransactions\".\"Id\"=\'{id}\'");
         }
         
     }

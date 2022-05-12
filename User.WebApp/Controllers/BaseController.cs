@@ -17,28 +17,28 @@ namespace CRM.User.WebApp.Controllers
     public abstract class BaseController<TModel> : ODataController
     {
         protected readonly ILogger<TModel> logger;
-        protected readonly UserDbContext UserDbContext;
+        protected readonly UserDbContext userDbContext;
         protected readonly UserManager<DAL.Models.DatabaseModels.Users.User> userManager;
 
         protected BaseController(ILogger<TModel> logger,
             UserDbContext userDbContext, UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor)
         {
             this.logger = logger;
-            this.UserDbContext = userDbContext;
+            this.userDbContext = userDbContext;
             this.userManager = userManager;
 
             var userId = this.userManager.GetUserId(httpContextAccessor.HttpContext.User);
 
             MappedDiagnosticsLogicalContext.Set("UserId", userId);
 
-            this.UserDbContext.UserId = userId;
+            this.userDbContext.UserId = userId;
         }
 
         protected BaseController(ILogger<TModel> logger,
             UserDbContext userDbContext)
         {
             this.logger = logger;
-            this.UserDbContext = userDbContext;
+            this.userDbContext = userDbContext;
         }
     }
 }

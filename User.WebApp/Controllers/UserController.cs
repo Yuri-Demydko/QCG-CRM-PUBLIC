@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CRM.DAL.Models.DatabaseModels.EmailChanges;
 using CRM.DAL.Models.DatabaseModels.Users.VerifyCodes.Enums;
+using CRM.DAL.Models.DatabaseModels.UserSiaAddress;
 using CRM.DAL.Models.RequestModels.ChangeEmail;
 using CRM.DAL.Models.RequestModels.ChangePassword;
+using CRM.DAL.Models.ResponseModels.Sia.Exceptions;
 using CRM.IdentityServer.Extensions.Constants;
 using CRM.ServiceCommon.Clients;
 using CRM.ServiceCommon.Services.CodeService;
@@ -15,6 +17,7 @@ using CRM.User.WebApp.Models.Basic;
 using CRM.User.WebApp.Models.Basic.User.UserProfileDto;
 using CRM.User.WebApp.Models.Request;
 using CRM.User.WebApp.Services;
+using DelegateDecompiler.EntityFrameworkCore;
 using Hangfire;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
@@ -62,12 +65,15 @@ namespace CRM.User.WebApp.Controllers
             QueryIncludeOptimizedManager.AllowIncludeSubPath = true;
 
             var userId = userManager.GetUserId(User);
-            var user = await UserDbContext.Users
+            var user = await userDbContext.Users
                 .IncludeOptimized(i => i.UserRoles.Select(ur => ur.Role))
                 .IncludeOptimized(i=>i.KontragentUsers.Select(r=>r.Kontragent))
                 .IncludeOptimized(i=>i.ProductUsers.Select(r=>r.Product))
                 .IncludeOptimized(r=>r.ProductComments)
                 .IncludeOptimized(r=>r.UserClaims)
+                .IncludeOptimized(r=>r.SiaAddresses)
+                .IncludeOptimized(r=>r.SiaTransactions)
+                .DecompileAsync()
                 .FirstOrDefaultAsync(i => i.Id == userId);
             
             return StatusCode(StatusCodes.Status200OK, mapper.Map<UserProfileDto>(user));
@@ -80,16 +86,33 @@ namespace CRM.User.WebApp.Controllers
         /// <response code="200">The User was successfully retrieved.</response>
         [Produces("application/json")]
         [ProducesResponseType(typeof(DAL.Models.DatabaseModels.Users.User), StatusCodes.Status200OK)]
-        [ODataRoute("SiaTest")]
+        [ODataRoute("RequestSiaAddress")]
         [EnableQuery]
-        public async Task<IActionResult> GetSiaTest()
+        public async Task<IActionResult> GetRequestSiaAddress()
         {
             QueryIncludeOptimizedManager.AllowIncludeSubPath = true;
-            
-            
-            var res = await sia.GetTransactionsAsync(0,-1);
-            
-            return StatusCode(StatusCodes.Status200OK, res);
+
+            try
+            {
+                var res = await sia.GetAddressAsync();
+
+                var user = await userManager.GetUserAsync(User);
+
+                await userDbContext.UserSiaAddresses.AddAsync(new UserSiaAddress()
+                {
+                    UserId = user.Id,
+                    Address = res.Address,
+                    CreationDate = DateTime.Now
+                });
+
+                await userDbContext.SaveChangesAsync();
+                
+                return StatusCode(StatusCodes.Status200OK, res);
+            }
+            catch (SiaApiException e)
+            {
+                return BadRequest(await e.FailedResponse.Content.ReadAsStringAsync());
+            }
         }
 
         /// <summary>
@@ -130,7 +153,7 @@ namespace CRM.User.WebApp.Controllers
             var user = await userManager.GetUserAsync(User);
 
             var result= await userManager.ChangePasswordAsync(user, request.OldPassword, request.NewPassword);
-            await UserDbContext.SaveChangesAsync();
+            await userDbContext.SaveChangesAsync();
             return result;
         }
 
@@ -181,7 +204,7 @@ namespace CRM.User.WebApp.Controllers
             BackgroundJob.Enqueue<EmailSenderService>(j =>
                 j.SendVerifyCodeEmail(request.NewEmail, codeResult.Code, VerifyCodeType.ChangeEmail));
 
-            await UserDbContext.EmailChanges.AddAsync(new EmailChange
+            await userDbContext.EmailChanges.AddAsync(new EmailChange
             {
                 UserId = user.Id,
                 NewEmail = request.NewEmail,
@@ -189,7 +212,7 @@ namespace CRM.User.WebApp.Controllers
                 CreatedAt = DateTime.Now,
                 UserToken = await userManager.GenerateChangeEmailTokenAsync(user,request.NewEmail)
             });
-            await UserDbContext.SaveChangesAsync();
+            await userDbContext.SaveChangesAsync();
             
             return new JsonResult(new
             {
@@ -225,7 +248,7 @@ namespace CRM.User.WebApp.Controllers
                 return BadRequest(validateCodeResult.GetErrorsString());
             }
 
-            var emailChange = await UserDbContext
+            var emailChange = await userDbContext
                 .EmailChanges
                 .OrderByDescending(i => i.CreatedAt)
                 .FirstOrDefaultAsync(i => i.UserId == user.Id
@@ -240,7 +263,7 @@ namespace CRM.User.WebApp.Controllers
 
             emailChange.Confirmed = true;
 
-            await UserDbContext.SaveChangesAsync();
+            await userDbContext.SaveChangesAsync();
 
             return NoContent();
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CRM.DAL.Models.ResponseModels.Sia;
+using CRM.DAL.Models.ResponseModels.Sia.TransactionResponse;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,13 +42,15 @@ namespace CRM.User.WebApp.Models.Basic.User
 
             item.Ignore(i => i.UserRoles);
 
+            item.Property(r => r.LastSiaAddress);
+
             item.Collection.Function("Profile")
                 .ReturnsFromEntitySet<UserProfileDto.UserProfileDto>(nameof(UserProfileDto));
             item.Collection.Function("Policies").ReturnsCollection<IEnumerable<string>>();
             item.Collection.Function("Roles").ReturnsCollection<IEnumerable<string>>();
 
 
-            item.Collection.Function("SiaTest").Returns<WalletResponse>();
+            item.Collection.Function("RequestSiaAddress").Returns<AddressResponse>();
             
             item.Collection.Action("ChangePassword");
             item.Collection.Action("RequestEmailChange");

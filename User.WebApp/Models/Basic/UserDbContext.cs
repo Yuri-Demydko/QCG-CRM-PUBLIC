@@ -57,6 +57,8 @@ namespace CRM.User.WebApp.Models.Basic
         
         public DbSet<Tag> Tags { get; set; }
         
+        public DbSet<UserSiaAddress> UserSiaAddresses { get; set; }
+
         public DbSet<DAL.Models.DatabaseModels.ProductsComments.ProductComment> ProductComments { get; set; }
 
 

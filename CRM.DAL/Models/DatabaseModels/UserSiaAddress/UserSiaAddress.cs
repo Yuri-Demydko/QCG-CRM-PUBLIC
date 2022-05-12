@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CRM.DAL.Models.DatabaseModels.UserSiaAddress
 {
+    [Table("UserSiaAddresses")]
     public class UserSiaAddress
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

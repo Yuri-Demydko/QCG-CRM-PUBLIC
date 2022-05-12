@@ -33,12 +33,10 @@ namespace Sia.Configurations
                         Pattern = p =>
                             p.TableName == "SiaTransactions" && new List<DbOperation>()
                                 {DbOperation.Update}.Contains(p.Operation) &&
-                            p.GetNew<SiaTransaction>().UserId != null && p.GetNew<SiaTransaction>().Confirmations >= 1 , //@TODO CONFIG
-                        Handler = e =>
-                        {
-                            var item = e.GetNew<SiaTransaction>();
-                            BackgroundJob.Enqueue<UserBalanceUpdateService>(j => j.Update(item.UserId,item.CoinsValue));
-                        }
+                            p.GetNew<SiaTransaction>().UserId != null && p.GetNew<SiaTransaction>().Confirmations >= 1&&
+                        !p.GetNew<SiaTransaction>().OnBalance, //@TODO CONFIG
+                        Handler = e => 
+                            BackgroundJob.Enqueue<UserBalanceUpdateService>(j => j.Update(e.EntryId))
                     },
                 }, connectionString, logger);
             });
