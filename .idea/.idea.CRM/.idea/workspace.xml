@@ -10,23 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaRenterAllowances/SiaRenterAllowance.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ProductBuy/Enums/ProductBuyRequestPaymentType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/SiaHttpResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ServiceCommon/Clients/ISiaPriceClient.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ServiceCommon/Clients/SiaPriceApiClientMock.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.WebApp/Services/ProductBuy/ProductBuyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/GeneralDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ProductBuy/ProductBuyErrorCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ProductBuy/ProductBuyErrorCode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ProductBuy/ProductBuyRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/RequestModels/ProductBuy/ProductBuyRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceCommon/Configurations/SiaClientConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceCommon/Configurations/SiaClientConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.WebApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +178,7 @@
       <workItem from="1652516119238" duration="36000" />
       <workItem from="1652516177203" duration="139000" />
       <workItem from="1652681726993" duration="1203000" />
-      <workItem from="1652705768766" duration="3407000" />
+      <workItem from="1652705768766" duration="3755000" />
     </task>
     <servers />
   </component>

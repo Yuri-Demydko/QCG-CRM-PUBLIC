@@ -17,5 +17,7 @@ namespace CRM.DAL.Models.DatabaseModels.SiaRenterAllowances
         public string Hosts { get; set; }
         
         public DateTime RegistrationTime { get; set; }
+        
+        public SiaRenterAllowanseRequestType Type { get; set; }
     }
 }

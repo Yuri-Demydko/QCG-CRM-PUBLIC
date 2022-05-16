@@ -28,8 +28,11 @@ namespace Sia.Services
              this.logger = logger;
              this.siad = siad;
          }
-         
-        
+
+         public async Task SetupRenter()
+         {
+             
+         }
          
          
     }
