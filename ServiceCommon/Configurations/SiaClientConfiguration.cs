@@ -22,8 +22,15 @@ namespace CRM.ServiceCommon.Configurations
                 var apiPass = siaSection.GetValue<string>("ApiPassword");
                 
                 var encPass = siaSection.GetValue<string>("EncPassword");
+
+                var renterSection = siaSection.GetSection("Renter");
+
+                var renterPeriod = renterSection.GetValue<string>("Period");
+                var renterRenew = renterSection.GetValue<string>("RenewWindow");
+                var renterFunds = renterSection.GetValue<string>("Funds");
+                var renterHosts = renterSection.GetValue<string>("Hosts");
                 
-                return new SiaApiClient(new HttpClient(),addr,apiPass,encPass); 
+                return new SiaApiClient(new HttpClient(),addr,apiPass,encPass,renterPeriod,renterRenew,renterFunds,renterHosts); 
             });
         }
     }

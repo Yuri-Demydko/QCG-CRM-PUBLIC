@@ -4,6 +4,7 @@ namespace CRM.DAL.Models.RequestModels.ProductBuy
     {
         Base,
         NotEnoughBalance,
-        TechnicalError
+        SiaPriceApiError,
+        UserNotFound
     }
 }

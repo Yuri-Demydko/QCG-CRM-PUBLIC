@@ -10,6 +10,7 @@ using CRM.DAL.Models.DatabaseModels.ProductsComments;
 using CRM.DAL.Models.DatabaseModels.ProductsKontragents;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
 using CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock;
+using CRM.DAL.Models.DatabaseModels.SiaRenterAllowances;
 using CRM.DAL.Models.DatabaseModels.SiaTransaction;
 using CRM.DAL.Models.DatabaseModels.Tags;
 using CRM.DAL.Models.DatabaseModels.Users;
@@ -49,6 +50,7 @@ namespace CRM.DAL
         public DbSet<SiaTransaction> SiaTransactions { get; set; }
         public DbSet<SiaMonitoredBlock> SiaMonitoredBlocks { get; set; }
         public DbSet<UserSiaAddress> UserSiaAddresses { get; set; }
+        public DbSet<SiaRenterAllowance> SiaRenterAllowances { get; set; }
 
 
         // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

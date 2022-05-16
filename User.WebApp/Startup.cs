@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using ClosedXML.Excel;
 using CRM.DAL.Models.DatabaseModels.Users;
 using CRM.IdentityServer.Extensions.Constants;
+using CRM.ServiceCommon.Clients;
 using CRM.ServiceCommon.Configurations;
 using CRM.ServiceCommon.Middlewares;
 using CRM.User.WebApp.Configurations;
@@ -181,8 +182,9 @@ namespace CRM.User.WebApp
 
             if(Env.IsDevelopment())
             {
-                services.AddScoped<IProductBuyService, ProductBuyServiceMock>();
-                services.AddScoped<IPayCardValidationService, PayCardValidationServiceMock>();
+              services.AddScoped<ISiaPriceClient, SiaPriceApiClientMock>();
+              services.AddScoped<IProductBuyService, ProductBuyService>();
+              services.AddScoped<IPayCardValidationService, PayCardValidationServiceMock>();
             }
             
             services.ConfigureAutoMapper();

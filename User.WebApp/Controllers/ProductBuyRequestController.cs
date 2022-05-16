@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Z.EntityFramework.Plus;
 
 namespace CRM.User.WebApp.Controllers
@@ -47,7 +48,7 @@ namespace CRM.User.WebApp.Controllers
         /// <response code="404">Some of products already purchased</response>
         /// /// <response code="400">Some of products not found</response>
         [Produces("application/json")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post([FromBody] ProductBuyRequest item)
         {
@@ -60,20 +61,28 @@ namespace CRM.User.WebApp.Controllers
 
             if (alreadyOwned)
             {
-                return BadRequest();
+                return BadRequest("Some products from list are already owned");
             }
 
             var notFoundProducts = (await userDbContext.Products
                 .CountAsync(i => item.ProductIds.Contains(i.Id))) != item.ProductIds.Count;
             if (notFoundProducts)
             {
-                return BadRequest();
+                return BadRequest("Some productIds not found in database");
             }
             
             //@TODO Переписать после уточнения работы с финансами
             var result = await productBuyService.ProcessRequestAsync(item);
 
-            if (!result.IsSuccess) return BadRequest();
+            if (!result.IsSuccess)
+            {
+                return BadRequest(new
+                {
+                    //@TODO TEMP
+                    result.IsSuccess,
+                    Errors=result.ErrorCodes.Select(r=>r.ToString())
+                });
+            }
             
             var productUsersNew = item.ProductIds.Select(p =>
                 new ProductUser()
@@ -82,7 +91,8 @@ namespace CRM.User.WebApp.Controllers
                     UserId = user.Id,
                     RelationType = ProductUserRelationType.Owned
                 });
-            await  userDbContext.ProductUsers.AddRangeAsync(productUsersNew);
+            
+            await userDbContext.ProductUsers.AddRangeAsync(productUsersNew);
             
             userDbContext.ProductUsers.RemoveRange(
                 userDbContext.ProductUsers.Where(r=>item.ProductIds.Contains(r.ProductId)
@@ -90,7 +100,8 @@ namespace CRM.User.WebApp.Controllers
                 );
             
             await userDbContext.SaveChangesAsync();
-            return NoContent();
+            
+            return Ok();
 
         }
         

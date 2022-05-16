@@ -64,7 +64,6 @@ namespace Sia.Services
 
          public async Task MonitorReceives()
          {
-             //@TODO calc blocks, calc confirmations
              var lastBlock = GetLastMonitoredBlock();
 
              var startHeight = lastBlock != null ? lastBlock.Height - 1 : 0;
