@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock;
+using CRM.DAL.Models.DatabaseModels.SiaRenterAllowances;
 using CRM.DAL.Models.DatabaseModels.SiaTransaction;
 using CRM.DAL.Models.ResponseModels.Sia;
 using CRM.ServiceCommon.Clients;
@@ -31,6 +33,24 @@ namespace Sia.Services
 
          public async Task SetupRenter()
          {
+             var init = await siaDbContext.SiaRenterAllowances
+                 .AnyAsync(i => i.Type == SiaRenterAllowanseRequestType.Init);
+
+             if (!init)
+             {
+               var result= await siad.PostInitRenterAsync();
+               await siaDbContext.SiaRenterAllowances.AddAsync(new SiaRenterAllowance()
+               {
+                   Funds = result.RequestData["Funds"],
+                   Hosts = result.RequestData["Hosts"],
+                   RenewWindow = result.RequestData["RenewWindow"],
+                   Period = result.RequestData["Period"],
+                   Type = SiaRenterAllowanseRequestType.Init,
+                   RegistrationTime = DateTime.Now
+               });
+               await siaDbContext.SaveChangesAsync();
+                 return;
+             }
              
          }
          

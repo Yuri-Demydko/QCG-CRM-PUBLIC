@@ -16,7 +16,7 @@ namespace CRM.DAL.Models.DatabaseModels.SiaTransaction
         
         public decimal CoinsValue { get; set; }
         
-        public long InitialHeight { get; set; }
+        public string InitialHeight { get; set; }
         
         public string UserId { get; set; }
         

@@ -1,5 +1,6 @@
 using System;
 using System.Buffers.Text;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -109,11 +110,23 @@ namespace CRM.ServiceCommon.Clients
             var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             var response = await client.PostAsync($"http://{siadAddress}/renter",content);
 
-            return new SiaHttpResponse()
+            if(response.IsSuccessStatusCode)
             {
-                Code = response.StatusCode,
-                Message = await response.Content.ReadAsStringAsync()
-            };
+                return new SiaHttpResponse()
+                {
+                    Code = response.StatusCode,
+                    Message = await response.Content.ReadAsStringAsync(),
+                    RequestData = new Dictionary<string, string>
+                    {
+                        {"Period", period},
+                        {"RenewWindow", renew},
+                        {"Funds", funds},
+                        {"Hosts", hosts}
+                    }
+                };
+            }
+
+            throw new SiaApiException(response);
         }
 
         public async Task<SiaHttpResponse> PostInitRenterAsync() =>

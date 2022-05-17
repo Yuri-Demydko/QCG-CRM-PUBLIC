@@ -32,7 +32,7 @@ namespace CRM.DAL.Models.ResponseModels.Sia.TransactionResponse
         public object[] Arbitrarydata { get; set; }
 
         [JsonProperty("transactionsignatures")]
-        public Transactionsignature[] Transactionsignatures { get; set; }
+        public object[] Transactionsignatures { get; set; }
 
         [JsonProperty("wholetransaction", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Wholetransaction { get; set; }

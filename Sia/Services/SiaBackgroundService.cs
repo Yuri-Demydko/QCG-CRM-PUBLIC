@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 using CRM.DAL.Models.DatabaseModels.SiaMonitoredBlock;
 using CRM.DAL.Models.DatabaseModels.SiaTransaction;
@@ -123,7 +124,10 @@ namespace Sia.Services
              
              var currentHeight = consensus.Height;
              
-             registeredTransactions.ForEach(r=>r.Confirmations=currentHeight-r.InitialHeight);
+             registeredTransactions.ForEach(r=>
+             {
+                 r.Confirmations = (long)(BigInteger.Parse(currentHeight.ToString()) - BigInteger.Parse(r.InitialHeight));
+             });
 
              processedTransactionSet = processedTransactionSet?
                  .Where(r => registeredTransactions.All(rt => rt.SiaId != r.Id)).ToList();
@@ -133,8 +137,8 @@ namespace Sia.Services
                  {
                      SiaId = r.Id,
                      CoinsValue = HastingsHelper.HastingsToCoins(r.Value),
-                     InitialHeight = r.ConfirmHeight ?? 0,
-                     Confirmations = currentHeight-r.ConfirmHeight??0,
+                     InitialHeight = r.ConfirmHeight ?? "0",
+                     Confirmations = (long)(BigInteger.Parse(currentHeight.ToString()) - BigInteger.Parse(r.ConfirmHeight ?? string.Empty)),
                      RegistrationTime = DateTime.Now,
                      DestinationAddress = r.Address
                  }).ToList()

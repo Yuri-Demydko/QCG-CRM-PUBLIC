@@ -11,7 +11,7 @@ namespace CRM.DAL.Models.ResponseModels.Sia.TransactionResponse
         public string Transactionid { get; set; }
 
         [JsonProperty("confirmationheight")]
-        public long Confirmationheight { get; set; }
+        public string Confirmationheight { get; set; }
 
         [JsonProperty("confirmationtimestamp")]
         public string Confirmationtimestamp { get; set; }

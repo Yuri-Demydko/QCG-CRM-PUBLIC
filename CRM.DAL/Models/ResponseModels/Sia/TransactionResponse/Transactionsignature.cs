@@ -18,5 +18,8 @@ namespace CRM.DAL.Models.ResponseModels.Sia.TransactionResponse
 
         [JsonProperty("signature")]
         public string Signature { get; set; }
+        
+        // [JsonProperty("transactionsignatures")]
+        // public object[] Transactionsignatures { get; set; }
     }
 }

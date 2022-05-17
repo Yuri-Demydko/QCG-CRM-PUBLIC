@@ -10,7 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/Files/FileResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/Files/FilesResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaTransaction/SiaTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaTransaction/SiaTransaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/SiaHttpResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/SiaHttpResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/TransactionResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/TransactionResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transactionsignature.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transactionsignature.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/TransactionsResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sia/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,10 +70,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd8acfd6340199d4186f76c46704be72adc5846271f6a7a3989216e18d82e/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6193ded9ed2401295f6e677f0fed205181600/2a/77b0b5b0/JobStorage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8c54972f91e9f1369a47cbb0a8a950e5e423d1e344b06b2fe0849c2f6189f0/SingleQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e0a8c48723f43e5f4917be47e13fd9aef821a120dd3a7ca475fc75aef9d54b/OptionsFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/936eda4d2e16a5280bf169ac53d37497e69eaa8a56d6db109f75d414a411/Lazy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ee8a2afb699af691187a95efde7dac48fcfcb7d3ec5dddbe639c8fc5da7836/UserInfoResponse.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6c5035e3834b680d75bb6b69be89a3fd78440aa3054dc9929be608deb1953e8/NoContentResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bf2fca7a0198cecc0906cf2ff04319c4d1a0c0b16bfc69d0b14c6ce25dfd/StatusCodeResult.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -83,7 +98,7 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.CRM.IdentityServer">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Sia">
     <configuration name="CRM.IdentityServer" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
@@ -178,7 +193,7 @@
       <workItem from="1652516119238" duration="36000" />
       <workItem from="1652516177203" duration="139000" />
       <workItem from="1652681726993" duration="1203000" />
-      <workItem from="1652705768766" duration="3755000" />
+      <workItem from="1652705768766" duration="8344000" />
     </task>
     <servers />
   </component>
@@ -243,6 +258,45 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs</url>
+          <line>35</line>
+          <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" initialLine="35" containingFunctionPresentation="method 'SetupRenter'">
+            <startOffsets>
+              <option value="1075" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1203" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs</url>
+          <line>122</line>
+          <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" initialLine="121" containingFunctionPresentation="method 'MonitorReceives'">
+            <startOffsets>
+              <option value="4463" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4506" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs</url>
+          <line>81</line>
+          <properties documentPath="$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs" initialLine="81" containingFunctionPresentation="method 'GetTransactionsAsync'">
+            <startOffsets>
+              <option value="3195" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3240" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
