@@ -63,7 +63,7 @@ namespace Sia.Services
                  .OrderByDescending(i => i.MonitoringTime)
                  .FirstOrDefault();
 
-         public async Task MonitorReceives()
+         public async Task MonitorTransactions()
          {
              var lastBlock = GetLastMonitoredBlock();
 
@@ -110,6 +110,13 @@ namespace Sia.Services
                      })
                  .ToList();
 
+             var consensus = await RegisterBlockAsync();
+             if (processedTransactionSet == null)
+             {
+                 logger.LogInformation($"Transactions monitoring. Nothing found");
+                 return;
+             }
+
              processedTransactionSet = processedTransactionSet?
                  .Where(r => 
                      !processedTransactionSet.Any(f => f.Output == !r.Output && f.Id == r.Id))
@@ -120,7 +127,7 @@ namespace Sia.Services
                  .Where(r => processedTransactionIds.Contains(r.SiaId))
                  .ToListAsync();
 
-             var consensus = await RegisterBlockAsync();
+             
              
              var currentHeight = consensus.Height;
              
@@ -141,8 +148,7 @@ namespace Sia.Services
                      Confirmations = (long)(BigInteger.Parse(currentHeight.ToString()) - BigInteger.Parse(r.ConfirmHeight ?? string.Empty)),
                      RegistrationTime = DateTime.Now,
                      DestinationAddress = r.Address
-                 }).ToList()
-                 ;
+                 }).ToList();
 
              await siaDbContext.SiaTransactions.AddRangeAsync(newTransactions);
              await siaDbContext.SaveChangesAsync();

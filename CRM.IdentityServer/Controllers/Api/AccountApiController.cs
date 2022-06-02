@@ -182,11 +182,9 @@ namespace CRM.IdentityServer.Controllers.Api
                 if (!validateCodeResult.IsSucceed())
                 {
                     ModelState.AddModelError(nameof(model.Code), validateCodeResult.GetErrorsString());
-                    var errors = ModelState.Select(x => x.Value.Errors)
-                        .Where(y => y.Count > 0)
-                        .ToList();
+                   
 
-                    return BadRequest(errors);
+                    return BadRequest(validateCodeResult);
                 }
             }
 

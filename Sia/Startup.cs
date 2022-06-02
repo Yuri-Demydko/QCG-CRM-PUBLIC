@@ -90,9 +90,9 @@ namespace Sia
 
             //BackgroundJob.Enqueue<SiaStorageRenterService>(j => j.SetupRenter());
             
-            BackgroundJob.Enqueue<SiaBackgroundService>(j => j.MonitorReceives());
+            //BackgroundJob.Enqueue<SiaBackgroundService>(j => j.MonitorTransactions());
             
-            // RecurringJob.AddOrUpdate<SiaBackgroundService>(j => j.MonitorReceives(), Cron.Minutely);
+             RecurringJob.AddOrUpdate<SiaBackgroundService>(j => j.MonitorTransactions(), Cron.Minutely);
         }
     }
 }

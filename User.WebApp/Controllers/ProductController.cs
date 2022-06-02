@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CRM.DAL.Models.DatabaseModels.ProductFile;
 using CRM.DAL.Models.DatabaseModels.Products;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
 using CRM.DAL.Models.RequestModels.ProductBuy;
+using CRM.ServiceCommon.Clients;
 using CRM.User.WebApp.Models.Basic;
 using CRM.User.WebApp.Models.UnnecessaryModels;
 using Microsoft.AspNet.OData;
@@ -26,14 +28,16 @@ namespace CRM.User.WebApp.Controllers
 
         private readonly IMapper mapper;
         private readonly UserDbContext userDbContext;
+        private readonly SiaApiClient siaApiClient;
         
         public ProductController(ILogger<ProductController> logger, UserDbContext userDbContext,
-            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper) : base(
+            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper, SiaApiClient siaApiClient) : base(
             logger, userDbContext,
             userManager, httpContextAccessor)
         {
             this.userDbContext = userDbContext;
             this.mapper = mapper;
+            this.siaApiClient = siaApiClient;
         }
         
         /// <summary>
@@ -346,6 +350,65 @@ namespace CRM.User.WebApp.Controllers
             await userDbContext.SaveChangesAsync();
             
             return NoContent();
+        }
+        
+        /// <summary>
+        ///     Get Product.
+        /// </summary>
+        /// <returns>The requested Product.</returns>
+        /// <response code="200">The Product was successfully retrieved.</response>
+        /// /// <response code="404">The Product was not found</response>
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(FileStreamResult), StatusCodes.Status200OK)]
+        [EnableQuery(HandleNullPropagation = HandleNullPropagationOption.False)]
+        [ODataRoute("({key})/DownloadFromSia")]
+        public async Task<IActionResult> GetDownloadFromSia(Guid key)
+        {
+            var user = await userManager.GetUserAsync(User);
+            var product = userDbContext.Products
+                .IncludeOptimized(r => r.ProductFiles)
+                .IncludeOptimized(r=>r.ProductUsers)
+                .IncludeOptimized(r=>r.ProductFiles.Select(r=>r.File))
+                .FirstOrDefault(r =>
+                    r.Id == key);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var item = product.ProductFiles
+                .Where(r => r.ProductFileType == ProductFileType.MainContaining)
+                .Select(r => r.File)
+                .FirstOrDefault();
+
+            if (item == null)
+            {
+                return NotFound("Main product containing not found");
+            }
+
+            if (!product.ProductUsers.Any(r => r.UserId == user.Id && r.RelationType == ProductUserRelationType.Owned))
+            {
+                return Forbid("Product isn't owned by current user");
+            }
+
+           
+
+            try
+            {
+                var result = siaApiClient.GetDownloadFileStream(item.Path);
+                
+                var file = await result.ResponseStream;
+                {
+                    return File(file, "application/octet-stream",item.OriginalName); //(fs, fileType, item.File.OriginalName); 
+                }
+
+            }
+            catch
+            {
+                return BadRequest("Api Error");
+            }
         }
         
         

@@ -21,12 +21,13 @@ namespace CRM.User.WebApp.Models.Basic.Product
         {
             var item = builder.EntitySet<DAL.Models.DatabaseModels.Products.Product>(nameof(DAL.Models.DatabaseModels.Products.Product)).EntityType;
 
-            
-             item.Action("Like");
-             item.Action("Dislike");
+
+            item.Action("Like");
+            item.Action("Dislike");
             item.Action("RemoveReaction");
             item.Action("AddToCart");
             item.Action("RemoveFromCart");
+            item.Action("DownloadFromSia");
             item.Collection.Action("ClearCart");
             item.Collection.Function("CartTotalPrices")
                 .ReturnsFromEntitySet<ShoppingCartPriceAggregationResult>(nameof(ShoppingCartPriceAggregationResult));

@@ -4,6 +4,8 @@
     {
         public ValidateCodeError? Error { get; set; }
 
+        public string ErrorName => Error?.ToString() ?? "";
+
         public enum ValidateCodeError
         {
             NoCodeFound,

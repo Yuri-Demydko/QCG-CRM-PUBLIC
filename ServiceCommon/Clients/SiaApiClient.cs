@@ -1,12 +1,14 @@
 using System;
 using System.Buffers.Text;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using CRM.DAL.Models.ResponseModels.Sia;
+using CRM.DAL.Models.ResponseModels.Sia.Downloads;
 using CRM.DAL.Models.ResponseModels.Sia.Exceptions;
 using CRM.DAL.Models.ResponseModels.Sia.TransactionResponse;
 using Newtonsoft.Json;
@@ -84,6 +86,24 @@ namespace CRM.ServiceCommon.Clients
                 return JsonConvert.DeserializeObject<TransactionsResponse>(await response.Content.ReadAsStringAsync());
             }
             throw new SiaApiException(response);
+        }
+
+        public SiaDownloadHttpResponse GetDownloadFileStream(string path)
+        {
+            var response = client.GetStreamAsync($"http://{siadAddress}/renter/stream/{path}")
+                 .ConfigureAwait(false);
+            
+                 return new SiaDownloadHttpResponse()
+                 {
+                     Code = HttpStatusCode.OK,
+                     ResponseStream = response,
+                     RequestData = new Dictionary<string, string>
+                     {
+                         {"content-type","application/octet-stream"}
+                     }
+                 };
+             
+            
         }
         
         public async Task<WalletResponse> GetWalletAsync()

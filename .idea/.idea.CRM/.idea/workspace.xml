@@ -10,20 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e651bf2c-872f-4105-9f49-872d1721818b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/Files/FileResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/Files/FilesResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/Downloads/SiaDownloadHttpResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CRM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaTransaction/SiaTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/SiaTransaction/SiaTransaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/SiaHttpResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/SiaHttpResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/TransactionResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/TransactionResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transactionsignature.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/Transactionsignature.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/ResponseModels/Sia/TransactionResponse/TransactionsResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Files/File.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.DAL/Models/DatabaseModels/Files/File.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CRM.IdentityServer/Controllers/Api/AccountApiController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Models/SiaDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServiceCommon/Services/CodeService/Models/ValidateCodeResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceCommon/Services/CodeService/Models/ValidateCodeResult.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sia/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sia/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Controllers/ProductFileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductFileController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/Product/ProductOdataConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.WebApp/Models/Basic/ProductFile/ProductFileOdataConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.WebApp/Models/Basic/ProductFile/ProductFileOdataConfiguration.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,38 +44,36 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6193ded9ed2401295f6e677f0fed205181600/4e/72085d15/GlobalConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33918e307316ea048242c24290cba34e538ec8e4f0d3d621c85ee92c6162f8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/46f317cf5ad976b6ca6838e27a48b4d7f9733922de0b5b22cf294ee932dfc8/Select.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a3fb8f789aeddad97416d094a73907b595dfb5ab44184a944b15669aaafbae/Select.SpeedOpt.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3f02ab6c06204077b75255dc7e3889a138e00/da/68f66360/Uri.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b0c362c2748b40349afff9c52b422d7aec00/3d/9cb4ee79/GlobalConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b6d9aef891d740fada4474a66a67cc9d76348d742c9818aa2f7592a2e55aa7/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f987c1210c8b9931b2928ae592b2db8d2236c8037818eec65f5aadbfc650/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99fc5aaf31d34179885695218b6e1b2920200/1d/43bab6f3/PostgreSqlBootstrapperConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/688e8ef4bc7f17980858831229081c99cdde9406be5cfe34d43f2f955ca74b4/IdentityUserClaim.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/311b1b90e76b4896ac5e0cc17848f2905f4235c3ed44f9df45b65295345f2/IdentityUserRole.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33918e307316ea048242c24290cba34e538ec8e4f0d3d621c85ee92c6162f8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b0c362c2748b40349afff9c52b422d7aec00/3d/9cb4ee79/GlobalConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ca1514a9eb474fa7e6b5b5e5622832b8f130d4a27330b23ba5309a555482ad91/UserValidator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90f719e38d4d8eeb2f8b62e8fdece5b492fbd624dc48823143f464ae8fb1ce7d/AuthorizeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99fc5aaf31d34179885695218b6e1b2920200/1d/43bab6f3/PostgreSqlBootstrapperConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ccadb7c06b243bfdfc4e568a7b40a7dab8ac094c261fb7cb87912c5e636fde/RoleValidator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90f719e38d4d8eeb2f8b62e8fdece5b492fbd624dc48823143f464ae8fb1ce7d/AuthorizeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3e6951c87abb38f23375ed1c56091c2a9fe3098bc09a2c864fce5ab78b27/Attribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/931d457418b5486884963914f8d3d204b0400/9a/2aa0b44d/Controller.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/311b1b90e76b4896ac5e0cc17848f2905f4235c3ed44f9df45b65295345f2/IdentityUserRole.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bf537ccfcce246e4aa37968d9553a24b2000/9e/48d5d7ea/IAuthorizeData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6a2ad5c92db767f1a636ad25b986cacdc4dbc28eb78745ae261e72758e0d3/ProtocolResponse.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6193ded9ed2401295f6e677f0fed205181600/4e/72085d15/GlobalConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a3fb8f789aeddad97416d094a73907b595dfb5ab44184a944b15669aaafbae/Select.SpeedOpt.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bf537ccfcce246e4aa37968d9553a24b2000/9e/48d5d7ea/IAuthorizeData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/46f317cf5ad976b6ca6838e27a48b4d7f9733922de0b5b22cf294ee932dfc8/Select.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/73bd48eb9e1e05745ce3b5da3c2673089a15187e76a414e85824dfa5d3/AuthenticationHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/43f02315c47c4021be0e9ef26643fc6bd2968/1c/899b2f54/TokenValidationParameters.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac934c66abbc4b3593b59b1ad0e07d581800/4b/2bc25507/OdataSwaggerSupportServiceExtension.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd8acfd6340199d4186f76c46704be72adc5846271f6a7a3989216e18d82e/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6193ded9ed2401295f6e677f0fed205181600/2a/77b0b5b0/JobStorage.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8c54972f91e9f1369a47cbb0a8a950e5e423d1e344b06b2fe0849c2f6189f0/SingleQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/43f02315c47c4021be0e9ef26643fc6bd2968/1c/899b2f54/TokenValidationParameters.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd8acfd6340199d4186f76c46704be72adc5846271f6a7a3989216e18d82e/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3f02ab6c06204077b75255dc7e3889a138e00/da/68f66360/Uri.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac934c66abbc4b3593b59b1ad0e07d581800/4b/2bc25507/OdataSwaggerSupportServiceExtension.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e0a8c48723f43e5f4917be47e13fd9aef821a120dd3a7ca475fc75aef9d54b/OptionsFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/936eda4d2e16a5280bf169ac53d37497e69eaa8a56d6db109f75d414a411/Lazy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f987c1210c8b9931b2928ae592b2db8d2236c8037818eec65f5aadbfc650/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/38f462cb76578f34cd106bbd1d96f262911c88fbbf17140fb259573fea4ecc5/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ee8a2afb699af691187a95efde7dac48fcfcb7d3ec5dddbe639c8fc5da7836/UserInfoResponse.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6c5035e3834b680d75bb6b69be89a3fd78440aa3054dc9929be608deb1953e8/NoContentResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/936eda4d2e16a5280bf169ac53d37497e69eaa8a56d6db109f75d414a411/Lazy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bf2fca7a0198cecc0906cf2ff04319c4d1a0c0b16bfc69d0b14c6ce25dfd/StatusCodeResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6c5035e3834b680d75bb6b69be89a3fd78440aa3054dc9929be608deb1953e8/NoContentResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/688e8ef4bc7f17980858831229081c99cdde9406be5cfe34d43f2f955ca74b4/IdentityUserClaim.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6193ded9ed2401295f6e677f0fed205181600/2a/77b0b5b0/JobStorage.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -98,7 +94,7 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Sia">
+  <component name="RunManager" selected=".NET Launch Settings Profile.User.WebApp: CRM.User.WebApp">
     <configuration name="CRM.IdentityServer" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CRM.IdentityServer/CRM.IdentityServer.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
@@ -193,7 +189,8 @@
       <workItem from="1652516119238" duration="36000" />
       <workItem from="1652516177203" duration="139000" />
       <workItem from="1652681726993" duration="1203000" />
-      <workItem from="1652705768766" duration="8344000" />
+      <workItem from="1652705768766" duration="32372000" />
+      <workItem from="1654173066099" duration="4378000" />
     </task>
     <servers />
   </component>
@@ -216,89 +213,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs</url>
-          <line>54</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" initialLine="54" containingFunctionPresentation="method 'Post'">
-            <startOffsets>
-              <option value="2164" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2212" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Services/ProductBuy/ProductBuyService.cs</url>
-          <line>27</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Services/ProductBuy/ProductBuyService.cs" initialLine="27" containingFunctionPresentation="method 'ProcessRequestAsync'">
-            <startOffsets>
-              <option value="985" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1142" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs</url>
-          <line>76</line>
-          <properties documentPath="$PROJECT_DIR$/User.WebApp/Controllers/ProductBuyRequestController.cs" initialLine="76" containingFunctionPresentation="method 'Post'">
-            <startOffsets>
-              <option value="3072" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3094" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs</url>
-          <line>35</line>
-          <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaStorageRenterService.cs" initialLine="35" containingFunctionPresentation="method 'SetupRenter'">
-            <startOffsets>
-              <option value="1075" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1203" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs</url>
-          <line>122</line>
-          <properties documentPath="$PROJECT_DIR$/Sia/Services/SiaBackgroundService.cs" initialLine="121" containingFunctionPresentation="method 'MonitorReceives'">
-            <startOffsets>
-              <option value="4463" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4506" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs</url>
-          <line>81</line>
-          <properties documentPath="$PROJECT_DIR$/ServiceCommon/Clients/SiaApiClient.cs" initialLine="81" containingFunctionPresentation="method 'GetTransactionsAsync'">
-            <startOffsets>
-              <option value="3195" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3240" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

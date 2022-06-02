@@ -23,6 +23,8 @@ namespace CRM.DAL.Models.DatabaseModels.Files
         
         public FileType Type { get; set; }
         
+        public string Base64Content { get; set; }
+        
         public ICollection<ProductFile.ProductFile> ProductFiles { get; set; }
         
         
