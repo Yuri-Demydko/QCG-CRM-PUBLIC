@@ -71,7 +71,11 @@ namespace CRM.User.WebApp
             services.AddIdentityForWebApi<DAL.Models.DatabaseModels.Users.User, Role>(options =>
                 {
                     options.ClaimsIdentity.UserIdClaimType = IdentityServer.Extensions.Constants.ClaimTypes.UserId;
-
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireUppercase = false;
                 })
                 .AddEntityFrameworkStores<UserDbContext>()
                 .AddRoles<Role>()

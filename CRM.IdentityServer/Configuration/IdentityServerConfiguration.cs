@@ -145,7 +145,7 @@ namespace CRM.IdentityServer.Configuration
                             Scopes.UserId
                         },
                         AllowOfflineAccess = true,
-                        AccessTokenLifetime = 300,
+                        AccessTokenLifetime = 1440, //1 day
                         AuthorizationCodeLifetime = 600,
                         AbsoluteRefreshTokenLifetime = 2592000,
                         SlidingRefreshTokenLifetime = 1296000,

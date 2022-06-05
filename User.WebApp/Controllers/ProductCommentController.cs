@@ -52,7 +52,7 @@ namespace CRM.User.WebApp.Controllers
 
             if (string.IsNullOrEmpty(item.Comment))
             {
-                return BadRequest();
+                return BadRequest("Empty comment");
             }
             
             var user = await userManager.GetUserAsync(User);
@@ -69,7 +69,7 @@ namespace CRM.User.WebApp.Controllers
 
             if (product.ProductUsers.All(p => p.RelationType != ProductUserRelationType.Owned))
             {
-                return BadRequest();
+                return BadRequest("Product not owned");
             }
 
             await userDbContext.ProductComments.AddAsync(new ProductComment()

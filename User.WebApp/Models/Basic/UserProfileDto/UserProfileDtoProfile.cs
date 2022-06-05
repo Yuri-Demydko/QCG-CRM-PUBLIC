@@ -1,7 +1,7 @@
 using System.Linq;
 using AutoMapper;
 
-namespace CRM.User.WebApp.Models.Basic.User.UserProfileDto
+namespace CRM.User.WebApp.Models.Basic.UserProfileDto
 {
     public class UserProfileDtoProfile : Profile
     {

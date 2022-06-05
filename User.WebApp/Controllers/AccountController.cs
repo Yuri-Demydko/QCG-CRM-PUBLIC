@@ -1,15 +1,25 @@
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Amazon.Runtime.Internal;
+using AutoMapper;
 using CRM.DAL.Models.RequestModels.Auth;
+using CRM.DAL.Models.ResponseModels.Auth;
+using CRM.User.WebApp.Models.Basic;
+using DelegateDecompiler.EntityFrameworkCore;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Z.EntityFramework.Plus;
 using TokenResponse = CRM.DAL.Models.ResponseModels.Auth.TokenResponse;
 
 namespace CRM.User.WebApp.Controllers
@@ -22,10 +32,12 @@ namespace CRM.User.WebApp.Controllers
     public class AccountController : Controller
     {
         private readonly IConfiguration configuration;
+        private readonly UserDbContext userDbContext;
 
-        public AccountController(IConfiguration configuration)
+        public AccountController(IConfiguration configuration, UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IMapper mapper, UserDbContext userDbContext)
         {
             this.configuration = configuration;
+            this.userDbContext = userDbContext;
         }
 
         /// <summary>
@@ -33,7 +45,7 @@ namespace CRM.User.WebApp.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <remarks>
-        ///     Token lifetime - 5 mins
+        ///     Token lifetime - 1 day
         /// </remarks>
         /// <response code="200">Auth and Refresh tokens</response>
         /// <response code="400">Validation error</response>
@@ -71,9 +83,43 @@ namespace CRM.User.WebApp.Controllers
                 Password = request.Password
             });
 
-        
+            if (!response.IsError)
+            {
+                var handler = new JwtSecurityTokenHandler();
+                var jsonToken = handler.ReadToken(response.AccessToken);
+                var tokenS = jsonToken as JwtSecurityToken;
+                var userId = tokenS!.Claims.First(r => r.Type == "userId").Value;
 
-            return response.IsError ? StatusCode(400, response.Error) : StatusCode(StatusCodes.Status200OK, new TokenResponse(response.AccessToken, response.RefreshToken));
+                var user = await userDbContext.Users
+                    .IncludeOptimized(r=>r.UserRoles)
+                    .IncludeOptimized(i => i.UserRoles.Select(ur => ur.Role))
+                    .IncludeOptimized(r => r.UserClaims)
+                    .IncludeOptimized(r => r.SiaAddresses)
+                    .DecompileAsync()
+                    .FirstOrDefaultAsync(r => r.Id == userId);
+                
+                
+
+                return StatusCode(StatusCodes.Status200OK, new AuthSuccessResponse()
+                {
+                    Tokens = new TokenResponse(response.AccessToken, response.RefreshToken, DateTime.Now.AddDays(1)),
+                    User = new UserAuthResponseModel()
+                    {
+                        IsActive = user.IsActive,
+                        RegistrationDate = user.RegistrationDate,
+                         Roles = user.UserRoles.Select(r=>r.Role.Name),
+                         LastSiaAddress = user.LastSiaAddress,
+                        SiaCoinBalance = user.SiaCoinBalance,
+                        Id = user.Id,
+                        Email = user.Email,
+                        EmailConfirmed = user.EmailConfirmed,
+                        UserName = user.UserName  
+                    }
+                });
+
+            }
+            
+            return StatusCode(400, response.Error);
         }
         
         
@@ -82,7 +128,7 @@ namespace CRM.User.WebApp.Controllers
         /// </summary>
         /// <param name="refreshToken">Refresh token</param>
         /// <remarks>
-        ///     Время жизни токена авторизации - 5 минут
+        ///     Время жизни токена авторизации - 1 день
         /// </remarks>
         /// <response code="200">Auth and Refresh tokens</response>
         /// <response code="404">User not found</response>
@@ -110,13 +156,42 @@ namespace CRM.User.WebApp.Controllers
         
                 RefreshToken = refreshToken
             });
-        
-            if (response.IsError)
+
+            if (!response.IsError)
             {
-                return StatusCode(400, response.Error);
+                var handler = new JwtSecurityTokenHandler();
+                var jsonToken = handler.ReadToken(response.AccessToken);
+                var tokenS = jsonToken as JwtSecurityToken;
+                var userId = tokenS!.Claims.First(r => r.Type == "userId").Value;
+
+                var user = await userDbContext.Users
+                    .IncludeOptimized(r => r.UserRoles)
+                    .IncludeOptimized(i => i.UserRoles.Select(ur => ur.Role))
+                    .IncludeOptimized(r => r.UserClaims)
+                    .IncludeOptimized(r => r.SiaAddresses)
+                    .DecompileAsync()
+                    .FirstOrDefaultAsync(r => r.Id == userId);
+
+
+                return StatusCode(StatusCodes.Status200OK, new AuthSuccessResponse()
+                {
+                    Tokens = new TokenResponse(response.AccessToken, response.RefreshToken, DateTime.Now.AddDays(1)),
+                    User = new UserAuthResponseModel()
+                    {
+                        IsActive = user.IsActive,
+                        RegistrationDate = user.RegistrationDate,
+                        Roles = user.UserRoles.Select(r => r.Role.Name),
+                        LastSiaAddress = user.LastSiaAddress,
+                        SiaCoinBalance = user.SiaCoinBalance,
+                        Id = user.Id,
+                        Email = user.Email,
+                        EmailConfirmed = user.EmailConfirmed,
+                        UserName = user.UserName
+                    }
+                });
             }
 
-            return StatusCode(StatusCodes.Status200OK, new TokenResponse(response.AccessToken, response.RefreshToken));
+            return StatusCode(400, response.Error);
         }
     }
 }

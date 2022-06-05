@@ -14,7 +14,7 @@ using CRM.IdentityServer.Extensions.Constants;
 using CRM.ServiceCommon.Clients;
 using CRM.ServiceCommon.Services.CodeService;
 using CRM.User.WebApp.Models.Basic;
-using CRM.User.WebApp.Models.Basic.User.UserProfileDto;
+using CRM.User.WebApp.Models.Basic.UserProfileDto;
 using CRM.User.WebApp.Models.Request;
 using CRM.User.WebApp.Services;
 using DelegateDecompiler.EntityFrameworkCore;
