@@ -139,6 +139,8 @@ namespace CRM.User.WebApp
             services.ConfigureDatabase(Configuration);
 
             services.ConfigureSqlKata(Configuration);
+            
+            services.ConfigureS3FileService(Configuration);
 
             services.AddDataProtection(options =>
                     options.ApplicationDiscriminator = "User Web App"

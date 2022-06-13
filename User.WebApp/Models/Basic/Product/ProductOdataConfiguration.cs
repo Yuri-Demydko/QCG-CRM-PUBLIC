@@ -27,7 +27,8 @@ namespace CRM.User.WebApp.Models.Basic.Product
             item.Action("RemoveReaction");
             item.Action("AddToCart");
             item.Action("RemoveFromCart");
-            item.Action("DownloadFromSia");
+            item.Action("TestUpload");
+            item.Action("Download");
             item.Collection.Action("ClearCart");
             item.Collection.Function("CartTotalPrices")
                 .ReturnsFromEntitySet<ShoppingCartPriceAggregationResult>(nameof(ShoppingCartPriceAggregationResult));

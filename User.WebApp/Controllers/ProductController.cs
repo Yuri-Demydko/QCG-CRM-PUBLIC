@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using CRM.DAL.Models.DatabaseModels.Files;
 using CRM.DAL.Models.DatabaseModels.ProductFile;
 using CRM.DAL.Models.DatabaseModels.Products;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
 using CRM.DAL.Models.RequestModels.ProductBuy;
-using CRM.ServiceCommon.Clients;
+using CRM.ServiceCommon.Services.Files;
 using CRM.User.WebApp.Models.Basic;
 using CRM.User.WebApp.Models.UnnecessaryModels;
 using Microsoft.AspNet.OData;
@@ -28,16 +31,16 @@ namespace CRM.User.WebApp.Controllers
 
         private readonly IMapper mapper;
         private readonly UserDbContext userDbContext;
-        private readonly SiaApiClient siaApiClient;
-        
+        private readonly IFileService fileService;
+
         public ProductController(ILogger<ProductController> logger, UserDbContext userDbContext,
-            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper, SiaApiClient siaApiClient) : base(
+            UserManager<DAL.Models.DatabaseModels.Users.User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper, IFileService fileService) : base(
             logger, userDbContext,
             userManager, httpContextAccessor)
         {
             this.userDbContext = userDbContext;
             this.mapper = mapper;
-            this.siaApiClient = siaApiClient;
+            this.fileService = fileService;
         }
         
         /// <summary>
@@ -358,24 +361,25 @@ namespace CRM.User.WebApp.Controllers
         /// <returns>The requested Product.</returns>
         /// <response code="200">The Product was successfully retrieved.</response>
         /// /// <response code="404">The Product was not found</response>
-        [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(FileStreamResult), StatusCodes.Status200OK)]
         [EnableQuery(HandleNullPropagation = HandleNullPropagationOption.False)]
-        [ODataRoute("({key})/DownloadFromSia")]
-        public async Task<IActionResult> GetDownloadFromSia(Guid key)
+        [ODataRoute("({key})/Download")]
+        public async Task GetDownload(Guid key, CancellationToken cancellationToken)
         {
             var user = await userManager.GetUserAsync(User);
-            var product = userDbContext.Products
+            var product = await userDbContext.Products
                 .IncludeOptimized(r => r.ProductFiles)
                 .IncludeOptimized(r=>r.ProductUsers)
                 .IncludeOptimized(r=>r.ProductFiles.Select(r=>r.File))
-                .FirstOrDefault(r =>
-                    r.Id == key);
+                .FirstOrDefaultAsync(r =>
+                    r.Id == key, cancellationToken: cancellationToken);
 
             if (product == null)
             {
-                return NotFound();
+                Response.StatusCode = 404;
+                await Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Product found"), cancellationToken);
+                return;
             }
 
             var item = product.ProductFiles
@@ -385,30 +389,76 @@ namespace CRM.User.WebApp.Controllers
 
             if (item == null)
             {
-                return NotFound("Main product containing not found");
+                Response.StatusCode = 404;
+                await Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Product file found"), cancellationToken);
+                return;
             }
 
             if (!product.ProductUsers.Any(r => r.UserId == user.Id && r.RelationType == ProductUserRelationType.Owned))
             {
-                return Forbid("Product isn't owned by current user");
+                Response.StatusCode = 401;
+               
+                await Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Product isn't owned"), cancellationToken);
+                return;
             }
 
-           
-
-            try
+            await using (var fileStream = await fileService.GetFileStreamTask(item.Path))
             {
-                var result = siaApiClient.GetDownloadFileStream(item.Path);
-                
-                var file = await result.ResponseStream;
-                {
-                    return File(file, "application/octet-stream",item.OriginalName); //(fs, fileType, item.File.OriginalName); 
-                }
+                this.Response.ContentType = "application/octet-stream";
+                this.Response.Headers.Add($"Content-Disposition", $"attachment; filename=\"{item.OriginalName}\"");
+                this.Response.StatusCode = 200;
+                await fileStream.CopyToAsync(this.Response.Body, cancellationToken);
+            }
+        }
 
-            }
-            catch
+        /// <summary>
+        ///     TEST METHOD FOR PRODUCT FILE UPLOADING INTO S3. PLS REMOVE IN NEXT BUILDS
+        /// </summary>
+        /// <returns>Product file.</returns>
+        /// <response code="200">The Product was successfully retrieved.</response>
+        /// /// <response code="404">The Product was not found</response>
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(File), StatusCodes.Status200OK)]
+        [EnableQuery(HandleNullPropagation = HandleNullPropagationOption.False)]
+        [ODataRoute("({key})/TestUpload")]
+        public async Task<IActionResult> PostTestUpload(Guid key, IFormFile file)
+        {
+            
+            var product = await userDbContext.Products
+                .IncludeOptimized(r => r.ProductFiles.Select(r => r.File))
+                .FirstOrDefaultAsync(r => r.Id == key);
+
+            if (product == null)
             {
-                return BadRequest("Api Error");
+                return NotFound();
             }
+            
+            var fileName = key;
+            await using var stream = file.OpenReadStream();
+            await fileService.PutFileAsync(stream, fileName.ToString());
+
+            var res = new File()
+            {
+                ContentType = file.ContentType,
+                CreatedAt = DateTime.Now,
+                Id = Guid.NewGuid(),
+                Path = file.Name,
+                Type = FileType.Base
+            };
+
+            await userDbContext.Files.AddAsync(res);
+            
+            product.ProductFiles.Add(new ProductFile()
+            {
+                FileId = res.Id,
+                ProductId = product.Id,
+                ProductFileType = ProductFileType.MainContaining
+            });
+
+            await userDbContext.SaveChangesAsync();
+            
+            return Ok(res);
         }
         
         
