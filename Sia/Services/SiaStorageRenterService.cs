@@ -17,6 +17,7 @@ using Sia.Models;
 namespace Sia.Services
 {
     [Queue("sia")]
+    [Obsolete]
     public class SiaStorageRenterService
     {
          private readonly SiaDbContext siaDbContext;
