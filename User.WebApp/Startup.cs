@@ -34,6 +34,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using CRM.ServiceCommon.Helpers;
 using static Microsoft.OData.ODataUrlKeyDelimiter;
 using ClaimTypes = System.Security.Claims.ClaimTypes;
 
@@ -131,8 +132,13 @@ namespace CRM.User.WebApp
             // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             // var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             // services.ConfigureSwagger(xmlPath);
-            services.ConfigureSwaggerBearer(Configuration);
             
+            services.ConfigureSwaggerBearer(Configuration);
+            services.AddSwaggerGen(options =>
+            {
+                options.CustomSchemaIds(type => SwashbuckleSchemaHelper.GetSchemaId(type));
+            });
+
 
             services.AddHttpContextAccessor();
 

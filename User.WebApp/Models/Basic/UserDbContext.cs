@@ -13,6 +13,7 @@ using CRM.DAL.Models.DatabaseModels.SiaTransaction;
 using CRM.DAL.Models.DatabaseModels.Tags;
 using CRM.DAL.Models.DatabaseModels.Users;
 using CRM.DAL.Models.DatabaseModels.UserSiaAddress;
+using CRM.DAL.Models.DatabaseModels.Banners;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -60,6 +61,7 @@ namespace CRM.User.WebApp.Models.Basic
         public DbSet<UserSiaAddress> UserSiaAddresses { get; set; }
 
         public DbSet<DAL.Models.DatabaseModels.ProductsComments.ProductComment> ProductComments { get; set; }
+        public DbSet<DAL.Models.DatabaseModels.Banners.Banner> Banners { get; set; }
 
 
 
@@ -85,6 +87,7 @@ namespace CRM.User.WebApp.Models.Basic
             
             modelBuilder.ApplyConfiguration(new UserSiaAddressConfiguration());
             modelBuilder.ApplyConfiguration(new SiaTransactionConfiguration());
+            modelBuilder.ApplyConfiguration(new BannerConfiguration());
 
         }
     }
