@@ -14,6 +14,20 @@
         <RootNamespace>CRM.User.WebApp</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Remove="Helpers\**" />
+      <Compile Remove="Hubs\**" />
+      <Compile Remove="Views\**" />
+      <Content Remove="Helpers\**" />
+      <Content Remove="Hubs\**" />
+      <Content Remove="Views\**" />
+      <EmbeddedResource Remove="Helpers\**" />
+      <EmbeddedResource Remove="Hubs\**" />
+      <EmbeddedResource Remove="Views\**" />
+      <None Remove="Helpers\**" />
+      <None Remove="Hubs\**" />
+      <None Remove="Views\**" />
+    </ItemGroup>
+    <ItemGroup>
         <PackageReference Include="AspNetCore.HealthChecks.Prometheus.Metrics" Version="5.0.1" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
         <PackageReference Include="ClosedXML" Version="0.95.4" />
@@ -86,11 +100,6 @@
       <None Update="Rotativa\Windows\wkhtmltox.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Helpers" />
-      <Folder Include="Hubs" />
-      <Folder Include="Views\Email" />
     </ItemGroup>
     
     <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
