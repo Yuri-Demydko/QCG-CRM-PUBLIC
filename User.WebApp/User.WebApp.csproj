@@ -90,6 +90,7 @@
     <ItemGroup>
       <Folder Include="Helpers" />
       <Folder Include="Hubs" />
+      <Folder Include="Models\Request\Shop\" />
       <Folder Include="Views\Email" />
     </ItemGroup>
     

@@ -1,4 +1,5 @@
-﻿using CRM.DAL.Models.DatabaseModels.Configs;
+﻿using CRM.DAL.Models.DatabaseModels.Banners;
+using CRM.DAL.Models.DatabaseModels.Configs;
 using CRM.DAL.Models.DatabaseModels.Files;
 using CRM.DAL.Models.DatabaseModels.KontragentInfo;
 using CRM.DAL.Models.DatabaseModels.Kontragents;
@@ -51,6 +52,7 @@ namespace CRM.DAL
         public DbSet<SiaMonitoredBlock> SiaMonitoredBlocks { get; set; }
         public DbSet<UserSiaAddress> UserSiaAddresses { get; set; }
         public DbSet<SiaRenterAllowance> SiaRenterAllowances { get; set; }
+        public DbSet<Banner> Banners { get; set; }
 
 
         // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

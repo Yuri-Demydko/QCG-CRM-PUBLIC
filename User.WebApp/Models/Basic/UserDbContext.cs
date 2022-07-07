@@ -60,6 +60,7 @@ namespace CRM.User.WebApp.Models.Basic
         public DbSet<UserSiaAddress> UserSiaAddresses { get; set; }
 
         public DbSet<DAL.Models.DatabaseModels.ProductsComments.ProductComment> ProductComments { get; set; }
+        public DbSet<DAL.Models.DatabaseModels.Banners.Banner> Banners { get; set; }
 
 
 
