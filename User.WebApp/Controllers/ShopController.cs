@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using CRM.DAL.Models.DatabaseModels.Products;
+using CRM.DAL.Models.RequestModels.Shop;
 using CRM.ServiceCommon.Services.Files;
 using CRM.User.WebApp.Models.Basic;
 using CRM.User.WebApp.Models.Request;
-using CRM.User.WebApp.Models.ViewModel;
+using CRM.User.WebApp.Models.ViewModel.Shop;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNet.OData.Routing;
@@ -19,7 +20,7 @@ using Z.EntityFramework.Plus;
 
 namespace CRM.User.WebApp.Controllers
 {
-	[ODataRoutePrefix(nameof(ShopViewModel))]
+	[ODataRoutePrefix(nameof(CRM.User.WebApp.Models.ViewModel.Shop.Shop))]
 	public class ShopController : BaseController<ShopController>
 	{
         private readonly IMapper mapper;
@@ -39,9 +40,10 @@ namespace CRM.User.WebApp.Controllers
         /// <returns>The requested ShopViewModel.</returns>
         /// <response code="200">The Products was successfully retrieved.</response>
         [Produces("application/json")]
-        [ProducesResponseType(typeof(ShopViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Shop), StatusCodes.Status200OK)]
         [EnableQuery(HandleNullPropagation = HandleNullPropagationOption.False)]
-        public async Task<IActionResult> ShopList([FromBody] ShopRequest request)
+        [ODataRoute("/{request}")]
+        public async Task<Shop> PostShopList([FromBody] ShopRequest request)
         {
             QueryIncludeOptimizedManager.AllowIncludeSubPath = true;
             const int objectInPage = 16;
@@ -51,7 +53,7 @@ namespace CRM.User.WebApp.Controllers
             var banners = await userDbContext.Banners.ToListAsync();
             var totalPage = await userDbContext.Products.CountAsync() / objectInPage;
 
-            return StatusCode(StatusCodes.Status200OK, new ShopViewModel(banners, bestProduct, product, totalPage, request.CurrentPage ?? 1) { });
+            return new Shop(banners, bestProduct, product, totalPage, request.CurrentPage ?? 1) { };
         }
     }
 }

@@ -134,11 +134,6 @@ namespace CRM.User.WebApp
             // services.ConfigureSwagger(xmlPath);
             
             services.ConfigureSwaggerBearer(Configuration);
-            services.AddSwaggerGen(options =>
-            {
-                options.CustomSchemaIds(type => SwashbuckleSchemaHelper.GetSchemaId(type));
-            });
-
 
             services.AddHttpContextAccessor();
 
