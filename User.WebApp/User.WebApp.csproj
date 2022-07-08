@@ -78,6 +78,7 @@
     
     <ItemGroup>
         <ProjectReference Include="..\CRM.DAL\CRM.DAL.csproj" />
+        <ProjectReference Include="..\Common\Common.csproj" />
         <ProjectReference Include="..\ServiceCommon\ServiceCommon.csproj" />
         <ProjectReference Include="..\IdentityServer.Extensions\IdentityServer.Extensions.csproj" />
     </ItemGroup>
@@ -100,6 +101,9 @@
       <None Update="Rotativa\Windows\wkhtmltox.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Enums\" />
     </ItemGroup>
     
     <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">

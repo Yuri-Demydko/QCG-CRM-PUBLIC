@@ -25,5 +25,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\IdentityServer.Extensions\IdentityServer.Extensions.csproj" />
+        <ProjectReference Include="..\Common\Common.csproj" />
     </ItemGroup>
 </Project>

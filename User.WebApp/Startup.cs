@@ -143,14 +143,12 @@ namespace CRM.User.WebApp
             
             services.ConfigureS3FileService(Configuration);
 
-            services.AddDataProtection(options =>
-                    options.ApplicationDiscriminator = "User Web App"
-                )
+            services.AddDataProtection(options => options.ApplicationDiscriminator = "User Web App")
                 .PersistKeysToDbContext<UserDbContext>();
 
             services.ConfigureEmail(Configuration);
             
-             services.ConfigureEmailCodes(Configuration);
+            services.ConfigureEmailCodes(Configuration);
 
             services.ConfigureRazorTemplateEngine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 

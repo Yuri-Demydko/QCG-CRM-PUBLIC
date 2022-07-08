@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace CRM.User.WebApp.Models.Basic.Shop
 {
@@ -17,9 +18,10 @@ namespace CRM.User.WebApp.Models.Basic.Shop
         {
 
             var item = builder.EntitySet<CRM.User.WebApp.Models.ViewModel.Shop.Shop>(nameof(CRM.User.WebApp.Models.ViewModel.Shop.Shop)).EntityType;
-            item.Action("ShopList");
 
             item.HasKey(i => i.Id);
+
+            item.Action("ShopList");
         }
     }
 }
