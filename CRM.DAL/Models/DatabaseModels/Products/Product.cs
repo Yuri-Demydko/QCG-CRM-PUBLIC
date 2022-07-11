@@ -30,7 +30,7 @@ namespace CRM.DAL.Models.DatabaseModels.Products
         
         public ICollection<ProductRequirements.ProductRequirements> Requirements { get; set; }
 
-        public ICollection<Tag> Tags { get; set; }
+		public ICollection<CRM.DAL.Models.DatabaseModels.Tags.Tag> Tags { get; set; }
         
         
         public ICollection<ProductFile.ProductFile> ProductFiles { get; set; }

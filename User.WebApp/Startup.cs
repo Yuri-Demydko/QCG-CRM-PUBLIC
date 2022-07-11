@@ -33,9 +33,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Converters;
+using CRM.ServiceCommon.Helpers;
 using static Microsoft.OData.ODataUrlKeyDelimiter;
 using ClaimTypes = System.Security.Claims.ClaimTypes;
+using System.Linq;
 
 namespace CRM.User.WebApp
 {
@@ -131,8 +134,8 @@ namespace CRM.User.WebApp
             // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             // var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             // services.ConfigureSwagger(xmlPath);
-            services.ConfigureSwaggerBearer(Configuration);
             
+            services.ConfigureSwaggerBearer(Configuration);
 
             services.AddHttpContextAccessor();
 
@@ -142,14 +145,12 @@ namespace CRM.User.WebApp
             
             services.ConfigureS3FileService(Configuration);
 
-            services.AddDataProtection(options =>
-                    options.ApplicationDiscriminator = "User Web App"
-                )
+            services.AddDataProtection(options => options.ApplicationDiscriminator = "User Web App")
                 .PersistKeysToDbContext<UserDbContext>();
 
             services.ConfigureEmail(Configuration);
             
-             services.ConfigureEmailCodes(Configuration);
+            services.ConfigureEmailCodes(Configuration);
 
             services.ConfigureRazorTemplateEngine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 

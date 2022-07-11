@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
@@ -9,6 +9,10 @@
 
     <ItemGroup>
         <PackageReference Include="DelegateDecompiler.EntityFrameworkCore5" Version="0.29.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.15">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Npgsql" Version="5.0.10" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="5.0.10" />
         <PackageReference Include="Npgsql.Json.NET" Version="5.0.10" />
@@ -25,5 +29,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\IdentityServer.Extensions\IdentityServer.Extensions.csproj" />
+        <ProjectReference Include="..\Common\Common.csproj" />
     </ItemGroup>
 </Project>

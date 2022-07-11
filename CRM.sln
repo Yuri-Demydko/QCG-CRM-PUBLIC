@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.DAL", "CRM.DAL\CRM.DAL.csproj", "{21FF951D-4D0A-4E05-AA86-8564E385DB1B}"
 EndProject
@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCommon", "ServiceCom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Extensions", "IdentityServer.Extensions\IdentityServer.Extensions.csproj", "{9E2652C7-90BD-4249-9EA1-3B33A9C22532}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sia", "Sia\Sia.csproj", "{BB590040-9D5D-4FF4-95F1-B1643A02CE85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sia", "Sia\Sia.csproj", "{BB590040-9D5D-4FF4-95F1-B1643A02CE85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{63A3E219-9884-4DB4-9C0C-D70ED026904E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{BB590040-9D5D-4FF4-95F1-B1643A02CE85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB590040-9D5D-4FF4-95F1-B1643A02CE85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB590040-9D5D-4FF4-95F1-B1643A02CE85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63A3E219-9884-4DB4-9C0C-D70ED026904E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A3E219-9884-4DB4-9C0C-D70ED026904E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A3E219-9884-4DB4-9C0C-D70ED026904E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A3E219-9884-4DB4-9C0C-D70ED026904E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

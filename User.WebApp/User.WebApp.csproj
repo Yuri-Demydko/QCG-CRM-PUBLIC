@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
@@ -13,6 +13,20 @@
         <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
         <RootNamespace>CRM.User.WebApp</RootNamespace>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="Helpers\**" />
+      <Compile Remove="Hubs\**" />
+      <Compile Remove="Views\**" />
+      <Content Remove="Helpers\**" />
+      <Content Remove="Hubs\**" />
+      <Content Remove="Views\**" />
+      <EmbeddedResource Remove="Helpers\**" />
+      <EmbeddedResource Remove="Hubs\**" />
+      <EmbeddedResource Remove="Views\**" />
+      <None Remove="Helpers\**" />
+      <None Remove="Hubs\**" />
+      <None Remove="Views\**" />
+    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="AspNetCore.HealthChecks.Prometheus.Metrics" Version="5.0.1" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
@@ -45,7 +59,9 @@
         <PackageReference Include="OData.Swagger" Version="1.0.0" />
         <PackageReference Include="RazorLight" Version="2.0.0-rc.3" />
         <PackageReference Include="Sentry.AspNetCore" Version="3.8.2" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
         <PackageReference Include="Wkhtmltopdf.NetCore" Version="3.0.2" />
     </ItemGroup>
@@ -64,6 +80,7 @@
     
     <ItemGroup>
         <ProjectReference Include="..\CRM.DAL\CRM.DAL.csproj" />
+        <ProjectReference Include="..\Common\Common.csproj" />
         <ProjectReference Include="..\ServiceCommon\ServiceCommon.csproj" />
         <ProjectReference Include="..\IdentityServer.Extensions\IdentityServer.Extensions.csproj" />
     </ItemGroup>
@@ -88,10 +105,7 @@
       </None>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Helpers" />
-      <Folder Include="Hubs" />
-      <Folder Include="Models\Request\Shop\" />
-      <Folder Include="Views\Email" />
+      <Folder Include="Enums\" />
     </ItemGroup>
     
     <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">

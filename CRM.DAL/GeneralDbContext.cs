@@ -96,6 +96,7 @@ namespace CRM.DAL
             
             modelBuilder.ApplyConfiguration(new SiaTransactionConfiguration());
             modelBuilder.ApplyConfiguration(new UserSiaAddressConfiguration());
+            modelBuilder.ApplyConfiguration(new BannerConfiguration());
 
         }
     }
