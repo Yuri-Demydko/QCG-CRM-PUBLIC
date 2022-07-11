@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Common.Enum;
 using CRM.DAL.Models.DatabaseModels.Banners;
 using CRM.DAL.Models.DatabaseModels.Products;
-using CRM.DAL.Models.DatabaseModels.Tags;
 using Microsoft.AspNet.OData.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CRM.User.WebApp.Models.ViewModel.Shop
 {

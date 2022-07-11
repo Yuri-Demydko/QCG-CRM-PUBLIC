@@ -2,7 +2,6 @@
 using Common.Enum;
 using CRM.DAL.Models.DatabaseModels.Products;
 using CRM.DAL.Models.DatabaseModels.ProductsUsers;
-using CRM.DAL.Models.RequestModels.Shop;
 using CRM.ServiceCommon.Services.Files;
 using CRM.User.WebApp.Models.Basic;
 using CRM.User.WebApp.Models.Request;
@@ -20,6 +19,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Z.EntityFramework.Plus;
 using Common.Attribute;
+using CRM.User.WebApp.Models.Request.Shop;
 
 namespace CRM.User.WebApp.Controllers
 {
@@ -45,15 +45,15 @@ namespace CRM.User.WebApp.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(Shop), StatusCodes.Status200OK)]
         [EnableQuery(HandleNullPropagation = HandleNullPropagationOption.False)]
-        [ODataRoute()]
-        public async Task<Shop> PostShopList([FromBody] ShopRequest request)
+        [HttpPost]
+        public async Task<Shop> PostShopList( ShopRequest request)
         {
             QueryIncludeOptimizedManager.AllowIncludeSubPath = true;
             const int objectInPage = 16;
 
             var product = new List<Product>();
 
-           /* if(request.Genres.Any())
+            /*if(request.Genres.Any())
 			{
                 product = await userDbContext.Products.Where(item => request.Genres.Intersect(item.Tags).Count() != 0).ToListAsync();
             }*/

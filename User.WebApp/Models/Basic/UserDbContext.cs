@@ -56,7 +56,7 @@ namespace CRM.User.WebApp.Models.Basic
         
         public DbSet<DAL.Models.DatabaseModels.ProductsUsers.ProductUser> ProductUsers { get; set; }
         
-        public DbSet<Tag> Tags { get; set; }
+        public DbSet<CRM.DAL.Models.DatabaseModels.Tags.Tag> Tags { get; set; }
         
         public DbSet<UserSiaAddress> UserSiaAddresses { get; set; }
 
